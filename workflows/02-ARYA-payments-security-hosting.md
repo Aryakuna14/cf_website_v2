@@ -75,7 +75,7 @@ Do not edit: body content, copy, images (Ahna). Ask first.
 - [x] `npm audit --audit-level=high` already runs on every PR (PR 2).
 - [x] `.npmrc` `ignore-scripts=true`: packages can't run install scripts on our machines or in CI.
 - [x] `rel="noopener noreferrer"`: no external links yet; `npm run check` warns about any `target="_blank"` link without it.
-- [ ] **Repo owner (Ahna) turns on in Settings → Code security:** Private vulnerability reporting, Dependabot alerts + security updates, Secret scanning + Push protection. Then add **secret-scan** as a required check on `main`.
+- [ ] **Repo owner (Arya) turns on in Settings → Code security:** Private vulnerability reporting, Dependabot alerts + security updates, Secret scanning + Push protection. Then add **secret-scan** as a required check on `main`.
 
 ---
 
