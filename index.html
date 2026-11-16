@@ -49,6 +49,7 @@
       <a href="#sessions" class="hover:text-pink">Sessions</a>
       <a href="#volunteer" class="hover:text-pink">Volunteer</a>
       <a href="#donate" class="hover:text-pink">Donate</a>
+      <a href="fundraiser.html" class="hover:text-pink">Fundraiser</a>
       <a href="#contact" class="hover:text-pink">Contact</a>
     </nav>
     <div class="flex items-center gap-2">
@@ -60,7 +61,7 @@
     </div>
   </div>
   <nav id="mobile-nav" class="hidden lg:hidden wrap pb-5 flex-col gap-4 text-lg font-semibold" aria-label="Main">
-    <a href="#about">About</a><a href="#impact">Impact</a><a href="#sessions">Sessions</a><a href="#volunteer">Volunteer</a><a href="#donate">Donate</a><a href="#contact">Contact</a>
+    <a href="#about">About</a><a href="#impact">Impact</a><a href="#sessions">Sessions</a><a href="#volunteer">Volunteer</a><a href="#donate">Donate</a><a href="fundraiser.html">Fundraiser</a><a href="#contact">Contact</a>
   </nav>
 </header>
 
@@ -202,7 +203,7 @@
     <div class="wrap grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
       <div class="lg:col-span-6">
         <p class="eyebrow text-ink">Volunteer</p>
-        <h2 class="heading heading-xl mt-3">Teach at Maho</h2>
+        <h2 class="heading heading-xl mt-3">Teach</h2>
         <p class="lede mt-5">Spend time every week with the boys at Maho, teaching English and being someone they can rely on. U&amp;I gives its volunteers a curriculum, textbooks and workbooks, and training.</p>
         <!-- TODO (Maho team): add the session day/time and the commitment asked of volunteers, once confirmed. -->
         <div class="mt-8 flex flex-wrap gap-3">
@@ -211,7 +212,7 @@
         </div>
       </div>
       <div class="lg:col-span-6 panel">
-        <h3 class="heading heading-md">What volunteering at Maho involves</h3>
+        <h3 class="heading heading-md">What volunteering involves</h3>
         <ul class="mt-5 space-y-4 text-lg">
           <li class="flex gap-3"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-red" aria-hidden="true"></span>Teaching English to the boys, every week</li>
           <li class="flex gap-3"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-pink" aria-hidden="true"></span>Being a steady role model and mentor</li>
@@ -229,19 +230,9 @@
         <p class="eyebrow text-white">#InThisTogether</p>
         <h2 class="heading heading-xl mt-3">Fund their dreams. Change their future.</h2>
         <p class="lede mt-5 text-white/95">Maho is part of #InThisTogether, U&amp;I's biggest crowdfunding moment of the year: 6,000 students, 5,000 volunteers, 6 weeks. Last year, 29,000 supporters built the village for U&amp;I's students.</p>
-        <!-- Campaign progress: numbers come from site.config.json (edit "raised" there). TODO (Arya): Maho-specific donation link if U&I has one. -->
-        <!-- campaign:start -->
-        <div class="mt-8 max-w-xl">
-          <!-- raised:start -->
-          <p class="text-lg"><span class="heading text-3xl">%CAMPAIGN_RAISED%</span> raised of %CAMPAIGN_GOAL%</p>
-          <progress class="campaign-bar mt-3" max="100" value="%CAMPAIGN_PERCENT%" aria-label="Raised so far: %CAMPAIGN_PERCENT% percent of the goal">%CAMPAIGN_PERCENT%%</progress>
-          <p class="mt-2 text-white/90">Our goal, by %CAMPAIGN_END%.</p>
-          <!-- raised:end -->
-          <!-- goalonly:start -->
-          <p class="text-lg">Our December goal: <span class="heading text-3xl">%CAMPAIGN_GOAL%</span> by %CAMPAIGN_END%.</p>
-          <!-- goalonly:end -->
-        </div>
-        <!-- campaign:end -->
+        <!-- The goal and progress bar live on fundraiser.html (numbers from site.config.json).
+             TODO (Arya): Maho-specific donation link if U&I has one. -->
+        <a href="fundraiser.html" class="btn btn-outline-light mt-8">See our December goal</a>
       </div>
       <div class="lg:col-span-5 flex flex-col gap-6 lg:pt-10">
         <div>

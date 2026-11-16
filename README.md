@@ -25,15 +25,15 @@ Live site: https://aryakuna14.github.io/cf_website_v2/
 - One-time setup by the repo owner: **Settings > Pages > Source = GitHub Actions**.
 
 ## Update the fundraising total (no coding needed)
-The "raised so far" bar in the Donate section reads from `site.config.json`.
+The goal card on the fundraiser page (`fundraiser.html`, linked as "Fundraiser" in the menu and "See our December goal" in the Donate section) reads from `site.config.json`.
 1. On GitHub, open `site.config.json` and click the pencil icon (Edit).
 2. Change `"raised": 0` to the total so far in rupees, **digits only**: `125000`, not `1,25,000` or `₹1.25L`.
 3. Click **Commit changes**. The site republishes itself in about a minute. If you made a typo, the publish fails with a red cross and the live site stays as it was: fix the number and commit again.
 
 Other settings in the same file:
-- While `raised` is `0` the site shows only the goal ("Our December goal: the goal"). From the first rupee it shows "₹X raised of the goal" with a bar.
+- While `raised` is `0` the card shows only the goal (the goal by December). From the first rupee it adds a bar and "₹X raised so far".
 - `goal`, `endDate` (YYYY-MM-DD) and `endLabel` (the words shown, e.g. `December`) set the target and deadline. After `endDate` passes, `npm run check` warns you to update or hide it.
-- `"show": false` hides the whole progress area.
+- `"show": false` hides the goal card. The home page never shows the amount.
 - Only post a total U&I has confirmed. Never round up.
 
 ## Print the QR poster
@@ -59,6 +59,7 @@ When the link is shared, apps show `images/og-image.jpg` (1200×630) with the ti
 | `site.config.json` | Site address and fundraising numbers | Anyone (see above) |
 | `poster.html` | Printable A4 poster with QR code | Ahna |
 | `volunteer.html` | Volunteering page. Its facts (hours, dates, subjects, steps) come from uandi.org.in/volunteer: re-check them every volunteering year | Ahna |
+| `fundraiser.html` | December #InThisTogether fundraiser page with the goal card. Facts come from U&I's crowdfunding deck; the goal from `site.config.json` | Arya |
 | `favicon.png`, `apple-touch-icon.png` | Browser tab and home-screen icons | Ahna |
 | `index.html` `<head>`, `js/` | Security tags, form and payment code | Arya |
 | `tailwind.config.js` | Colours and font (the design system) | Arya, changes agreed with Ahna |
