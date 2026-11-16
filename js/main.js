@@ -10,7 +10,7 @@ mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   mobileNav.classList.add('hidden'); mobileNav.classList.remove('flex');
 }));
 
-// "Choose this" on a sponsor tier pre-selects it in the contact form
+// Buttons with data-plan (e.g. "Write to us" in the sponsor section) pre-select that topic in the contact form
 document.querySelectorAll('[data-plan]').forEach(a => a.addEventListener('click', () => {
   const sel = document.getElementById('q-interest');
   if (sel) sel.value = a.dataset.plan;

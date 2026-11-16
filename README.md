@@ -49,7 +49,8 @@ Put files in `images/` with these names, or change the `src` in `index.html`:
 `logo.png` (optional), `hero.webp`, `session-2.webp`, `session-3.webp` (about 1000px wide, under 200 KB each, so the page loads fast)
 
 ## Before publishing
-- Stats, sponsor amounts and stories are placeholders. Replace them with confirmed facts.
-- Testimonial cards are placeholders. Use real quotes with permission, and get the shelter's consent for anything from a child.
+- **No placeholder or made-up content, ever.** Numbers, stories, quotes and prices go on the site only once the NGO confirms them, with written consent from anyone quoted and the shelter's consent for anything about a child.
 - Only use photos of boys with consent from the shelter. Keep every child's face covered or cropped out.
-- The question form does not send data anywhere yet. Sponsor buttons link to the form until payment links are added.
+- The "What we do" details and the privacy policy and terms are drafts: get them confirmed by the Maho team and U&I Trust.
+- The contact form needs its Formspree ID before it can send messages. Donations go to U&I's own donation page.
+- Design rules: square corners, no shadows, gradients, animations, emojis or icon sets, no rows of identical cards, U&I's colours only.
