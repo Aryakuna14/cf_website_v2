@@ -47,7 +47,7 @@ function checkUrl(file, url, { loads }) {
     return;
   }
   if (u.startsWith("/")) {
-    errors.push(`${where} starts with "/". It will break on GitHub Pages (/cfwebsite/). Use a relative path like "${u.replace(/^\/+/, "")}".`);
+    errors.push(`${where} starts with "/". It will break on GitHub Pages, which serves the site from a sub-folder (/cf_website_v2/). Use a relative path like "${u.replace(/^\/+/, "")}".`);
     return;
   }
   const clean = decodeURIComponent(u.split(/[?#]/)[0]);

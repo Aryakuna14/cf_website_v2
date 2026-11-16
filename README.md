@@ -2,6 +2,8 @@
 
 Sponsor/donation website for U&I x Maho. Static site styled with Tailwind CSS. Team plan: [WORKFLOW.md](WORKFLOW.md).
 
+Live site: https://aryakuna14.github.io/cf_website_v2/
+
 ## First-time setup
 1. Install [Node.js](https://nodejs.org) version 20 or newer (the "LTS" download).
 2. In this folder run:
@@ -14,7 +16,7 @@ Sponsor/donation website for U&I x Maho. Static site styled with Tailwind CSS. T
 |---|---|
 | `npm run dev` | Starts the site at http://localhost:8000 and rebuilds the styles every time you save. Use this while working. Stop it with Ctrl+C. |
 | `npm run build` | Makes the final website in the `dist/` folder. This is what gets published. |
-| `npm run preview` | Builds, then serves `dist/` at http://localhost:8000/cfwebsite/, the same address shape as GitHub Pages. Use it to check nothing breaks before a PR. |
+| `npm run preview` | Builds, then serves `dist/` at http://localhost:8000/cf_website_v2/, the same address shape as GitHub Pages. Use it to check nothing breaks before a PR. |
 | `npm run check` | After a build, checks for broken file links, paths that would break on GitHub Pages, files loaded from other websites, and insecure links. The same check runs automatically on every PR. |
 
 ## How publishing works

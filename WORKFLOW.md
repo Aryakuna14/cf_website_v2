@@ -8,7 +8,7 @@ Goal: a sponsor/donation website that can be hosted on **GitHub Pages or a custo
 
 1. **Keep the site static.** Plain HTML/CSS/JS built to a `dist/` folder. Static files host the same on GitHub Pages, Cloudflare Pages, Netlify or Vercel, so the choice of host never blocks us.
 2. **Never touch card data ourselves.** Payments go through a hosted provider (e.g. Razorpay Payment Pages / Payment Links, or a UPI link). The card form lives on the provider's domain, not ours. This removes most PCI risk. No API secrets ever go in this repo.
-3. **Use relative paths** (`images/x.jpg`, not `/images/x.jpg`) so the site works at `username.github.io/cfwebsite/` and at `www.ourdomain.org` without edits.
+3. **Use relative paths** (`images/x.jpg`, not `/images/x.jpg`) so the site works at `aryakuna14.github.io/cf_website_v2/` and at `www.ourdomain.org` without edits.
 4. **Replace the Tailwind CDN script with a build step** (Tailwind CLI). The CDN version is for prototyping only; it blocks a strict Content-Security-Policy and is slower.
 5. **Security headers**: GitHub Pages cannot set custom HTTP headers. For a real domain, put the site behind Cloudflare (free) or host on Cloudflare Pages / Netlify, which can set HSTS, CSP and the rest. Until then we ship a CSP `<meta>` tag as a fallback.
 6. **Form submissions** go to a managed service (Formspree, Web3Forms) or a small serverless function. Never a self-written server.
@@ -72,7 +72,7 @@ If you need to touch the other person's area, message first or open a PR into th
 | Step | GitHub Pages | Custom domain |
 |---|---|---|
 | Hosting | GitHub Actions deploy of `dist/` | Same `dist/` on Cloudflare Pages / Netlify, or keep GitHub Pages and add the domain |
-| URL | `username.github.io/cfwebsite/` | `www.ourdomain.org` |
+| URL | `aryakuna14.github.io/cf_website_v2/` | `www.ourdomain.org` |
 | Switching | Nothing to change in code (relative paths) | Add `CNAME` file and DNS records. In GitHub: Settings > Pages > Custom domain, enable "Enforce HTTPS" |
 | Headers | CSP via `<meta>` only | Real HTTP headers through Cloudflare or the host |
 | Payments | Same payment links | Add the new domain to the provider's allowed domains |

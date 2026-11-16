@@ -7,14 +7,14 @@
     "dev": "node scripts/dev.mjs",
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
-    "preview": "node scripts/build.mjs && node scripts/serve.mjs dist 8000 /cfwebsite/"
+    "preview": "node scripts/build.mjs && node scripts/serve.mjs dist 8000 /cf_website_v2/"
   },
   "engines": {
     "node": ">=20"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ahnaak/cfwebsite.git"
+    "url": "git+https://github.com/Aryakuna14/cf_website_v2.git"
   },
   "devDependencies": {
     "tailwindcss": "3.4.19"
