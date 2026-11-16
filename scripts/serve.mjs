@@ -1,10 +1,11 @@
 // Tiny local web server for testing. Not for production.
 // Usage: node scripts/serve.mjs <folder> [port] [basePath]
 //   basePath lets us test the GitHub Pages sub-path, e.g. /cfwebsite/
-import { createReadStream, existsSync, readFileSync, statSync } from "node:fs";
+import { createReadStream, statSync } from "node:fs";
 import { createServer } from "node:http";
 import { extname, join, normalize, resolve, sep } from "node:path";
 import { pathToFileURL } from "node:url";
+import { existsSync, readFileSync } from "node:fs"; // for reading _headers
 
 export function serve(folder = ".", port = 8000, basePath = "/") {
   const root = resolve(folder);
