@@ -10,167 +10,179 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>U&amp;I x Maho</title>
-<meta name="description" content="Mentorship and after-school learning for boys in residential care in Bengaluru, run by U&amp;I Trust volunteers.">
+<meta name="description" content="Maho is a U&amp;I centre in Bengaluru where volunteers spend time every week with boys growing up in residential care.">
+<link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-bg text-ink font-sans antialiased">
 
-<header class="fixed top-0 inset-x-0 z-50 bg-bg border-b border-line">
-  <div class="wrap h-20 flex items-center justify-between">
+<header class="fixed top-0 inset-x-0 z-50 bg-white border-b-[3px] border-ink">
+  <div class="wrap h-20 flex items-center justify-between gap-4">
     <a href="#top" class="flex items-center gap-3">
       <img src="images/logo.png" alt="U&amp;I logo" width="48" height="48" class="h-12 w-12 rounded-full bg-red p-1 object-contain">
-      <span class="font-extrabold text-lg leading-tight">U&amp;I x Maho</span>
+      <span class="display text-base sm:text-lg">U&amp;I x Maho</span>
     </a>
-    <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-ink/80" aria-label="Main">
-      <a href="#about" class="hover:text-blue hover:underline">About</a>
-      <a href="#sponsor" class="hover:text-blue hover:underline">Sponsor</a>
-      <a href="#sessions" class="hover:text-blue hover:underline">Sessions</a>
-      <a href="#programs" class="hover:text-blue hover:underline">What we do</a>
-      <a href="#contact" class="hover:text-blue hover:underline">Contact</a>
+    <nav class="hidden lg:flex items-center gap-7 text-sm font-bold uppercase tracking-wide" aria-label="Main">
+      <a href="#about" class="hover:underline">About</a>
+      <a href="#sponsor" class="hover:underline">Sponsor</a>
+      <a href="#sessions" class="hover:underline">Sessions</a>
+      <a href="#programs" class="hover:underline">What we do</a>
+      <a href="#contact" class="hover:underline">Contact</a>
     </nav>
-    <div class="flex items-center gap-3">
-      <a href="#sponsor" class="bg-yellow text-ink font-bold text-sm px-4 py-2 whitespace-nowrap">Sponsor a boy</a>
+    <div class="flex items-center gap-2">
+      <a href="#sponsor" class="bar bar-sm">Sponsor <span aria-hidden="true">→</span></a>
       <button id="menu-btn" class="lg:hidden p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 6h20M3 13h20M3 20h20"/></svg>
       </button>
     </div>
   </div>
-  <nav id="mobile-nav" class="hidden lg:hidden wrap pb-4 flex-col gap-3 text-ink/80 font-medium" aria-label="Main">
+  <nav id="mobile-nav" class="hidden lg:hidden wrap pb-5 flex-col gap-4 text-base font-bold uppercase" aria-label="Main">
     <a href="#about">About</a><a href="#sponsor">Sponsor</a><a href="#sessions">Sessions</a><a href="#programs">What we do</a><a href="#contact">Contact</a>
   </nav>
 </header>
 
 <main id="top" class="pt-20">
 
-  <!-- Hero: one real photo -->
-  <section class="wrap section grid lg:grid-cols-2 gap-12 items-center">
-    <div>
-      <h1 class="text-4xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]">Nurturing potential in every boy at <span class="text-red">U&amp;I x Maho</span></h1>
-      <p class="mt-6 text-ink/85 text-lg max-w-xl">Volunteers from U&amp;I give boys growing up in residential care one-on-one mentoring, help with school, and a steady adult in their week.</p>
-      <div class="mt-8 flex flex-wrap gap-4">
-        <a href="#sponsor" class="btn btn-yellow">Sponsor a boy</a>
-        <a href="#about" class="btn btn-outline">About Maho</a>
+  <!-- Hero: yellow block, giant heading, framed photo -->
+  <section class="band bg-yellow">
+    <div class="wrap grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+      <div class="lg:col-span-7">
+        <span class="sticker sticker-red">U&amp;I · volunteer-run</span>
+        <h1 class="display display-xl mt-6">A steady adult, <span class="text-blue">every week.</span></h1>
+        <p class="lede mt-8">Maho is a U&amp;I centre in Bengaluru. Volunteers spend three hours every week with boys growing up in residential care: schoolwork, mentoring, and someone who keeps showing up.</p>
+        <div class="mt-10 flex flex-col sm:flex-row sm:items-center gap-5">
+          <a href="#sponsor" class="bar sm:min-w-[18rem]">Sponsor a boy <span aria-hidden="true">→</span></a>
+          <a href="#about" class="link">What is Maho?</a>
+        </div>
       </div>
-    </div>
-    <div class="bg-surface border border-line">
-      <img src="images/hero.webp" width="1000" height="750" fetchpriority="high" alt="A volunteer mentor working through a workbook with boys at the shelter home" class="block w-full h-auto">
+      <div class="lg:col-span-5 relative pr-4 pb-4">
+        <figure class="frame tilt-r">
+          <img src="images/hero.webp" width="1000" height="750" fetchpriority="high" alt="A volunteer mentor working through a workbook with boys at the shelter home" class="block w-full h-auto bg-line">
+        </figure>
+        <span class="sticker absolute -top-4 -left-2 sm:-left-5">Three hours a week</span>
+      </div>
     </div>
   </section>
 
-  <!-- What is Maho -->
-  <section id="about" class="section bg-surface">
-    <div class="wrap grid lg:grid-cols-2 gap-12">
-      <h2 class="h2">What is Maho?</h2>
-      <div class="space-y-6 text-ink text-lg max-w-prose">
+  <!-- What is Maho: red block, heading across the full width, text below -->
+  <section id="about" class="band bg-red text-white">
+    <div class="wrap">
+      <h2 class="display display-lg">What is Maho?</h2>
+      <div class="mt-10 grid md:grid-cols-2 gap-8 lg:gap-16 text-lg leading-relaxed">
         <p>U&amp;I is a volunteer-driven NGO working with children from underserved communities. Volunteers provide after-school learning support, life skills training and career guidance.</p>
         <p>Maho is a U&amp;I centre for boys living in residential care in Bengaluru. Volunteers spend three hours with them every week on schoolwork, mentoring and activities.</p>
       </div>
     </div>
   </section>
 
-  <!-- Sponsor: two honest ways to give, no made-up prices -->
-  <section id="sponsor" class="section">
-    <div class="wrap">
-      <h2 class="h2">Sponsor a boy</h2>
-      <p class="lead">Maho runs on volunteers and donations. There are two ways to support it.</p>
+  <!-- Sponsor: white block, heading left, two big action bars right -->
+  <section id="sponsor" class="band bg-white">
+    <div class="wrap grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+      <div>
+        <h2 class="display display-lg">Sponsor<br>a boy</h2>
+        <p class="lede mt-6">Maho runs on volunteers and donations. Pick whichever suits you.</p>
+      </div>
       <!-- TODO (Arya): confirm with U&I how donations can be marked for Maho, and link a Maho-specific page if there is one. -->
-      <ol class="mt-10 border-t-2 border-ink">
-        <li class="grid md:grid-cols-12 gap-4 md:gap-8 py-8 border-b border-ink/20 items-start">
-          <span class="md:col-span-2 text-4xl font-extrabold text-red leading-none" aria-hidden="true">01</span>
-          <div class="md:col-span-6">
-            <h3 class="text-xl font-bold">Donate online</h3>
-            <p class="mt-2 text-ink/85">Give any amount on U&amp;I Trust's donation page. Payment happens there, not on this website.</p>
-          </div>
-          <div class="md:col-span-4 md:text-right"><a href="https://uandi.org.in/donatenow" class="btn btn-yellow">Donate on uandi.org.in</a></div>
-        </li>
-        <li class="grid md:grid-cols-12 gap-4 md:gap-8 py-8 border-b border-ink/20 items-start">
-          <span class="md:col-span-2 text-4xl font-extrabold text-red leading-none" aria-hidden="true">02</span>
-          <div class="md:col-span-6">
-            <h3 class="text-xl font-bold">Sponsor regularly, or as a company</h3>
-            <p class="mt-2 text-ink/85">For a monthly gift, a CSR partnership, or funding Maho specifically, write to us and we will set it up with you.</p>
-          </div>
-          <div class="md:col-span-4 md:text-right"><a href="#contact" data-plan="Sponsoring a boy" class="btn btn-outline">Write to us</a></div>
-        </li>
-      </ol>
+      <div class="flex flex-col gap-8">
+        <div>
+          <a href="https://uandi.org.in/donatenow" class="bar">Donate online at uandi.org.in <span aria-hidden="true">→</span></a>
+          <p class="mt-3 text-ink/80">Any amount. Payment happens on U&amp;I Trust's own donation page, not on this website.</p>
+        </div>
+        <div>
+          <a href="#contact" data-plan="Sponsoring a boy" class="bar bar-light">Sponsor every month, or as a company <span aria-hidden="true">→</span></a>
+          <p class="mt-3 text-ink/80">For a monthly gift, a CSR partnership, or funding Maho specifically, write to us and we will set it up with you.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Sessions: real photos (children's faces covered, with the shelter's consent) -->
-  <section id="sessions" class="section bg-surface">
+  <!-- Sessions: blue block, two tilted framed photos with stickers -->
+  <section id="sessions" class="band bg-blue text-white">
     <div class="wrap">
-      <h2 class="h2">Sessions at the shelter</h2>
-      <p class="lead">Volunteers sit with the boys one-on-one and in small groups every week.</p>
-      <div class="mt-10 grid md:grid-cols-2 gap-6">
-        <figure class="bg-bg border border-line">
-          <img src="images/session-2.webp" width="1000" height="750" alt="A volunteer helping a boy with his work on the shelter steps" class="block w-full h-auto bg-line" loading="lazy">
-          <figcaption class="p-4 text-sm text-ink/80">One-on-one reading and writing practice</figcaption>
-        </figure>
-        <figure class="bg-bg border border-line">
-          <img src="images/session-3.webp" width="1000" height="750" alt="A volunteer working with boys on a workbook in the shelter courtyard" class="block w-full h-auto bg-line" loading="lazy">
-          <figcaption class="p-4 text-sm text-ink/80">Small-group study in the courtyard</figcaption>
-        </figure>
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <h2 class="display display-lg">Every week<br>at the shelter</h2>
+        <p class="lede">Volunteers sit with the boys one-on-one and in small groups.</p>
+      </div>
+      <div class="mt-14 grid md:grid-cols-2 gap-14 md:gap-12 pr-3 pb-3">
+        <div class="relative">
+          <figure class="frame offset-yellow tilt-l">
+            <img src="images/session-2.webp" width="1000" height="750" alt="A volunteer helping a boy with his work on the shelter steps" class="block w-full h-auto bg-line" loading="lazy">
+            <figcaption>Reading and writing practice on the steps</figcaption>
+          </figure>
+          <span class="sticker absolute -top-4 right-3">One-on-one</span>
+        </div>
+        <div class="relative md:mt-16">
+          <figure class="frame offset-red tilt-r">
+            <img src="images/session-3.webp" width="1000" height="750" alt="A volunteer working with boys on a workbook in the shelter courtyard" class="block w-full h-auto bg-line" loading="lazy">
+            <figcaption>Study time in the courtyard</figcaption>
+          </figure>
+          <span class="sticker sticker-red sticker-r absolute -top-4 left-3">Small groups</span>
+        </div>
       </div>
       <!-- Stories and testimonials come back here once there are real ones, with written consent
            (and the shelter's consent for anything about a child). Never placeholder text. -->
     </div>
   </section>
 
-  <!-- What we do -->
-  <section id="programs" class="section">
+  <!-- What volunteers do: off-white block, big coloured labels -->
+  <section id="programs" class="band bg-bg">
     <div class="wrap">
-      <h2 class="h2">What we do</h2>
-      <p class="lead">Three areas of work that help boys learn, cope and prepare for life after the shelter.</p>
+      <h2 class="display display-lg">What volunteers do</h2>
       <!-- TODO (Ahna): confirm these details with the Maho team. -->
-      <ol class="mt-10 border-t-2 border-ink">
-        <li class="grid md:grid-cols-12 gap-2 md:gap-8 py-8 border-b border-ink/20">
-          <span class="md:col-span-2 text-4xl font-extrabold text-red leading-none" aria-hidden="true">01</span>
-          <h3 class="md:col-span-4 text-xl font-bold">Schoolwork</h3>
-          <p class="md:col-span-6 text-ink/85">Reading, writing and maths with a personal study plan for each boy.</p>
+      <ul class="mt-12 border-t-[3px] border-ink">
+        <li class="py-8 border-b-[3px] border-ink grid lg:grid-cols-12 gap-4 lg:gap-10 items-center">
+          <span class="lg:col-span-5"><span class="tag display display-md bg-yellow">Schoolwork</span></span>
+          <p class="lg:col-span-7 text-lg">Reading, writing and maths, with a study plan for each boy.</p>
         </li>
-        <li class="grid md:grid-cols-12 gap-2 md:gap-8 py-8 border-b border-ink/20">
-          <span class="md:col-span-2 text-4xl font-extrabold text-red leading-none" aria-hidden="true">02</span>
-          <h3 class="md:col-span-4 text-xl font-bold">Confidence and wellbeing</h3>
-          <p class="md:col-span-6 text-ink/85">Small-group sessions where boys learn to talk about how they feel and look out for each other.</p>
+        <li class="py-8 border-b-[3px] border-ink grid lg:grid-cols-12 gap-4 lg:gap-10 items-center">
+          <span class="lg:col-span-5"><span class="tag display display-md bg-blue text-white">Confidence</span></span>
+          <p class="lg:col-span-7 text-lg">Small-group sessions where boys learn to talk about how they feel and look out for each other.</p>
         </li>
-        <li class="grid md:grid-cols-12 gap-2 md:gap-8 py-8 border-b border-ink/20">
-          <span class="md:col-span-2 text-4xl font-extrabold text-red leading-none" aria-hidden="true">03</span>
-          <h3 class="md:col-span-4 text-xl font-bold">Life skills</h3>
-          <p class="md:col-span-6 text-ink/85">Spoken English, managing money and career guidance for older boys preparing to leave the shelter.</p>
+        <li class="py-8 border-b-[3px] border-ink grid lg:grid-cols-12 gap-4 lg:gap-10 items-center">
+          <span class="lg:col-span-5"><span class="tag display display-md bg-red text-white">Life skills</span></span>
+          <p class="lg:col-span-7 text-lg">Spoken English, managing money and career guidance for older boys preparing to leave the shelter.</p>
         </li>
-      </ol>
+      </ul>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="section bg-surface">
-    <div class="max-w-xl mx-auto px-4">
-      <h2 class="h2">Write to us</h2>
-      <p class="mt-4 text-ink/85">Questions, sponsorship or volunteering. We reply by email.</p>
-      <!-- Messages are sent to Formspree (free plan), which emails them to the NGO. Owner: Arya.
-           To connect: replace REPLACE_WITH_FORM_ID with the form ID from the Formspree dashboard. -->
-      <form id="question-form" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="POST" class="mt-10 flex flex-col gap-5">
-        <div><label for="q-name" class="block mb-2 font-semibold">Full name*</label>
-          <input id="q-name" name="name" autocomplete="name" required maxlength="100" class="w-full bg-white text-ink border border-ink/50 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue"></div>
-        <div><label for="q-email" class="block mb-2 font-semibold">Email address*</label>
-          <input id="q-email" name="email" type="email" autocomplete="email" required maxlength="254" class="w-full bg-white text-ink border border-ink/50 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue"></div>
-        <div><label for="q-phone" class="block mb-2 font-semibold">Contact number*</label>
-          <input id="q-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required minlength="7" maxlength="20" pattern="[0-9+\(\)\- ]{7,20}" title="Digits, spaces, +, - and brackets only" class="w-full bg-white text-ink border border-ink/50 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue"></div>
-        <div><label for="q-interest" class="block mb-2 font-semibold">I am writing about*</label>
-          <select id="q-interest" name="interest" required class="w-full bg-white text-ink border border-ink/50 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue">
-            <option>Sponsoring a boy</option><option>A donation</option><option>CSR partnership</option><option>Volunteering</option><option>Something else</option>
-          </select></div>
-        <div><label for="q-text" class="block mb-2 font-semibold">Message*</label>
-          <textarea id="q-text" name="message" rows="4" required maxlength="2000" class="w-full bg-white text-ink border border-ink/50 p-4 focus:outline-none focus:ring-2 focus:ring-blue"></textarea></div>
-        <!-- Spam trap: hidden from people (and screen readers); bots fill it in. It is never sent. -->
-        <div class="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true">
-          <label for="q-website">Leave this empty</label>
-          <input id="q-website" name="website" type="text" tabindex="-1" autocomplete="off">
-        </div>
-        <p class="text-sm text-ink/70">We only use these details to reply to you. They are sent to our form provider, Formspree, which emails them to our team. See our <a href="privacy.html" class="underline">privacy policy</a>.</p>
-        <button type="submit" class="btn btn-yellow self-start disabled:opacity-60 disabled:cursor-wait">Send message</button>
-        <p class="form-status hidden font-semibold" role="status" aria-live="polite"></p>
-      </form>
+  <!-- Contact: yellow block, form on a framed white card -->
+  <section id="contact" class="band bg-yellow">
+    <div class="wrap grid lg:grid-cols-12 gap-12 items-start">
+      <div class="lg:col-span-5">
+        <h2 class="display display-lg">Write<br>to us</h2>
+        <p class="lede mt-6">Sponsorship, a donation, volunteering or a question. We reply by email.</p>
+        <p class="mt-6 font-bold">Or call <a href="tel:+919739084991" class="link">+91 97390 84991</a></p>
+      </div>
+      <div class="lg:col-span-7 pr-3 pb-3">
+        <!-- Messages are sent to Formspree (free plan), which emails them to the NGO. Owner: Arya.
+             To connect: replace REPLACE_WITH_FORM_ID with the form ID from the Formspree dashboard. -->
+        <form id="question-form" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="POST" class="frame offset-red flex flex-col gap-5 p-6 sm:p-8">
+          <div><label for="q-name" class="block mb-2 font-bold">Full name*</label>
+            <input id="q-name" name="name" autocomplete="name" required maxlength="100" class="field"></div>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div><label for="q-email" class="block mb-2 font-bold">Email address*</label>
+              <input id="q-email" name="email" type="email" autocomplete="email" required maxlength="254" class="field"></div>
+            <div><label for="q-phone" class="block mb-2 font-bold">Contact number*</label>
+              <input id="q-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required minlength="7" maxlength="20" pattern="[0-9+\(\)\- ]{7,20}" title="Digits, spaces, +, - and brackets only" class="field"></div>
+          </div>
+          <div><label for="q-interest" class="block mb-2 font-bold">I am writing about*</label>
+            <select id="q-interest" name="interest" required class="field">
+              <option>Sponsoring a boy</option><option>A donation</option><option>CSR partnership</option><option>Volunteering</option><option>Something else</option>
+            </select></div>
+          <div><label for="q-text" class="block mb-2 font-bold">Message*</label>
+            <textarea id="q-text" name="message" rows="4" required maxlength="2000" class="field"></textarea></div>
+          <!-- Spam trap: hidden from people (and screen readers); bots fill it in. It is never sent. -->
+          <div class="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true">
+            <label for="q-website">Leave this empty</label>
+            <input id="q-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <p class="text-sm text-ink/75">We only use these details to reply to you. They are sent to our form provider, Formspree, which emails them to our team. See our <a href="privacy.html" class="underline">privacy policy</a>.</p>
+          <button type="submit" class="bar disabled:opacity-60 disabled:cursor-wait">Send message <span aria-hidden="true">→</span></button>
+          <p class="form-status hidden font-bold" role="status" aria-live="polite"></p>
+        </form>
+      </div>
     </div>
   </section>
 </main>
@@ -189,7 +201,7 @@
       <p class="mt-5 text-sm text-white/75 max-w-xs">U&amp;I Trust is a volunteer-run registered charity that empowers disadvantaged children and individuals across India.</p>
     </div>
     <div>
-      <h3 class="text-yellow font-bold text-lg">What we do</h3>
+      <h3 class="display text-yellow text-base">What we do</h3>
       <ul class="mt-4 space-y-3 text-white/80">
         <li><a href="https://uandi.org.in/volunteer" class="hover:text-white hover:underline">Volunteering</a></li>
         <li><a href="https://uandi.my.canva.site/fellowship-2025" class="hover:text-white hover:underline">Fellowship</a></li>
@@ -200,13 +212,13 @@
       </ul>
     </div>
     <div>
-      <h3 class="text-yellow font-bold text-lg">Where we are</h3>
+      <h3 class="display text-yellow text-base">Where we are</h3>
       <address class="mt-4 not-italic text-white/80 leading-relaxed">
         <a href="https://www.google.com/maps/search/?api=1&amp;query=8%2F1%20Gover%20Road%2C%20Cox%20Town%2C%20Bangalore%20560005" class="hover:text-white hover:underline">8/1, Gover Road,<br>Cox Town, Bangalore<br>560 005</a>
       </address>
     </div>
     <div>
-      <h3 class="text-yellow font-bold text-lg">Get in touch</h3>
+      <h3 class="display text-yellow text-base">Get in touch</h3>
       <ul class="mt-4 space-y-3 text-white/80">
         <li><span class="font-semibold text-white">M:</span> <a href="tel:+919739084991" class="hover:text-white hover:underline">+91 97390 84991</a></li>
         <li><span class="font-semibold text-white">E:</span> <a href="mailto:info@uandi.org.in" class="hover:text-white hover:underline">info@uandi.org.in</a></li>

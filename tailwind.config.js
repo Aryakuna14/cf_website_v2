@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-// Design system: U&I palette (from uandi.org.in). White pages, near-black text,
-// U&I blue for headings and numbers, U&I red for bold fills, U&I yellow for buttons.
+// Design system: U&I palette and poster style (from uandi.org.in). Full-width yellow, red and
+// blue blocks, near-black text and bars, wide heavy capital headings (Archivo, like U&I's Druk).
 // Change colours here, never as one-off hex values in the HTML.
 module.exports = {
   content: ["./*.html", "./js/**/*.js"],
@@ -18,6 +18,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+        display: ["Archivo", "Arial Black", "Impact", "sans-serif"],
       },
     },
   },
