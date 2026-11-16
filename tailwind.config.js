@@ -15,7 +15,8 @@ module.exports = {
         blue: "#0937fd",      // U&I blue: keyboard focus outlines only (visible on yellow, teal and white)
         pink: "#e843a1",      // U&I pink (uandi.my.canva.site/fellowship-2025): accent text, numbers, boxes
         orange: "#ff914d",    // U&I orange (same fellowship page): section background, ink text on top
-        red: "#cb0100",       // U&I red: logo, highlights, bold fills (white text on top)
+        red: "#cb0100",       // U&I red: logo, small labels, chips (white text on top)
+        donate: "#b8001f",    // deeper red for the big Donate sections (white text on top, 6.9:1)
         yellow: "#ffda1b",    // U&I yellow: main buttons (ink text on top)
         teal: "#0cc0df",      // U&I teal (uandi.org.in/volunteer): section background, ink text on top
       },

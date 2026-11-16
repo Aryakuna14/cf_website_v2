@@ -68,16 +68,13 @@ if (fromHeadersFile && fromVercel) {
   }
 }
 
-// ---- site.config.json: site address and campaign numbers ----
+// ---- site.config.json: site address only (the repo is public: no fundraising numbers) ----
 let siteUrl = "";
 try {
   const cfg = JSON.parse(readFileSync(join(root, "site.config.json"), "utf8"));
   siteUrl = cfg.siteUrl || "";
   if (!/^https:\/\/[^/]+\/.*\/$|^https:\/\/[^/]+\/$/.test(siteUrl)) errors.push(`site.config.json: siteUrl must start with https:// and end with "/" (got "${siteUrl}").`);
-  const c = cfg.campaign || {};
-  for (const k of ["goal", "raised"]) if (!Number.isInteger(c[k]) || c[k] < 0) errors.push(`site.config.json: campaign.${k} must be a whole number of rupees, without commas (got ${JSON.stringify(c[k])}).`);
-  if (c.endDate && Number.isNaN(Date.parse(c.endDate))) errors.push(`site.config.json: campaign.endDate must look like 2026-12.`);
-  if (c.show && c.endDate && Date.parse(c.endDate) + 86400000 < Date.now()) warnings.push(`site.config.json: the campaign ended on ${c.endDate}. Set campaign.show to false, or update the dates.`);
+  if ("campaign" in cfg) errors.push("site.config.json: remove \"campaign\". Fundraising targets, totals and dates are private to the team, and this repo is public.");
 } catch (e) {
   errors.push(`site.config.json is missing or not valid JSON (${e.message}). Check for a missing comma or quote.`);
 }
@@ -111,9 +108,19 @@ function checkUrl(file, url, { loads }) {
   }
 }
 
+// Private details stay private: pages must not show money amounts or exact dates (month only).
+// Checks the whole page source, comments included, because anyone can read those too.
+const MONTHS = "January|February|March|April|May|June|July|August|September|October|November|December";
+const AMOUNT = /₹\s?\d|\bRs\.?\s?\d|\b\d+(\.\d+)?\s?(lakh|lakhs|lac|crore|crores|k)\b/i;
+const DAY_MONTH = new RegExp(`\\b\\d{1,2}(st|nd|rd|th)?\\s+(${MONTHS})\\b|\\b(${MONTHS})\\s+\\d{1,2}(st|nd|rd|th)?\\b(?!\\d)`, "i");
+
 for (const file of files) {
   if (file.endsWith(".html")) {
     const html = readFileSync(file, "utf8");
+    const amount = html.match(AMOUNT);
+    if (amount) errors.push(`${rel(file)}: shows a money amount ("${amount[0]}"). Fundraising targets and totals stay private: say it in words.`);
+    const day = html.match(DAY_MONTH);
+    if (day) errors.push(`${rel(file)}: shows an exact date ("${day[0]}"). Use the month only.`);
     for (const [, tag, attrs] of html.matchAll(/<([a-zA-Z][\w-]*)\b([^>]*)>/g)) {
       const attr = {};
       for (const m of attrs.matchAll(/([\w:-]+)\s*=\s*("([^"]*)"|'([^']*)')/g)) attr[m[1].toLowerCase()] = m[3] ?? m[4];

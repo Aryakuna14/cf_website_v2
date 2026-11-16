@@ -24,17 +24,10 @@ Live site: https://aryakuna14.github.io/cf_website_v2/
 - Every merge into `main` publishes the site to GitHub Pages automatically (`.github/workflows/deploy.yml`). Nothing needs uploading by hand.
 - One-time setup by the repo owner: **Settings > Pages > Source = GitHub Actions**.
 
-## Update the fundraising total (no coding needed)
-The goal card on the fundraiser page (`fundraiser.html`, linked as "Fundraiser" in the menu and "See our December goal" in the Donate section) reads from `site.config.json`.
-1. On GitHub, open `site.config.json` and click the pencil icon (Edit).
-2. Change `"raised": 0` to the total so far in rupees, **digits only**: `125000`, not `1,25,000` or `₹1.25L`.
-3. Click **Commit changes**. The site republishes itself in about a minute. If you made a typo, the publish fails with a red cross and the live site stays as it was: fix the number and commit again.
-
-Other settings in the same file:
-- While `raised` is `0` the card shows only the goal (the goal by December). From the first rupee it adds a bar and "₹X raised so far".
-- `goal`, `endDate` (YYYY-MM-DD) and `endLabel` (the words shown, e.g. `December`) set the target and deadline. After `endDate` passes, `npm run check` warns you to update or hide it.
-- `"show": false` hides the goal card. The home page never shows the amount.
-- Only post a total U&I has confirmed. Never round up.
+## Fundraising numbers stay private
+The team's fundraising target, totals and exact dates are **never** shown on the site or kept in this repo (it is public). The fundraiser page (`fundraiser.html`) describes the goal in words, and mentions the month only.
+- `npm run check` fails the build if a page shows a money amount (₹ figures, lakh, crore) or an exact date (a day and a month). A month on its own is fine.
+- Keep the plan, targets and progress in the team's private notes, not here.
 
 ## Print the QR poster
 Open the site's `poster.html` (linked as "Printable poster" in the footer). Press **Ctrl+P** (Cmd+P on Mac), choose **A4**, margins **None**, and tick **Background graphics**. It prints on one page. The QR code points to `siteUrl` from `site.config.json` and is made fresh on every build.
@@ -56,10 +49,10 @@ When the link is shared, apps show `images/og-image.jpg` (1200×630) with the ti
 | `index.html` `<body>` | Page content and layout | Ahna |
 | `src/components.css` | Shared building blocks (`.band`, `.btn`, `.photo`...) | Ahna |
 | `images/` | Photos, logo and link preview image | Ahna |
-| `site.config.json` | Site address and fundraising numbers | Anyone (see above) |
+| `site.config.json` | Site address (used for previews, canonical links and the poster QR code) | Anyone |
 | `poster.html` | Printable A4 poster with QR code | Ahna |
 | `volunteer.html` | Volunteering page. Its facts (hours, dates, subjects, steps) come from uandi.org.in/volunteer: re-check them every volunteering year | Ahna |
-| `fundraiser.html` | December #InThisTogether fundraiser page with the goal card. Facts come from U&I's crowdfunding deck; the goal from `site.config.json` | Arya |
+| `fundraiser.html` | December #InThisTogether fundraiser page with the goal card. Facts come from U&I's crowdfunding deck. No targets, totals or exact dates | Arya |
 | `favicon.png`, `apple-touch-icon.png` | Browser tab and home-screen icons | Ahna |
 | `index.html` `<head>`, `js/` | Security tags, form and payment code | Arya |
 | `tailwind.config.js` | Colours and font (the design system) | Arya, changes agreed with Ahna |
