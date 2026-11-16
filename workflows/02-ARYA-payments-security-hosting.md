@@ -13,7 +13,7 @@ Do not edit: body content, copy, images (Ahna). Ask first.
 ### PR 1: `arya/build-pipeline`  (do this first; it unblocks everything)
 - [x] `npm init -y`, then `npm i -D tailwindcss@3` (pinned to 3.4.19).
 - [x] Create `tailwind.config.js` (colour/font config moved out of the inline `<script>`), `src/input.css` (entry), `src/fonts.css`, and `src/components.css` (the `.wrap/.section/.h2/.btn/.card/.vcard` helpers, owned by Ahna).
-- [x] Scripts: `npm run build` outputs minified CSS plus `index.html`, `js/`, `images/`, `fonts/` into `dist/`; `npm run dev` (watch + local server); `npm run preview` (serves `dist/` at `/cfwebsite/` like GitHub Pages).
+- [x] Scripts: `npm run build` outputs minified CSS plus `index.html`, `js/`, `images/`, `fonts/` into `dist/`; `npm run dev` (watch + local server); `npm run preview` (serves `dist/` at `/cf_website_v2/` like GitHub Pages).
 - [x] Remove `<script src="https://cdn.tailwindcss.com">`, link the built CSS (`css/styles.css`, relative path).
 - [x] Self-host the Plus Jakarta Sans font (variable woff2 in `fonts/`, OFL licence included); Google Fonts links removed.
 - [x] `.gitignore`: `node_modules/`, `dist/`, `css/styles.css`, `.env`. `.gitattributes` normalises line endings.
@@ -24,10 +24,10 @@ Do not edit: body content, copy, images (Ahna). Ask first.
 ### PR 2: `arya/deploy-pages`
 - [x] `.github/workflows/deploy.yml`: on push to `main`: checkout, setup-node, `npm ci`, `npm run build`, `npm run check`, upload `dist/` with `actions/upload-pages-artifact`, deploy with `actions/deploy-pages`. Actions pinned to commit SHAs.
 - [x] Minimal permissions block (`contents: read`, `pages: write`, `id-token: write`); checkout does not keep credentials.
-- [x] `scripts/check.mjs` (`npm run check`): fails on broken file links, root-absolute paths (break on `/cfwebsite/`), files loaded from other websites, `http://` and `javascript:` links; warns on inline JavaScript.
+- [x] `scripts/check.mjs` (`npm run check`): fails on broken file links, root-absolute paths (break on the GitHub Pages sub-path), files loaded from other websites, `http://` and `javascript:` links; warns on inline JavaScript.
 - [x] `.github/workflows/pr-check.yml`: builds, runs `npm audit` and `npm run check` on every pull request.
-- [ ] Repo owner sets Settings > Pages > Source = **GitHub Actions** (needs admin).
-- [ ] After merge: confirm it works at `https://ahnaak.github.io/cfwebsite/`.
+- [ ] Repo owner (Arya, since the move to `Aryakuna14/cf_website_v2`) sets Settings > Pages > Source = **GitHub Actions**.
+- [ ] Confirm it works at `https://aryakuna14.github.io/cf_website_v2/`.
 - [ ] Repo owner adds "build-and-check" as a required status check in the `main` branch rule.
 
 ### PR 3: `arya/payments`  (blocking: needs the NGO's documents)
@@ -46,7 +46,7 @@ Do not edit: body content, copy, images (Ahna). Ask first.
 - [x] ~~Turnstile/hCaptcha~~: skipped for now. Both add third-party scripts, and Formspree's free spam filter plus domain restriction cover us. Revisit if spam gets through.
 - [x] `js/contact-form.js` submits with `fetch`: success/failure/offline/timeout messages, button disabled while sending, no double sends, provider errors shown as plain text, honest "not connected" message if the ID is missing.
 - [x] No personal data in URLs or console logs; no cookies sent.
-- [ ] **Connect:** create the Formspree form (NGO inbox), put its ID in the form `action`, send one test message, then turn on domain restriction for `ahnaak.github.io`.
+- [ ] **Connect:** create the Formspree form (NGO inbox), put its ID in the form `action`, send one test message, then turn on domain restriction for `aryakuna14.github.io`.
 - **Done when:** a message reaches the NGO inbox, spam bot posts are rejected.
 
 ---
@@ -80,7 +80,7 @@ Do not edit: body content, copy, images (Ahna). Ask first.
 
 ### Custom domain (when bought)
 - [ ] Buy the domain with auto-renew and registrar lock on; put it in the NGO's name, not a personal account.
-- [ ] Option A, GitHub Pages: add `CNAME` file containing the domain; DNS `A` records to GitHub's four IPs plus a `www` CNAME to `ahnaak.github.io`; Settings > Pages > enable **Enforce HTTPS**.
+- [ ] Option A, GitHub Pages: add `CNAME` file containing the domain; DNS `A` records to GitHub's four IPs plus a `www` CNAME to `aryakuna14.github.io`; Settings > Pages > enable **Enforce HTTPS**.
 - [ ] Option B, Cloudflare in front (recommended for headers): add the domain to Cloudflare, proxy it, SSL mode **Full (strict)**, add the `_headers` rules as Transform Rules or deploy on Cloudflare Pages.
 - [ ] Turn on DNSSEC; add SPF/DKIM/DMARC if the NGO sends email from the domain.
 - [ ] Add the new domain to the payment provider's and form service's allowed domains; update `sitemap.xml` and `og:` URLs (tell Ahna).

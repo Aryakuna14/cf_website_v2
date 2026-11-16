@@ -1,6 +1,6 @@
 // Tiny local web server for testing. Not for production.
 // Usage: node scripts/serve.mjs <folder> [port] [basePath]
-//   basePath lets us test the GitHub Pages sub-path, e.g. /cfwebsite/
+//   basePath lets us test the GitHub Pages sub-path, e.g. /cf_website_v2/
 import { createReadStream, statSync } from "node:fs";
 import { createServer } from "node:http";
 import { extname, join, normalize, resolve, sep } from "node:path";

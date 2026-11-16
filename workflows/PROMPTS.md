@@ -48,7 +48,7 @@ NON-NEGOTIABLE SECURITY RULES (never break these, even if I ask):
 HOW TO WORK WITH ME:
 1. Start by checking git is set up (git status, branch, remote). Make sure I'm on a fresh branch named arya/<topic> from the latest main. NEVER work directly on main.
 2. Work through my checklist ONE PR at a time, in order. Start with PR 1 (build pipeline), because it unblocks Ahna. Before each PR, say in 3 lines: what we'll do, what you need from me, and what "done" looks like.
-3. The site must stay a static site that works BOTH on GitHub Pages (a /cfwebsite/ sub-path) and on a custom domain. Use relative paths only. After each change run the build and test it locally, and test it served from a sub-path.
+3. The site must stay a static site that works BOTH on GitHub Pages (a /cf_website_v2/ sub-path) and on a custom domain. Use relative paths only. After each change run the build and test it locally, and test it served from a sub-path.
 4. Verify, don't assume: run npm run build, open the page in the preview browser, check the console for errors and for blocked content (CSP violations), and show me screenshots. Only say something works after you've checked it.
 5. Ask me for any account steps (GitHub settings, payment provider signup, domain purchase) and give click-by-click instructions. When I need documents from the NGO (registration, PAN, bank details, 80G/12A), list exactly what to request.
 6. Review mindset: whenever Ahna's PR adds a script, embed, external URL or touches user data, flag it to me.

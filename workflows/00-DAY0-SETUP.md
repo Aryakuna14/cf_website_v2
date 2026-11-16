@@ -1,6 +1,9 @@
 # Day 0: shared setup (do this first, together, ~30 min)
 
-Repo: https://github.com/Ahnaak/cfwebsite (owner: Ahnaak). Arya must be added as a collaborator with **Write** access: Settings > Collaborators.
+Repo: https://github.com/Aryakuna14/cf_website_v2 (owner: Aryakuna14). Ahna (`Ahnaak`) must be added as a collaborator with **Write** access: Settings > Collaborators.
+Live site: https://aryakuna14.github.io/cf_website_v2/
+
+> Moved on 2026-11-16 from `Ahnaak/cfwebsite`, with the history restarted so that earlier photo versions (some children's faces uncovered) are not public. The old repo must be deleted.
 
 ## 1. Get the redesign onto `main` (one person, once)
 The redesigned `index.html`, `js/main.js`, `WORKFLOW.md` and `workflows/` are still uncommitted on one machine.
@@ -9,13 +12,13 @@ git add -A
 git commit -m "Sponsor-focused redesign and team workflow docs"
 git push origin main
 ```
-Everyone else: `git clone https://github.com/Ahnaak/cfwebsite.git` (or `git pull`).
+Everyone else: `git clone https://github.com/Aryakuna14/cf_website_v2.git` (or `git pull`).
 
 ## 2. Both accounts
 - [ ] Turn on 2FA on both GitHub accounts (Settings > Password and authentication).
 - [ ] Git identity set: `git config user.name "..."` and `git config user.email "..."`.
 
-## 3. Repo settings (Ahnaak, as owner)
+## 3. Repo settings (Arya, as owner)
 - [ ] Settings > Branches > add rule for `main`: require a pull request, 1 approval, dismiss stale approvals, block force pushes.
 - [ ] Settings > Code security: enable Dependabot alerts, secret scanning, push protection.
 - [ ] Settings > Pages: Source = **GitHub Actions** (Arya's workflow deploys later).
