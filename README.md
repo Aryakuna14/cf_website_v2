@@ -22,6 +22,12 @@ Sponsor/donation website for U&I x Maho. Static site styled with Tailwind CSS. T
 - Every merge into `main` publishes the site to GitHub Pages automatically (`.github/workflows/deploy.yml`). Nothing needs uploading by hand.
 - One-time setup by the repo owner: **Settings > Pages > Source = GitHub Actions**.
 
+## Security rules (enforced by `npm run check` on every PR)
+- **No inline code:** no `<script>...</script>` blocks, no `onclick="..."` style attributes, no `style="..."`. Put JavaScript in `js/` and styles in classes.
+- **Nothing from other websites:** scripts, styles, fonts, images and frames come only from this site. Links to other sites are fine.
+- **The security policy** lives in three places that must stay identical: the `<meta http-equiv="Content-Security-Policy">` in `index.html` (and any new page), `_headers` (Cloudflare Pages/Netlify) and `vercel.json` (Vercel). To allow something new (e.g. a payment widget), change all three, and get it reviewed.
+- **Hosting:** GitHub Pages can't send security headers, so clickjacking protection and some other headers only apply on **Vercel** (`vercel.json` is ready: import the repo and it builds and sends every header) or **Cloudflare Pages** (`_headers`). `npm run dev` and `npm run preview` send the same headers locally.
+
 ## Where things live
 | Path | What | Owner |
 |---|---|---|
@@ -43,7 +49,8 @@ Put files in `images/` with these names, or change the `src` in `index.html`:
 `logo.png` (optional), `hero.webp`, `session-2.webp`, `session-3.webp` (about 1000px wide, under 200 KB each, so the page loads fast)
 
 ## Before publishing
-- Stats, sponsor amounts and stories are placeholders. Replace them with confirmed facts.
-- Testimonial cards are placeholders. Use real quotes with permission, and get the shelter's consent for anything from a child.
+- **No placeholder or made-up content, ever.** Numbers, stories, quotes and prices go on the site only once the NGO confirms them, with written consent from anyone quoted and the shelter's consent for anything about a child.
 - Only use photos of boys with consent from the shelter. Keep every child's face covered or cropped out.
-- The question form does not send data anywhere yet. Sponsor buttons link to the form until payment links are added.
+- The "What we do" details and the privacy policy and terms are drafts: get them confirmed by the Maho team and U&I Trust.
+- The contact form needs its Formspree ID before it can send messages. Donations go to U&I's own donation page.
+- Design rules: square corners, no shadows, gradients, animations, emojis or icon sets, no rows of identical cards, U&I's colours only.
