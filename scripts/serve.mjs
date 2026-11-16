@@ -5,6 +5,7 @@ import { createReadStream, statSync } from "node:fs";
 import { createServer } from "node:http";
 import { extname, join, normalize, resolve, sep } from "node:path";
 import { pathToFileURL } from "node:url";
+import { existsSync, readFileSync } from "node:fs"; // for reading _headers
 
 export function serve(folder = ".", port = 8000, basePath = "/") {
   const root = resolve(folder);
@@ -15,7 +16,25 @@ export function serve(folder = ".", port = 8000, basePath = "/") {
     ".webp": "image/webp", ".ico": "image/x-icon", ".woff2": "font/woff2", ".txt": "text/plain; charset=utf-8", ".xml": "application/xml",
   };
   // Tooling folders and config files are never served. Hidden files (.env, .git...) are blocked below.
-  const blocked = ["node_modules", "scripts", "src", "package.json", "package-lock.json", "tailwind.config.js"];
+  const blocked = ["node_modules", "scripts", "src", "package.json", "package-lock.json", "tailwind.config.js", "vercel.json"];
+
+  // Send the same security headers as the real hosting (from _headers), so problems show up locally.
+  // Read on every request, so edits to _headers apply without a restart.
+  function securityHeaders() {
+    const file = join(root, "_headers");
+    if (!existsSync(file)) return {};
+    const headers = {};
+    let inBlock = false;
+    for (const line of readFileSync(file, "utf8").split(/\r?\n/)) {
+      if (/^\S/.test(line)) inBlock = line.trim() === "/*";
+      else if (inBlock && line.includes(":")) {
+        const i = line.indexOf(":");
+        headers[line.slice(0, i).trim()] = line.slice(i + 1).trim();
+      }
+    }
+    delete headers["Strict-Transport-Security"]; // only meaningful over HTTPS
+    return headers;
+  }
 
   createServer((req, res) => {
     let path;
@@ -34,7 +53,7 @@ export function serve(folder = ".", port = 8000, basePath = "/") {
     try { if (statSync(file).isDirectory()) file = join(file, "index.html"); statSync(file); }
     catch { res.writeHead(404, { "Content-Type": "text/plain" }).end("Not found"); return; }
 
-    res.writeHead(200, { "Content-Type": types[extname(file).toLowerCase()] || "application/octet-stream", "Cache-Control": "no-store" });
+    res.writeHead(200, { ...securityHeaders(), "Content-Type": types[extname(file).toLowerCase()] || "application/octet-stream", "Cache-Control": "no-store" });
     createReadStream(file).pipe(res);
   }).listen(port, "127.0.0.1", () => {
     console.log(`Serving ${folder} at http://localhost:${port}${base}`);

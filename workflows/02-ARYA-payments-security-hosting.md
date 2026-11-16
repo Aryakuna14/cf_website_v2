@@ -54,16 +54,13 @@ Do not edit: body content, copy, images (Ahna). Ask first.
 ## Sprint 2: security hardening (days 6 to 10)
 
 ### PR 5: `arya/csp-headers`
-- [ ] Write a Content-Security-Policy that allows: `'self'` only, plus the payment provider and the form service (`connect-src https://formspree.io` and `form-action https://formspree.io`). No `unsafe-inline` or `unsafe-eval` (possible after PR 1).
-- [ ] GitHub Pages: add as `<meta http-equiv="Content-Security-Policy">` in `<head>` (note: `frame-ancestors` doesn't work in a meta tag).
-- [ ] Domain host: add `_headers` (Netlify/Cloudflare Pages) with:
-  - `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`
-  - `Content-Security-Policy: ...`
-  - `X-Content-Type-Options: nosniff`
-  - `Referrer-Policy: strict-origin-when-cross-origin`
-  - `Permissions-Policy: camera=(), microphone=(), geolocation=()`
-  - `frame-ancestors 'none'` (clickjacking protection)
-- [ ] Test in Chrome DevTools: no CSP violations in the console on every page.
+- [x] Content-Security-Policy: `default-src 'none'`, then only `'self'` for scripts, styles, images, fonts; data may only go to Formspree (`connect-src`, `form-action`); no frames, objects or `<base>`; **Trusted Types** required (blocks DOM-based XSS); `upgrade-insecure-requests`. No `unsafe-inline`/`unsafe-eval`. Payment links are plain links, so they need no policy change; an embedded payment *widget* would.
+- [x] GitHub Pages: policy as `<meta http-equiv="Content-Security-Policy">` plus `<meta name="referrer">`. The three inline `onerror` handlers were removed.
+- [x] `_headers` (Cloudflare Pages/Netlify) and `vercel.json` (Vercel, also sets build command and output folder): CSP + `frame-ancestors 'none'`, HSTS (1 year, no preload until we own a domain), `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy` (camera, mic, location, payment, sensors, USB, Topics off), COOP and CORP `same-origin`.
+- [x] Local server (`npm run dev` / `preview`) sends the same headers, so breakage shows up before it ships.
+- [x] `npm run check` enforces it: fails on inline scripts/handlers/styles, a missing or weakened policy, the three copies drifting apart, missing headers, a form sending somewhere the policy doesn't allow, or a new page without the policy.
+- [x] Tested in the browser: inline script, HTML injection (XSS), outside script, eval, `new Function`, sending data elsewhere, tracking pixel, outside frame, outside stylesheet, and framing by another site: all blocked. Our design, form and menu still work.
+- [ ] **For headers to apply live:** move hosting to Vercel or Cloudflare Pages (both free). GitHub Pages ignores them.
 
 ### PR 6: `arya/legal-pages`
 - [ ] `privacy.html` (what data the contact form and payment provider collect, retention, who to ask), `terms.html`, `refund-policy.html`. Payment providers require these and the shelter's children's data needs care.

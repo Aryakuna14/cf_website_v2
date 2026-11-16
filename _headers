@@ -1,0 +1,14 @@
+# Security headers for Cloudflare Pages / Netlify (copied into dist/ by npm run build).
+# Vercel uses the same headers from vercel.json. GitHub Pages ignores this file
+# (it can't set headers); the page's <meta> security policy covers what it can there.
+# Keep the Content-Security-Policy identical to index.html's, plus frame-ancestors
+# (`npm run check` compares them). Owner: Arya.
+/*
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src https://formspree.io; form-action https://formspree.io; base-uri 'none'; object-src 'none'; frame-src 'none'; manifest-src 'self'; require-trusted-types-for 'script'; upgrade-insecure-requests; frame-ancestors 'none'
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), browsing-topics=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
