@@ -2,6 +2,14 @@
    Style: U&I's colours, calm and warm. The wide capital headline is used once (the hero); everything else is
    sentence case. Rounded pill buttons like uandi.org.in, softly rounded photos, plenty of space.
    No shadows, no gradients, no animations. Colours come from tailwind.config.js. */
+/* Printing (used by poster.html): A4, no browser margins, hide on-screen-only bits */
+@page { size: A4; margin: 0; }
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff !important; }
+  .poster { width: 210mm; height: 297mm; margin: 0; overflow: hidden; }
+}
+
 @layer base {
   html { scroll-padding-top: 5rem; }
   @media (prefers-reduced-motion: no-preference) {
@@ -61,6 +69,12 @@
   /* Rounded labels ("what we bring into every class") */
   .chip { display: inline-flex; align-items: center; border-radius: 9999px; padding: 0.7rem 1.25rem; font-weight: 700; font-size: clamp(1rem, 1.6vw, 1.15rem); }
 
+  /* Campaign progress bar (a real <progress> element, so screen readers announce it) */
+  .campaign-bar { appearance: none; -webkit-appearance: none; display: block; width: 100%; height: 0.9rem; border: 0; border-radius: 9999px; overflow: hidden; background: rgb(255 255 255 / 0.3); }
+  .campaign-bar::-webkit-progress-bar { background: rgb(255 255 255 / 0.3); border-radius: 9999px; }
+  .campaign-bar::-webkit-progress-value { background: theme("colors.yellow"); border-radius: 9999px; }
+  .campaign-bar::-moz-progress-bar { background: theme("colors.yellow"); border-radius: 9999px; }
+
   /* Soft panel */
   .panel { background: #fff; border-radius: 1rem; padding: 1.75rem; }
   @media (min-width: 640px) { .panel { padding: 2.25rem; } }
@@ -68,6 +82,23 @@
   /* Form fields */
   .field { width: 100%; background: #fff; color: theme("colors.ink"); border: 1.5px solid rgb(32 30 30 / 0.35); border-radius: 0.6rem; padding: 0.8rem 1rem; }
   .field:focus { outline: 3px solid theme("colors.blue"); outline-offset: 1px; border-color: theme("colors.blue"); }
+
+  /* Printable A4 poster (poster.html). Fluid on phones, exact A4 on big screens and on paper. */
+  .poster { background: #fff; margin: 0 auto 2rem; max-width: 210mm; display: flex; flex-direction: column;
+            -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .poster-top { padding: 9mm 11mm 26mm; }
+  .poster-headline { font-size: clamp(2.2rem, 9vw, 3.5rem); }
+  .poster-lede { font-size: 1.05rem; line-height: 1.5; max-width: 34rem; }
+  .poster-photo { margin: -20mm auto 0; width: calc(100% - 22mm); max-width: 150mm; }
+  .poster-bottom { display: grid; gap: 1.25rem; padding: 7mm 11mm; align-items: center; }
+  .poster-h2 { font-size: clamp(1.6rem, 5vw, 2.1rem); }
+  .poster-list { display: grid; gap: 0.5rem; font-size: 1.05rem; }
+  .poster-qr { text-align: center; }
+  .poster-qr img { width: 46mm; height: 46mm; margin: 0 auto; }
+  .poster-url { font-size: 0.75rem; word-break: break-all; opacity: 0.8; }
+  .poster-footer { margin-top: auto; background: theme("colors.ink"); color: #fff; text-align: center; font-size: 0.85rem; padding: 4mm 11mm; }
+  @media (min-width: 640px) { .poster-bottom { grid-template-columns: 1fr auto; } }
+  @media (min-width: 840px) { .poster { width: 210mm; min-height: 297mm; } }
 
   /* Text pages (privacy, terms) */
   .prose-page h2 { margin-top: 2.5rem; font-family: theme("fontFamily.display"); font-weight: 800; font-size: 1.3rem; }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Same security policy as index.html (npm run check compares them). -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src https://formspree.io; form-action https://formspree.io; base-uri 'none'; object-src 'none'; frame-src 'none'; manifest-src 'self'; require-trusted-types-for 'script'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Printable poster | U&amp;I x Maho</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-surface text-ink font-sans antialiased">
+
+<!-- Shown on screen only, not printed -->
+<div class="no-print wrap py-6 flex flex-wrap items-center justify-between gap-4">
+  <p class="max-w-xl">An A4 poster for notice boards and events. Print it, or save it as a PDF, with <strong>Ctrl + P</strong>. In the print settings, turn on <strong>Background graphics</strong> and set margins to <strong>None</strong>.</p>
+  <div class="flex gap-3">
+    <button id="print-btn" type="button" class="btn btn-dark">Print poster</button>
+    <a href="index.html" class="btn btn-outline">Back to the site</a>
+  </div>
+</div>
+
+<main class="poster">
+  <section class="poster-top bg-yellow">
+    <div class="flex items-center gap-3">
+      <img src="images/logo.png" alt="U&amp;I logo" width="56" height="56" class="h-14 w-14 rounded-full bg-red p-1 object-contain">
+      <span class="text-2xl font-extrabold">U&amp;I x Maho</span>
+    </div>
+    <h1 class="display poster-headline mt-6">A steady adult, <span class="text-blue">every week.</span></h1>
+    <p class="poster-lede mt-5">Maho is an all-boys U&amp;I centre in Bengaluru for about 50 boys growing up in residential care. Every week, U&amp;I volunteers teach them English.</p>
+  </section>
+
+  <div class="poster-photo">
+    <div class="photo"><img src="images/hero.webp" width="1000" height="750" alt="A volunteer mentor working through a workbook with boys at the shelter home, faces covered"></div>
+  </div>
+
+  <section class="poster-bottom">
+    <div>
+      <p class="eyebrow text-red">#InThisTogether</p>
+      <h2 class="heading poster-h2 mt-2">Donate. Volunteer.<br>Change a future.</h2>
+      <ul class="poster-list mt-4">
+        <li><strong>Donate</strong> any amount through U&amp;I Trust, a registered charity.</li>
+        <li><strong>Volunteer</strong> to teach English at Maho every week.</li>
+      </ul>
+    </div>
+    <div class="poster-qr">
+      <img src="images/qr.svg" width="400" height="400" alt="QR code linking to the U&amp;I x Maho website">
+      <p class="font-bold mt-2">Scan to donate or volunteer</p>
+      <p class="poster-url">%SITE_URL%</p>
+    </div>
+  </section>
+
+  <footer class="poster-footer">U&amp;I Trust · info@uandi.org.in · +91 97390 84991</footer>
+</main>
+
+<script src="js/poster.js"></script>
+</body>
+</html>

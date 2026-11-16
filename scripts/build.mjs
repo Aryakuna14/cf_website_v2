@@ -5,8 +5,10 @@ import { createHash } from "node:crypto";
 import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { loadConfig, qrSvg, renderHtml } from "./render.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+const config = loadConfig(root);
 const dist = join(root, "dist");
 const tailwindCli = join(root, "node_modules", "tailwindcss", "lib", "cli.js");
 
@@ -33,15 +35,19 @@ if (css.status !== 0) {
 // 3. Copy the static files. Only what is listed here is published.
 const copyIfExists = [
   "js", "images", "fonts", ".well-known",
-  "robots.txt", "sitemap.xml", "CNAME", "_headers", "favicon.ico", "favicon.png", "favicon.svg",
+  "robots.txt", "sitemap.xml", "CNAME", "_headers", "favicon.ico", "favicon.png", "favicon.svg", "apple-touch-icon.png",
 ];
 for (const name of copyIfExists) {
   const from = join(root, name);
   if (existsSync(from)) cpSync(from, join(dist, name), { recursive: true });
 }
+// Pages: fill in the site address and campaign numbers from site.config.json
 for (const file of readdirSync(root)) {
-  if (file.endsWith(".html")) cpSync(join(root, file), join(dist, file));
+  if (file.endsWith(".html")) writeFileSync(join(dist, file), renderHtml(readFileSync(join(root, file), "utf8"), config));
 }
+
+// QR code for the printable poster, always pointing at the address in site.config.json
+writeFileSync(join(dist, "images", "qr.svg"), await qrSvg(config.siteUrl));
 
 // 4. Cache-busting: stamp each stylesheet/script link with a fingerprint of the file's contents
 //    (e.g. css/styles.css?v=1a2b3c4d5e). When a file changes, its address changes, so browsers and

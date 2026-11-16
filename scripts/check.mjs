@@ -68,6 +68,20 @@ if (fromHeadersFile && fromVercel) {
   }
 }
 
+// ---- site.config.json: site address and campaign numbers ----
+let siteUrl = "";
+try {
+  const cfg = JSON.parse(readFileSync(join(root, "site.config.json"), "utf8"));
+  siteUrl = cfg.siteUrl || "";
+  if (!/^https:\/\/[^/]+\/.*\/$|^https:\/\/[^/]+\/$/.test(siteUrl)) errors.push(`site.config.json: siteUrl must start with https:// and end with "/" (got "${siteUrl}").`);
+  const c = cfg.campaign || {};
+  for (const k of ["goal", "raised"]) if (!Number.isInteger(c[k]) || c[k] < 0) errors.push(`site.config.json: campaign.${k} must be a whole number of rupees, without commas (got ${JSON.stringify(c[k])}).`);
+  if (c.endDate && Number.isNaN(Date.parse(c.endDate))) errors.push(`site.config.json: campaign.endDate must look like 2026-12.`);
+  if (c.show && c.endDate && Date.parse(c.endDate) + 86400000 < Date.now()) warnings.push(`site.config.json: the campaign ended on ${c.endDate}. Set campaign.show to false, or update the dates.`);
+} catch (e) {
+  errors.push(`site.config.json is missing or not valid JSON (${e.message}). Check for a missing comma or quote.`);
+}
+
 // Checks one referenced URL found in `file`.
 function checkUrl(file, url, { loads }) {
   const where = `${rel(file)}: "${url}"`;
@@ -139,6 +153,17 @@ for (const file of files) {
     }
     if (html.includes("REPLACE_WITH")) {
       warnings.push(`${rel(file)}: still contains a REPLACE_WITH placeholder (e.g. the contact form isn't connected to Formspree yet).`);
+    }
+    // Build placeholders like %SITE_URL% must all be filled in (scripts/render.mjs)
+    for (const m of new Set(html.match(/%[A-Z][A-Z_]+%/g) || [])) errors.push(`${rel(file)}: placeholder ${m} was not filled in. Check site.config.json and scripts/render.mjs.`);
+    for (const m of html.matchAll(/<!-- [a-z]+:(start|end) -->/g)) errors.push(`${rel(file)}: leftover block marker "${m[0]}".`);
+    // Link previews: must point at this site's own preview image, which must exist
+    const og = (prop) => (html.match(new RegExp(`<meta\\s+property="${prop}"\\s+content="([^"]+)"`, "i")) || [])[1];
+    if (og("og:image")) {
+      if (siteUrl && !og("og:image").startsWith(siteUrl)) errors.push(`${rel(file)}: og:image must start with the siteUrl (${siteUrl}).`);
+      const local = og("og:image").slice(siteUrl.length);
+      if (!existsSync(join(dist, local))) errors.push(`${rel(file)}: the link-preview image ${local} is not in the built site.`);
+      if (og("og:url") !== siteUrl && rel(file) === "index.html") errors.push(`index.html: og:url should be the siteUrl (${siteUrl}).`);
     }
     for (const m of html.matchAll(/<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)) {
       if (m[1].trim()) errors.push(`${rel(file)}: inline <script> block, which the security policy blocks. Move it into a file in js/.`);
