@@ -2,6 +2,12 @@
 <html class="dark" lang="en">
 <head>
 <meta charset="utf-8">
+<!-- Security policy (owner: Arya). The browser refuses anything not listed here: no outside scripts,
+     styles, images, fonts or frames; the page may only send data to our form service (Formspree).
+     Keep it identical to the policy in _headers and vercel.json (`npm run check` compares them).
+     frame-ancestors (clickjacking) only works as a real header, so it lives in _headers / vercel.json. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src https://formspree.io; form-action https://formspree.io; base-uri 'none'; object-src 'none'; frame-src 'none'; manifest-src 'self'; require-trusted-types-for 'script'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>U&amp;I x Maho</title>
 <meta name="description" content="Sponsor a boy's education, mentorship and life skills at U&I x Maho in Bengaluru.">
@@ -15,7 +21,7 @@
 <header class="fixed top-0 inset-x-0 z-50 bg-bg/90 backdrop-blur-xl border-b border-line">
   <div class="wrap h-20 flex items-center justify-between">
     <a href="#top" class="flex items-center gap-3">
-      <img src="images/logo.png" alt="U&amp;I logo" class="h-12 w-auto" onerror="this.style.display='none'">
+      <img src="images/logo.png" alt="U&amp;I logo" class="h-12 w-auto">
       <span class="font-extrabold text-lg leading-tight">U&amp;I x Maho</span>
     </a>
     <nav class="hidden xl:flex items-center gap-8 text-sm font-medium text-white/80">
@@ -51,7 +57,7 @@
       </div>
     </div>
     <div class="rounded-2xl overflow-hidden bg-surface border border-line">
-      <img src="images/hero.webp" fetchpriority="high" alt="A volunteer mentor working through a workbook with boys at the shelter home" class="w-full h-[320px] lg:h-[460px] object-cover" onerror="this.style.display='none'">
+      <img src="images/hero.webp" fetchpriority="high" alt="A volunteer mentor working through a workbook with boys at the shelter home" class="w-full h-[320px] lg:h-[460px] object-cover">
     </div>
   </section>
 
@@ -239,7 +245,7 @@
 <footer class="bg-surface border-t border-line pt-14 pb-8">
   <div class="wrap grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
     <div>
-      <img src="images/logo.png" alt="U&amp;I, be the change" class="h-24 w-auto" onerror="this.style.display='none'">
+      <img src="images/logo.png" alt="U&amp;I, be the change" class="h-24 w-auto">
       <div class="mt-5 flex gap-4">
         <a href="#" aria-label="Facebook" class="hover:text-violet"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
         <a href="#" aria-label="Instagram" class="hover:text-violet"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>

@@ -10,7 +10,7 @@ const dist = join(root, "dist");
 
 // Third-party domains the page may LOAD things from (scripts, styles, images, frames).
 // Plain links (<a href>) to other sites are always fine. Add a domain here only after a security review,
-// and add it to the Content-Security-Policy too (PR 5).
+// and add it to the Content-Security-Policy in index.html, _headers and vercel.json too.
 const allowedExternalHosts = [];
 
 const errors = [];
@@ -29,6 +29,44 @@ function walk(dir) {
 }
 const files = walk(dist);
 const rel = (f) => relative(dist, f).replace(/\\/g, "/");
+
+// ---- Security policy (CSP): must exist, be strict, and be identical in index.html, _headers and vercel.json ----
+const cspDirectives = (p = "") => p.split(";").map((d) => d.trim().replace(/\s+/g, " ")).filter(Boolean);
+const normCsp = (p, { dropFrameAncestors = false } = {}) =>
+  cspDirectives(p).filter((d) => !(dropFrameAncestors && d.startsWith("frame-ancestors"))).sort().join("; ");
+const cspSources = (p, name) => (cspDirectives(p).find((d) => d.split(" ")[0] === name) || "").split(" ").slice(1);
+const metaCsp = (html) => (html.match(/<meta\s+http-equiv="Content-Security-Policy"\s+content="([^"]+)"/i) || [])[1];
+
+const pageCsp = metaCsp(readFileSync(join(dist, "index.html"), "utf8"));
+const headerFile = join(root, "_headers");
+const vercelFile = join(root, "vercel.json");
+const fromHeadersFile = existsSync(headerFile)
+  ? Object.fromEntries(readFileSync(headerFile, "utf8").split(/\r?\n/).filter((l) => /^\s+[\w-]+:/.test(l)).map((l) => { const i = l.indexOf(":"); return [l.slice(0, i).trim(), l.slice(i + 1).trim()]; }))
+  : null;
+const fromVercel = existsSync(vercelFile)
+  ? Object.fromEntries((JSON.parse(readFileSync(vercelFile, "utf8")).headers?.[0]?.headers || []).map((h) => [h.key, h.value]))
+  : null;
+const requiredHeaders = ["Content-Security-Policy", "Strict-Transport-Security", "X-Content-Type-Options", "X-Frame-Options", "Referrer-Policy", "Permissions-Policy"];
+
+if (!pageCsp) errors.push("index.html has no Content-Security-Policy <meta> tag.");
+else {
+  if (/'unsafe-inline'|'unsafe-eval'|(^|\s)\*(\s|;|$)/.test(pageCsp)) errors.push("The security policy allows 'unsafe-inline', 'unsafe-eval' or '*'. Remove it.");
+  if (!cspSources(pageCsp, "default-src").includes("'none'")) errors.push("The security policy must start from default-src 'none'.");
+}
+for (const [name, headers] of [["_headers", fromHeadersFile], ["vercel.json", fromVercel]]) {
+  if (!headers) { errors.push(`${name} is missing (security headers for Cloudflare Pages / Netlify / Vercel).`); continue; }
+  for (const h of requiredHeaders) if (!headers[h]) errors.push(`${name} is missing the ${h} header.`);
+  const csp = headers["Content-Security-Policy"] || "";
+  if (!cspSources(csp, "frame-ancestors").includes("'none'")) errors.push(`${name}: Content-Security-Policy needs frame-ancestors 'none' (blocks clickjacking).`);
+  if (pageCsp && normCsp(csp, { dropFrameAncestors: true }) !== normCsp(pageCsp)) {
+    errors.push(`${name}: Content-Security-Policy differs from the one in index.html. Keep all three identical (plus frame-ancestors in the header files).`);
+  }
+}
+if (fromHeadersFile && fromVercel) {
+  for (const h of new Set([...Object.keys(fromHeadersFile), ...Object.keys(fromVercel)])) {
+    if (h !== "Content-Security-Policy" && fromHeadersFile[h] !== fromVercel[h]) errors.push(`_headers and vercel.json disagree on ${h}.`);
+  }
+}
 
 // Checks one referenced URL found in `file`.
 function checkUrl(file, url, { loads }) {
@@ -75,15 +113,30 @@ for (const file of files) {
           warnings.push(`${rel(file)}: link to "${attr.href}" opens a new tab without rel="noopener noreferrer".`);
         }
       }
-      if (attr.action) checkUrl(file, attr.action, { loads: false });
+      if (attr.action) {
+        checkUrl(file, attr.action, { loads: false });
+        // The page may only send data where the security policy allows it
+        if (/^https:\/\//i.test(attr.action) && pageCsp) {
+          const origin = new URL(attr.action).origin;
+          for (const d of ["form-action", "connect-src"]) {
+            if (!cspSources(pageCsp, d).includes(origin)) errors.push(`${rel(file)}: form sends to ${origin}, but the security policy's ${d} doesn't allow it.`);
+          }
+        }
+      }
       const handlers = Object.keys(attr).filter((a) => /^on[a-z]+$/.test(a));
-      if (handlers.length) warnings.push(`${rel(file)}: <${t} ${handlers.join(" ")}="..."> is inline JavaScript; a strict security policy (PR 5) will block it.`);
+      if (handlers.length) errors.push(`${rel(file)}: <${t} ${handlers.join(" ")}="..."> is inline JavaScript, which the security policy blocks. Move it into a file in js/.`);
+      if ("style" in attr) errors.push(`${rel(file)}: <${t} style="..."> is an inline style, which the security policy blocks. Use a class instead.`);
+    }
+    if (rel(file) !== "index.html") {
+      const csp = metaCsp(html);
+      if (!csp) errors.push(`${rel(file)} has no Content-Security-Policy <meta> tag. Copy the one from index.html.`);
+      else if (pageCsp && normCsp(csp) !== normCsp(pageCsp)) errors.push(`${rel(file)}: its security policy differs from index.html's.`);
     }
     if (html.includes("REPLACE_WITH")) {
       warnings.push(`${rel(file)}: still contains a REPLACE_WITH placeholder (e.g. the contact form isn't connected to Formspree yet).`);
     }
     for (const m of html.matchAll(/<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)) {
-      if (m[1].trim()) warnings.push(`${rel(file)}: inline <script> block; move it into a file in js/ before PR 5.`);
+      if (m[1].trim()) errors.push(`${rel(file)}: inline <script> block, which the security policy blocks. Move it into a file in js/.`);
     }
   }
   if (file.endsWith(".css")) {

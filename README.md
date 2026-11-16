@@ -22,6 +22,12 @@ Sponsor/donation website for U&I x Maho. Static site styled with Tailwind CSS. T
 - Every merge into `main` publishes the site to GitHub Pages automatically (`.github/workflows/deploy.yml`). Nothing needs uploading by hand.
 - One-time setup by the repo owner: **Settings > Pages > Source = GitHub Actions**.
 
+## Security rules (enforced by `npm run check` on every PR)
+- **No inline code:** no `<script>...</script>` blocks, no `onclick="..."` style attributes, no `style="..."`. Put JavaScript in `js/` and styles in classes.
+- **Nothing from other websites:** scripts, styles, fonts, images and frames come only from this site. Links to other sites are fine.
+- **The security policy** lives in three places that must stay identical: the `<meta http-equiv="Content-Security-Policy">` in `index.html` (and any new page), `_headers` (Cloudflare Pages/Netlify) and `vercel.json` (Vercel). To allow something new (e.g. a payment widget), change all three, and get it reviewed.
+- **Hosting:** GitHub Pages can't send security headers, so clickjacking protection and some other headers only apply on **Vercel** (`vercel.json` is ready: import the repo and it builds and sends every header) or **Cloudflare Pages** (`_headers`). `npm run dev` and `npm run preview` send the same headers locally.
+
 ## Where things live
 | Path | What | Owner |
 |---|---|---|
