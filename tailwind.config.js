@@ -15,6 +15,7 @@ module.exports = {
         blue: "#0937fd",      // U&I blue: headings, stats, links
         red: "#cb0100",       // U&I red: logo, highlights, bold fills (white text on top)
         yellow: "#ffda1b",    // U&I yellow: main buttons (ink text on top)
+        teal: "#0cc0df",      // U&I teal (uandi.org.in/volunteer): section background, ink text on top
       },
       fontFamily: {
         sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
