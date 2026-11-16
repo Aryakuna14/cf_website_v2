@@ -111,9 +111,10 @@
   .poster { background: #fff; margin: 0 auto 2rem; max-width: 210mm; display: flex; flex-direction: column;
             -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .poster-top { padding: 9mm 11mm 26mm; }
-  .poster-headline { font-size: clamp(2.2rem, 9vw, 3.5rem); }
+  /* U&I "for Every Child" lockup (image): never stretched, about 300 dpi when printed at 115mm */
+  .poster-lockup { display: block; width: 100%; max-width: 115mm; height: auto; }
   .poster-lede { font-size: 1.05rem; line-height: 1.5; max-width: 34rem; }
-  .poster-photo { margin: -20mm auto 0; width: calc(100% - 22mm); max-width: 150mm; }
+  .poster-photo { margin: -20mm auto 0; width: calc(100% - 22mm); max-width: 130mm; }
   .poster-bottom { display: grid; gap: 1.25rem; padding: 7mm 11mm; align-items: center; }
   .poster-h2 { font-size: clamp(1.6rem, 5vw, 2.1rem); }
   .poster-list { display: grid; gap: 0.5rem; font-size: 1.05rem; }
