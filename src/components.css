@@ -48,7 +48,7 @@
   .btn-primary { background: theme("colors.yellow"); color: theme("colors.ink"); border-color: theme("colors.yellow"); }
   .btn-primary:hover { background: theme("colors.ink"); border-color: theme("colors.ink"); color: #fff; }
   .btn-dark { background: theme("colors.ink"); color: #fff; border-color: theme("colors.ink"); }
-  .btn-dark:hover { background: theme("colors.blue"); border-color: theme("colors.blue"); }
+  .btn-dark:hover { background: theme("colors.pink"); border-color: theme("colors.pink"); color: theme("colors.ink"); }
   .btn-outline { background: transparent; color: theme("colors.ink"); border-color: theme("colors.ink"); }
   .btn-outline:hover { background: theme("colors.ink"); color: #fff; }
   .btn-outline-light { background: transparent; color: #fff; border-color: #fff; }
@@ -59,14 +59,16 @@
 
   .link { font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
-  /* "U&I in 2025" numbers, styled like uandi.org.in: blue wide figures with wide capital labels underneath */
+  /* "U&I in 2025" numbers, styled like uandi.org.in: pink wide figures with wide capital labels underneath */
   .impact-title { font-size: clamp(1.75rem, 4.4vw, 3.75rem); }
-  .impact-num { font-family: theme("fontFamily.display"); font-weight: 900; font-stretch: 125%; color: theme("colors.blue");
-                font-size: clamp(3rem, 6.2vw, 5.5rem); line-height: 1; letter-spacing: -0.01em; }
+  .impact-num { font-family: theme("fontFamily.display"); font-weight: 900; font-stretch: 125%; color: theme("colors.pink");
+                font-size: clamp(3rem, 6.2vw, 5.5rem); line-height: 1; letter-spacing: -0.01em;
+                /* Pink on teal is low contrast, so a solid ink offset (like U&I's headings on teal) keeps the numbers crisp */
+                text-shadow: 0.05em 0.05em 0 theme("colors.ink"); }
   .impact-label { margin-top: 0.4rem; font-family: theme("fontFamily.display"); font-weight: 800; font-stretch: 125%;
                   text-transform: uppercase; font-size: clamp(1.05rem, 2.1vw, 1.75rem); line-height: 1.1; }
   /* U&I's card look: a solid colour block offset behind the card (no blur, so not a soft shadow) */
-  .offset-card { box-shadow: 0.9rem 0.9rem 0 theme("colors.blue"); }
+  .offset-card { box-shadow: 0.9rem 0.9rem 0 theme("colors.pink"); }
   /* Photos: softly rounded, no frames or tilts */
   .photo { border-radius: 0.9rem; overflow: hidden; background: theme("colors.line"); }
   .photo img { display: block; width: 100%; height: auto; }
