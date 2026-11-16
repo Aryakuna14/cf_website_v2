@@ -78,10 +78,43 @@
           <a href="#volunteer" class="btn btn-outline">Volunteer with us</a>
         </div>
       </div>
-      <figure class="lg:col-span-5">
-        <div class="photo"><img src="images/hero.webp" width="1000" height="750" fetchpriority="high" alt="A volunteer mentor working through a workbook with boys at the shelter home"></div>
-        <figcaption class="caption">A weekly session at Maho. The boys' faces are covered to protect their privacy.</figcaption>
-      </figure>
+      <!-- Photo carousel (js/carousel.js). Swiping works without the script (CSS scroll snap); the script adds
+           auto-advance, dots, arrows and pause. Volunteer photos: only volunteers and staff who agreed. Never the
+           boys' faces (only the first photo shows boys, with faces covered), and nothing that shows where the shelter is. -->
+      <div class="lg:col-span-5" data-carousel role="region" aria-roledescription="carousel" aria-label="Photos from Maho">
+        <div class="carousel-track" tabindex="0" aria-live="off" aria-label="Photos. Swipe, or use the arrow keys.">
+          <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 of 5">
+            <div class="photo"><img src="images/hero.webp" width="1000" height="750" fetchpriority="high" alt="A volunteer mentor working through a workbook with boys at the shelter home"></div>
+            <figcaption class="caption">A weekly session at Maho. The boys' faces are covered to protect their privacy.</figcaption>
+          </figure>
+          <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 5">
+            <div class="photo"><img src="images/volunteers-1.webp" width="1200" height="900" loading="lazy" alt="A group of volunteers indoors, smiling, some giving a thumbs up"></div>
+            <figcaption class="caption">Maho's volunteers.</figcaption>
+          </figure>
+          <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 5">
+            <div class="photo"><img src="images/volunteers-2.webp" width="1200" height="900" loading="lazy" alt="Volunteers sitting in a circle on the grass in a park, with notebooks"></div>
+            <figcaption class="caption">A volunteer meet-up in the park.</figcaption>
+          </figure>
+          <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="4 of 5">
+            <div class="photo"><img src="images/volunteers-3.webp" width="1200" height="900" loading="lazy" alt="Volunteers making heart shapes with their hands in a classroom"></div>
+            <figcaption class="caption">Maho's volunteers.</figcaption>
+          </figure>
+          <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="5 of 5">
+            <div class="photo"><img src="images/volunteers-4.webp" width="1200" height="900" loading="lazy" alt="Volunteers making heart shapes with their hands outside a building"></div>
+            <figcaption class="caption">Maho's volunteers.</figcaption>
+          </figure>
+        </div>
+        <div data-controls hidden>
+          <div class="mt-3 flex items-center justify-between gap-3">
+            <div class="carousel-dots flex items-center"></div>
+            <div class="flex items-center gap-2">
+              <button type="button" data-toggle class="btn btn-outline btn-sm">Pause</button>
+              <button type="button" data-prev class="btn btn-outline btn-sm" aria-label="Previous photo">&larr;</button>
+              <button type="button" data-next class="btn btn-outline btn-sm" aria-label="Next photo">&rarr;</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -160,45 +193,6 @@
       </div>
       <!-- Stories and testimonials come back here once there are real ones, with written consent
            (and the shelter's consent for anything about a child). Never placeholder text. -->
-    </div>
-  </section>
-
-  <!-- Volunteers: photo carousel (js/carousel.js). Only volunteers and staff, with their OK. Never the boys.
-       Swiping works without the script (CSS scroll snap); the script adds auto-advance, dots, arrows and pause. -->
-  <section id="team" class="band" aria-labelledby="team-title">
-    <div class="wrap grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-      <div class="lg:col-span-5">
-        <p class="eyebrow text-red">Our volunteers</p>
-        <h2 id="team-title" class="heading heading-xl mt-3">Meet the volunteers</h2>
-        <p class="lede mt-5">The people who show up for the boys at Maho, week after week.</p>
-        <a href="volunteer.html" class="btn btn-dark mt-8">Join them</a>
-      </div>
-      <div class="lg:col-span-7" data-carousel role="region" aria-roledescription="carousel" aria-label="Photos of the volunteers">
-        <div class="carousel-track" tabindex="0" aria-live="off" aria-label="Volunteer photos. Swipe, or use the arrow keys.">
-          <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 of 4">
-            <img src="images/volunteers-1.webp" width="1200" height="900" alt="A group of volunteers indoors, smiling, some giving a thumbs up" loading="lazy">
-          </figure>
-          <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 4">
-            <img src="images/volunteers-2.webp" width="1200" height="900" alt="Volunteers sitting in a circle on the grass in a park, with notebooks" loading="lazy">
-          </figure>
-          <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 4">
-            <img src="images/volunteers-3.webp" width="1200" height="900" alt="Volunteers making heart shapes with their hands in a classroom" loading="lazy">
-          </figure>
-          <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="4 of 4">
-            <img src="images/volunteers-4.webp" width="1200" height="900" alt="Volunteers making heart shapes with their hands outside a building" loading="lazy">
-          </figure>
-        </div>
-        <div data-controls hidden>
-          <div class="mt-4 flex items-center justify-between gap-3">
-            <div class="carousel-dots flex items-center"></div>
-            <div class="flex items-center gap-2">
-              <button type="button" data-toggle class="btn btn-outline btn-sm">Pause</button>
-              <button type="button" data-prev class="btn btn-outline btn-sm" aria-label="Previous photo">&larr;</button>
-              <button type="button" data-next class="btn btn-outline btn-sm" aria-label="Next photo">&rarr;</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 

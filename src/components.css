@@ -72,17 +72,18 @@
               font-size: clamp(2.5rem, 4.5vw, 3.75rem); line-height: 1; letter-spacing: -0.01em; }
   /* U&I's card look: a solid colour block offset behind the card (no blur, so not a soft shadow) */
   .offset-card { box-shadow: 0.9rem 0.9rem 0 theme("colors.pink"); }
-  /* Photo carousel (home page, js/carousel.js). Swiping is the browser's own scrolling with snap points,
-     so it works on every phone even if the script fails to load. */
+  /* Photo carousel (home page hero, js/carousel.js). Swiping is the browser's own scrolling with snap points,
+     so it works on every phone even if the script fails to load. Each slide is a rounded photo plus its caption. */
   .carousel-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
-                    scrollbar-width: none; border-radius: 0.9rem; background: theme("colors.line"); }
+                    scrollbar-width: none; }
   .carousel-track::-webkit-scrollbar { display: none; }
-  .carousel-track:focus-visible { outline: 3px solid theme("colors.blue"); outline-offset: 3px; }
+  .carousel-track:focus-visible { outline: 3px solid theme("colors.blue"); outline-offset: 3px; border-radius: 0.9rem; }
   .carousel-slide { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; }
-  .carousel-slide img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+  .carousel-slide .photo img { aspect-ratio: 4 / 3; object-fit: cover; }
+  /* Dots: ink, so they stand out on the yellow hero (3:1 or better); the current one is a wider pill */
   .carousel-dot { padding: 0.45rem; border-radius: 9999px; }
-  .carousel-dot::before { content: ""; display: block; width: 0.7rem; height: 0.7rem; border-radius: 9999px; background: rgb(32 30 30 / 0.45); }
-  .carousel-dot[aria-current="true"]::before { width: 1.6rem; background: theme("colors.pink"); }
+  .carousel-dot::before { content: ""; display: block; width: 0.7rem; height: 0.7rem; border-radius: 9999px; background: rgb(32 30 30 / 0.6); }
+  .carousel-dot[aria-current="true"]::before { width: 1.6rem; background: theme("colors.ink"); }
   .carousel-dot:focus-visible { outline: 3px solid theme("colors.blue"); outline-offset: 0; }
 
   /* Photos: softly rounded, no frames or tilts */

@@ -74,7 +74,7 @@ Notes:
 Put files in `images/` with these names, or change the `src` in `index.html`:
 `logo.png` (optional), `hero.webp`, `session-2.webp`, `session-3.webp` (about 1000px wide, under 200 KB each, so the page loads fast)
 
-**Volunteer carousel** ("Meet the volunteers" on the home page): `volunteers-1.webp` to `volunteers-4.webp`, 1200 x 900 (4:3), under 200 KB each. To add a photo, copy one `<figure class="carousel-slide">` block in `index.html` and update the numbers ("5 of 5"). Only photos of volunteers and staff who have agreed to be on the site. **Never the boys**, and nothing that shows where the shelter is. It moves every 5 seconds (`DELAY_MS` in `js/carousel.js`).
+**Photo carousel** (the hero at the top of the home page): `hero.webp` first, then `volunteers-1.webp` to `volunteers-4.webp`, 1200 x 900 (4:3), under 200 KB each. To add a photo, copy one `<figure class="carousel-slide">` block in `index.html`, change its photo and caption, and update the numbers ("6 of 6"). Only photos of volunteers and staff who have agreed to be on the site. **Never the boys**, and nothing that shows where the shelter is. It moves every 5 seconds (`DELAY_MS` in `js/carousel.js`).
 
 ## Before publishing
 - **No placeholder or made-up content, ever.** Numbers, stories, quotes and prices go on the site only once the NGO confirms them, with written consent from anyone quoted and the shelter's consent for anything about a child.

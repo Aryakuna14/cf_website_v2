@@ -1,4 +1,4 @@
-// Volunteer photo carousel on the home page. Owner: Arya.
+// Photo carousel in the home page hero. Owner: Arya.
 // Swiping (and trackpad scrolling) is the browser's own, using CSS scroll snap, so it works without this script.
 // This script adds dots, previous/next buttons, a pause button, and moves to the next photo every few seconds.
 // It holds still while a mouse is over it or a keyboard user is on it, while it is off screen or the tab is
@@ -36,8 +36,15 @@ if (root) {
     toggle.setAttribute("aria-label", userPaused ? "Play slideshow" : "Pause slideshow");
   }
 
+  // Photos after the first load lazily; fetch the next one early so it never slides in blank
+  function preloadNext() {
+    const img = slides[(index + 1) % slides.length].querySelector("img");
+    if (img) img.loading = "eager";
+  }
+
   function schedule() {
     clearTimeout(timer);
+    preloadNext();
     if (userPaused || hovered || keyboardFocus || !onScreen || document.hidden) return;
     timer = setTimeout(() => go(index + 1), DELAY_MS);
   }
