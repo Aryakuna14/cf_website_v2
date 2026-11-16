@@ -10,184 +10,202 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>U&amp;I x Maho</title>
-<meta name="description" content="Maho is an all-boys U&amp;I centre in Bengaluru where volunteers teach English every week to about 50 boys growing up in residential care.">
+<meta name="description" content="Maho is an all-boys U&amp;I centre in Bengaluru where volunteers teach English every week to about 50 boys growing up in residential care. Donate or volunteer.">
 <link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-bg text-ink font-sans antialiased">
 
-<header class="fixed top-0 inset-x-0 z-50 bg-white border-b-[3px] border-ink">
-  <div class="wrap h-20 flex items-center justify-between gap-4">
+<header class="fixed top-0 inset-x-0 z-50 bg-white/95 border-b border-line">
+  <div class="wrap h-[4.5rem] flex items-center justify-between gap-4">
     <a href="#top" class="flex items-center gap-3">
-      <img src="images/logo.png" alt="U&amp;I logo" width="48" height="48" class="h-12 w-12 rounded-full bg-red p-1 object-contain">
-      <span class="display text-base sm:text-lg">U&amp;I x Maho</span>
+      <img src="images/logo.png" alt="U&amp;I logo" width="44" height="44" class="h-11 w-11 rounded-full bg-red p-1 object-contain">
+      <span class="font-extrabold text-lg">U&amp;I x Maho</span>
     </a>
-    <nav class="hidden lg:flex items-center gap-7 text-sm font-bold uppercase tracking-wide" aria-label="Main">
-      <a href="#about" class="hover:underline">About</a>
-      <a href="#numbers" class="hover:underline">Impact</a>
-      <a href="#programs" class="hover:underline">What we do</a>
-      <a href="#sessions" class="hover:underline">Sessions</a>
-      <a href="#sponsor" class="hover:underline">Sponsor</a>
-      <a href="#contact" class="hover:underline">Contact</a>
+    <nav class="hidden lg:flex items-center gap-7 text-[0.95rem] font-semibold" aria-label="Main">
+      <a href="#about" class="hover:text-blue">About</a>
+      <a href="#impact" class="hover:text-blue">Impact</a>
+      <a href="#sessions" class="hover:text-blue">Sessions</a>
+      <a href="#volunteer" class="hover:text-blue">Volunteer</a>
+      <a href="#donate" class="hover:text-blue">Donate</a>
+      <a href="#contact" class="hover:text-blue">Contact</a>
     </nav>
     <div class="flex items-center gap-2">
-      <a href="#sponsor" class="bar bar-sm">Sponsor <span aria-hidden="true">→</span></a>
+      <a href="#volunteer" class="btn btn-outline btn-sm hidden sm:inline-flex">Volunteer</a>
+      <a href="#donate" class="btn btn-primary btn-sm">Donate</a>
       <button id="menu-btn" class="lg:hidden p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
-        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 6h20M3 13h20M3 20h20"/></svg>
+        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.25" aria-hidden="true"><path d="M3 6h20M3 13h20M3 20h20"/></svg>
       </button>
     </div>
   </div>
-  <nav id="mobile-nav" class="hidden lg:hidden wrap pb-5 flex-col gap-4 text-base font-bold uppercase" aria-label="Main">
-    <a href="#about">About</a><a href="#numbers">Impact</a><a href="#programs">What we do</a><a href="#sessions">Sessions</a><a href="#sponsor">Sponsor</a><a href="#contact">Contact</a>
+  <nav id="mobile-nav" class="hidden lg:hidden wrap pb-5 flex-col gap-4 text-lg font-semibold" aria-label="Main">
+    <a href="#about">About</a><a href="#impact">Impact</a><a href="#sessions">Sessions</a><a href="#volunteer">Volunteer</a><a href="#donate">Donate</a><a href="#contact">Contact</a>
   </nav>
 </header>
 
-<main id="top" class="pt-20">
+<main id="top" class="pt-[4.5rem]">
 
-  <!-- Hero: yellow block, giant heading, framed photo -->
+  <!-- Hero -->
   <section class="band bg-yellow">
-    <div class="wrap grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+    <div class="wrap grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
       <div class="lg:col-span-7">
-        <span class="sticker sticker-red">U&amp;I · volunteer-run</span>
-        <h1 class="display display-xl mt-6">A steady adult, <span class="text-blue">every week.</span></h1>
-        <p class="lede mt-8">Maho is an all-boys U&amp;I centre in Bengaluru, home to about 50 boys growing up in residential care. Every week, U&amp;I volunteers teach them English and are role models and mentors they can count on.</p>
-        <div class="mt-10 flex flex-col sm:flex-row sm:items-center gap-5">
-          <a href="#sponsor" class="bar sm:min-w-[18rem]">Sponsor a boy <span aria-hidden="true">→</span></a>
-          <a href="#about" class="link">What is Maho?</a>
+        <p class="eyebrow">U&amp;I · Maho centre, Bengaluru</p>
+        <h1 class="display display-xl mt-5">A steady adult, <span class="text-blue">every week.</span></h1>
+        <p class="lede mt-6">Maho is an all-boys U&amp;I centre, home to about 50 boys growing up in residential care. Every week, U&amp;I volunteers teach them English and are role models and mentors they can count on.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#donate" class="btn btn-dark">Donate</a>
+          <a href="#volunteer" class="btn btn-outline">Volunteer with us</a>
         </div>
       </div>
-      <div class="lg:col-span-5 relative pr-4 pb-4">
-        <figure class="frame tilt-r">
-          <img src="images/hero.webp" width="1000" height="750" fetchpriority="high" alt="A volunteer mentor working through a workbook with boys at the shelter home" class="block w-full h-auto bg-line">
-        </figure>
-        <span class="sticker absolute -top-4 left-2 lg:-left-5">About 50 boys</span>
-      </div>
+      <figure class="lg:col-span-5">
+        <div class="photo"><img src="images/hero.webp" width="1000" height="750" fetchpriority="high" alt="A volunteer mentor working through a workbook with boys at the shelter home"></div>
+        <figcaption class="caption">A weekly session at Maho. The boys' faces are covered to protect their privacy.</figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- What is Maho: red block, heading across the full width, text below -->
-  <section id="about" class="band bg-red text-white">
-    <div class="wrap">
-      <h2 class="display display-lg">What is Maho?</h2>
-      <div class="mt-10 grid md:grid-cols-2 gap-8 lg:gap-16 text-lg leading-relaxed">
-        <p>U&amp;I is a volunteer-run registered charity working with children from underserved communities across India.</p>
+  <!-- About -->
+  <section id="about" class="band">
+    <div class="wrap grid lg:grid-cols-12 gap-8 lg:gap-12">
+      <div class="lg:col-span-5">
+        <p class="eyebrow text-red">About</p>
+        <h2 class="heading heading-xl mt-3">What is Maho?</h2>
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-lg leading-relaxed">
         <p>Maho is an all-boys U&amp;I centre in Bengaluru for about 50 boys living in residential care. U&amp;I volunteers teach them English every week.</p>
+        <p>U&amp;I is a volunteer-run registered charity working with children from underserved communities across India.</p>
       </div>
     </div>
   </section>
 
-  <!-- U&I in numbers (source: U&I's 2025 crowdfunding deck). These are U&I-wide, not Maho's. -->
-  <section id="numbers" class="band bg-white">
+  <!-- Impact: U&I-wide numbers from U&I's 2025 crowdfunding deck (not Maho's own) -->
+  <section id="impact" class="band bg-blue text-white">
     <div class="wrap">
-      <span class="sticker sticker-blue">U&amp;I in 2025</span>
-      <h2 class="display display-lg mt-6">Every week, U&amp;I taught</h2>
-      <dl class="mt-12 grid sm:grid-cols-2 border-t-[3px] border-ink">
-        <div class="py-8 sm:pr-8 border-b-[3px] border-ink sm:border-r-[3px]"><dt class="sr-only">Students</dt><dd class="display stat text-blue">4,542</dd><dd class="mt-3 font-bold uppercase tracking-wide">students</dd></div>
-        <div class="py-8 sm:pl-8 border-b-[3px] border-ink"><dt class="sr-only">Learning centres</dt><dd class="display stat text-blue">153</dd><dd class="mt-3 font-bold uppercase tracking-wide">learning centres</dd></div>
-        <div class="py-8 sm:pr-8 border-b-[3px] border-ink sm:border-r-[3px]"><dt class="sr-only">Cities</dt><dd class="display stat text-blue">38</dd><dd class="mt-3 font-bold uppercase tracking-wide">cities</dd></div>
-        <div class="py-8 sm:pl-8 border-b-[3px] border-ink"><dt class="sr-only">Teaching hours in 2025</dt><dd class="display stat text-blue">1,70,213</dd><dd class="mt-3 font-bold uppercase tracking-wide">teaching hours in the year</dd></div>
+      <p class="eyebrow text-yellow">U&amp;I in 2025</p>
+      <h2 class="heading heading-xl mt-3">Every week, U&amp;I taught</h2>
+      <dl class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10 max-w-4xl">
+        <div class="border-t border-white/40 pt-5"><dt class="sr-only">Students</dt><dd class="stat">4,542</dd><dd class="mt-2 text-white/90">students</dd></div>
+        <div class="border-t border-white/40 pt-5"><dt class="sr-only">Learning centres</dt><dd class="stat">153</dd><dd class="mt-2 text-white/90">learning centres</dd></div>
+        <div class="border-t border-white/40 pt-5"><dt class="sr-only">Cities</dt><dd class="stat">38</dd><dd class="mt-2 text-white/90">cities</dd></div>
+        <div class="border-t border-white/40 pt-5"><dt class="sr-only">Teaching hours in 2025</dt><dd class="stat">1,70,213</dd><dd class="mt-2 text-white/90">teaching hours in the year</dd></div>
       </dl>
-      <p class="display display-md mt-12 max-w-3xl">“They are not an exception, they’re our template.”</p>
-      <p class="mt-3 text-ink/80">Every student story U&amp;I shares is not a one-kid wonder. They all make it.</p>
+      <blockquote class="mt-14 max-w-3xl">
+        <p class="heading heading-md">“They are not an exception, they’re our template.”</p>
+        <p class="mt-2 text-white/90">Every student story U&amp;I shares is not a one-kid wonder. They all make it.</p>
+      </blockquote>
     </div>
   </section>
 
-  <!-- What we bring: off-white block, big coloured labels (source: U&I's crowdfunding deck) -->
-  <section id="programs" class="band bg-bg">
+  <!-- What we bring (from U&I's crowdfunding deck) -->
+  <section id="programs" class="band">
     <div class="wrap">
-      <h2 class="display display-lg">What we bring into every class</h2>
-      <ul class="mt-12 flex flex-wrap gap-4 sm:gap-5">
-        <li class="tag display display-md bg-yellow">Role models &amp; mentors</li>
-        <li class="tag display display-md bg-blue text-white">Personalised teaching</li>
-        <li class="tag display display-md bg-red text-white">Learning materials</li>
-        <li class="tag display display-md bg-white">Creativity &amp; play</li>
+      <p class="eyebrow text-red">In every class</p>
+      <h2 class="heading heading-xl mt-3">What we bring</h2>
+      <ul class="mt-8 flex flex-wrap gap-3">
+        <li class="chip bg-yellow">Role models &amp; mentors</li>
+        <li class="chip bg-blue text-white">Personalised teaching</li>
+        <li class="chip bg-red text-white">Learning materials</li>
+        <li class="chip bg-white">Creativity &amp; play</li>
       </ul>
-      <div class="mt-14 grid lg:grid-cols-12 gap-8 border-t-[3px] border-ink pt-10">
-        <h3 class="lg:col-span-4 display display-md">Behind every class</h3>
-        <div class="lg:col-span-8 text-lg leading-relaxed">
-          <p>A curriculum for the class, textbooks and workbooks, life-skills workshops and centre celebrations.</p>
-          <p class="mt-4">Across U&amp;I that takes 5,348 volunteer teachers and leaders, and 19,500 hours of volunteer training a year.</p>
-        </div>
-      </div>
+      <p class="lede mt-8">Behind every class is a curriculum, textbooks and workbooks, life-skills workshops and centre celebrations. Across U&amp;I that takes 5,348 volunteer teachers and leaders, and 19,500 hours of volunteer training.</p>
     </div>
   </section>
 
-  <!-- Sessions: blue block, two tilted framed photos with stickers -->
-  <section id="sessions" class="band bg-blue text-white">
+  <!-- Sessions: real photos (children's faces covered, with the shelter's consent) -->
+  <section id="sessions" class="band bg-white">
     <div class="wrap">
-      <div class="flex flex-wrap items-end justify-between gap-6">
-        <h2 class="display display-lg">Every week<br>at the shelter</h2>
-        <p class="lede">Volunteers sit with the boys one-on-one and in small groups.</p>
-      </div>
-      <div class="mt-14 grid md:grid-cols-2 gap-14 md:gap-12 pr-3 pb-3">
-        <div class="relative">
-          <figure class="frame offset-yellow tilt-l">
-            <img src="images/session-2.webp" width="1000" height="750" alt="A volunteer helping a boy with his work on the shelter steps" class="block w-full h-auto bg-line" loading="lazy">
-            <figcaption>Reading and writing practice on the steps</figcaption>
-          </figure>
-          <span class="sticker absolute -top-4 right-3">One-on-one</span>
-        </div>
-        <div class="relative md:mt-16">
-          <figure class="frame offset-red tilt-r">
-            <img src="images/session-3.webp" width="1000" height="750" alt="A volunteer working with boys on a workbook in the shelter courtyard" class="block w-full h-auto bg-line" loading="lazy">
-            <figcaption>Study time in the courtyard</figcaption>
-          </figure>
-          <span class="sticker sticker-red sticker-r absolute -top-4 left-3">Small groups</span>
-        </div>
+      <p class="eyebrow text-red">Sessions</p>
+      <h2 class="heading heading-xl mt-3">Every week at the shelter</h2>
+      <p class="lede mt-4">Volunteers sit with the boys one-on-one and in small groups.</p>
+      <div class="mt-10 grid md:grid-cols-2 gap-8">
+        <figure>
+          <div class="photo"><img src="images/session-2.webp" width="1000" height="750" alt="A volunteer helping a boy with his work on the shelter steps" loading="lazy"></div>
+          <figcaption class="caption">Reading and writing practice on the steps</figcaption>
+        </figure>
+        <figure>
+          <div class="photo"><img src="images/session-3.webp" width="1000" height="750" alt="A volunteer working with boys on a workbook in the shelter courtyard" loading="lazy"></div>
+          <figcaption class="caption">Study time in the courtyard</figcaption>
+        </figure>
       </div>
       <!-- Stories and testimonials come back here once there are real ones, with written consent
            (and the shelter's consent for anything about a child). Never placeholder text. -->
     </div>
   </section>
 
-  <!-- Sponsor: black block, the #InThisTogether campaign (source: U&I's crowdfunding deck) -->
-  <section id="sponsor" class="band bg-ink text-white">
-    <div class="wrap grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-      <div>
-        <span class="sticker">#InThisTogether</span>
-        <h2 class="display display-lg mt-6 text-yellow">Fund their dreams. Change their future.</h2>
-        <p class="lede mt-6 text-white/90">Maho is part of #InThisTogether, U&amp;I's biggest crowdfunding moment of the year: 6,000 students, 5,000 volunteers, 6 weeks. Last year, 29,000 supporters built the village for U&amp;I's students.</p>
+  <!-- Volunteer recruitment -->
+  <section id="volunteer" class="band">
+    <div class="wrap grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+      <div class="lg:col-span-6">
+        <p class="eyebrow text-red">Volunteer</p>
+        <h2 class="heading heading-xl mt-3">Teach at Maho</h2>
+        <p class="lede mt-5">Spend time every week with the boys at Maho, teaching English and being someone they can rely on. U&amp;I gives its volunteers a curriculum, textbooks and workbooks, and training.</p>
+        <!-- TODO (Maho team): add the session day/time and the commitment asked of volunteers, once confirmed. -->
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="https://uandi.org.in/volunteer" class="btn btn-dark">Sign up to volunteer</a>
+          <a href="#contact" data-plan="Volunteering" class="btn btn-outline">Ask us a question</a>
+        </div>
       </div>
-      <!-- TODO (Arya): confirm with U&I how donations can be marked for Maho, and link a Maho-specific page if there is one. -->
-      <div class="flex flex-col gap-8 lg:pt-16">
+      <div class="lg:col-span-6 panel">
+        <h3 class="heading heading-md">What volunteering at Maho involves</h3>
+        <ul class="mt-5 space-y-4 text-lg">
+          <li class="flex gap-3"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-red" aria-hidden="true"></span>Teaching English to the boys, every week</li>
+          <li class="flex gap-3"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-blue" aria-hidden="true"></span>Being a steady role model and mentor</li>
+          <li class="flex gap-3"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-yellow" aria-hidden="true"></span>Joining centre celebrations and life-skills workshops</li>
+        </ul>
+        <p class="mt-6 text-ink/75">Sign-ups go through U&amp;I's volunteer page: choose your city and centre, fill in the application, then a review and interview.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fundraiser: #InThisTogether (from U&I's crowdfunding deck) -->
+  <section id="donate" class="band bg-red text-white">
+    <div class="wrap grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+      <div class="lg:col-span-7">
+        <p class="eyebrow text-white">#InThisTogether</p>
+        <h2 class="heading heading-xl mt-3">Fund their dreams. Change their future.</h2>
+        <p class="lede mt-5 text-white/95">Maho is part of #InThisTogether, U&amp;I's biggest crowdfunding moment of the year: 6,000 students, 5,000 volunteers, 6 weeks. Last year, 29,000 supporters built the village for U&amp;I's students.</p>
+        <!-- TODO (Arya): add the campaign goal and amount raised ("₹X of the goal") once confirmed, and a Maho-specific donation link if U&I has one. -->
+      </div>
+      <div class="lg:col-span-5 flex flex-col gap-6 lg:pt-10">
         <div>
-          <a href="https://uandi.org.in/donatenow" class="bar bar-yellow">Donate online at uandi.org.in <span aria-hidden="true">→</span></a>
-          <p class="mt-3 text-white/80">Any amount. Payment happens on U&amp;I Trust's own donation page, not on this website.</p>
+          <a href="https://uandi.org.in/donatenow" class="btn btn-primary w-full">Donate on uandi.org.in</a>
+          <p class="mt-3 text-white/90">Any amount. Payment happens on U&amp;I Trust's own donation page, not on this website.</p>
         </div>
         <div>
-          <a href="#contact" data-plan="Sponsoring a boy" class="bar bar-light">Sponsor every month, or as a company <span aria-hidden="true">→</span></a>
-          <p class="mt-3 text-white/80">For a monthly gift, a CSR partnership, or funding Maho specifically, write to us and we will set it up with you.</p>
+          <a href="#contact" data-plan="Sponsoring a boy" class="btn btn-outline-light w-full">Give monthly, or as a company</a>
+          <p class="mt-3 text-white/90">Write to us about a monthly gift, a CSR partnership, or funding Maho specifically.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact: yellow block, form on a framed white card -->
-  <section id="contact" class="band bg-yellow">
-    <div class="wrap grid lg:grid-cols-12 gap-12 items-start">
+  <!-- Contact -->
+  <section id="contact" class="band">
+    <div class="wrap grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
       <div class="lg:col-span-5">
-        <h2 class="display display-lg">Write<br>to us</h2>
-        <p class="lede mt-6">Sponsorship, a donation, volunteering or a question. We reply by email.</p>
-        <p class="mt-6 font-bold">Or call <a href="tel:+919739084991" class="link">+91 97390 84991</a></p>
+        <p class="eyebrow text-red">Contact</p>
+        <h2 class="heading heading-xl mt-3">Write to us</h2>
+        <p class="lede mt-5">Donations, sponsorship, volunteering or a question. We reply by email.</p>
+        <p class="mt-6">Or call <a href="tel:+919739084991" class="link">+91 97390 84991</a>, or email <a href="mailto:info@uandi.org.in" class="link">info@uandi.org.in</a>.</p>
       </div>
-      <div class="lg:col-span-7 pr-3 pb-3">
+      <div class="lg:col-span-7">
         <!-- Messages are sent to Formspree (free plan), which emails them to the NGO. Owner: Arya.
              To connect: replace REPLACE_WITH_FORM_ID with the form ID from the Formspree dashboard. -->
-        <form id="question-form" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="POST" class="frame offset-red flex flex-col gap-5 p-6 sm:p-8">
-          <div><label for="q-name" class="block mb-2 font-bold">Full name*</label>
+        <form id="question-form" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="POST" class="panel relative flex flex-col gap-5">
+          <div><label for="q-name" class="block mb-2 font-semibold">Full name*</label>
             <input id="q-name" name="name" autocomplete="name" required maxlength="100" class="field"></div>
           <div class="grid sm:grid-cols-2 gap-5">
-            <div><label for="q-email" class="block mb-2 font-bold">Email address*</label>
+            <div><label for="q-email" class="block mb-2 font-semibold">Email address*</label>
               <input id="q-email" name="email" type="email" autocomplete="email" required maxlength="254" class="field"></div>
-            <div><label for="q-phone" class="block mb-2 font-bold">Contact number*</label>
+            <div><label for="q-phone" class="block mb-2 font-semibold">Contact number*</label>
               <input id="q-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required minlength="7" maxlength="20" pattern="[0-9+\(\)\- ]{7,20}" title="Digits, spaces, +, - and brackets only" class="field"></div>
           </div>
-          <div><label for="q-interest" class="block mb-2 font-bold">I am writing about*</label>
+          <div><label for="q-interest" class="block mb-2 font-semibold">I am writing about*</label>
             <select id="q-interest" name="interest" required class="field">
-              <option>Sponsoring a boy</option><option>A donation</option><option>CSR partnership</option><option>Volunteering</option><option>Something else</option>
+              <option>A donation</option><option>Sponsoring a boy</option><option>Volunteering</option><option>CSR partnership</option><option>Something else</option>
             </select></div>
-          <div><label for="q-text" class="block mb-2 font-bold">Message*</label>
+          <div><label for="q-text" class="block mb-2 font-semibold">Message*</label>
             <textarea id="q-text" name="message" rows="4" required maxlength="2000" class="field"></textarea></div>
           <!-- Spam trap: hidden from people (and screen readers); bots fill it in. It is never sent. -->
           <div class="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true">
@@ -195,8 +213,8 @@
             <input id="q-website" name="website" type="text" tabindex="-1" autocomplete="off">
           </div>
           <p class="text-sm text-ink/75">We only use these details to reply to you. They are sent to our form provider, Formspree, which emails them to our team. See our <a href="privacy.html" class="underline">privacy policy</a>.</p>
-          <button type="submit" class="bar disabled:opacity-60 disabled:cursor-wait">Send message <span aria-hidden="true">→</span></button>
-          <p class="form-status hidden font-bold" role="status" aria-live="polite"></p>
+          <button type="submit" class="btn btn-dark self-start disabled:opacity-60 disabled:cursor-wait">Send message</button>
+          <p class="form-status hidden font-semibold" role="status" aria-live="polite"></p>
         </form>
       </div>
     </div>
@@ -206,7 +224,7 @@
 <footer class="bg-ink text-white pt-14 pb-8">
   <div class="wrap grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
     <div>
-      <img src="images/logo.png" alt="U&amp;I, be the change" width="96" height="96" class="h-24 w-24 rounded-full bg-red p-2 object-contain">
+      <img src="images/logo.png" alt="U&amp;I, be the change" width="88" height="88" class="h-[5.5rem] w-[5.5rem] rounded-full bg-red p-2 object-contain">
       <!-- Same links as https://uandi.org.in/ . They open in the same tab, so they work in every browser. -->
       <ul class="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-sm text-white/80" aria-label="U&amp;I on social media">
         <li><a href="https://www.instagram.com/uandi.org.in/" class="underline hover:text-white">Instagram</a></li>
@@ -217,7 +235,7 @@
       <p class="mt-5 text-sm text-white/75 max-w-xs">U&amp;I Trust is a volunteer-run registered charity that empowers disadvantaged children and individuals across India.</p>
     </div>
     <div>
-      <h3 class="display text-yellow text-base">What we do</h3>
+      <h3 class="font-bold text-yellow">What we do</h3>
       <ul class="mt-4 space-y-3 text-white/80">
         <li><a href="https://uandi.org.in/volunteer" class="hover:text-white hover:underline">Volunteering</a></li>
         <li><a href="https://uandi.my.canva.site/fellowship-2025" class="hover:text-white hover:underline">Fellowship</a></li>
@@ -228,13 +246,13 @@
       </ul>
     </div>
     <div>
-      <h3 class="display text-yellow text-base">Where we are</h3>
+      <h3 class="font-bold text-yellow">U&amp;I office</h3>
       <address class="mt-4 not-italic text-white/80 leading-relaxed">
         <a href="https://www.google.com/maps/search/?api=1&amp;query=8%2F1%20Gover%20Road%2C%20Cox%20Town%2C%20Bangalore%20560005" class="hover:text-white hover:underline">8/1, Gover Road,<br>Cox Town, Bangalore<br>560 005</a>
       </address>
     </div>
     <div>
-      <h3 class="display text-yellow text-base">Get in touch</h3>
+      <h3 class="font-bold text-yellow">Get in touch</h3>
       <ul class="mt-4 space-y-3 text-white/80">
         <li><span class="font-semibold text-white">M:</span> <a href="tel:+919739084991" class="hover:text-white hover:underline">+91 97390 84991</a></li>
         <li><span class="font-semibold text-white">E:</span> <a href="mailto:info@uandi.org.in" class="hover:text-white hover:underline">info@uandi.org.in</a></li>
