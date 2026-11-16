@@ -1,0 +1,14 @@
+{
+  "_help": "Site settings used by npm run build. Edit on GitHub (pencil icon), then commit: the site republishes itself.",
+
+  "siteUrl": "https://aryakuna14.github.io/cf_website_v2/",
+
+  "campaign": {
+    "_help": "December fundraiser. 'raised' is the total so far in rupees (numbers only, no commas). Update it from U&I's donation figures. While raised is 0 the site shows just the goal.",
+    "show": true,
+    "goal": 0,
+    "raised": 0,
+    "endDate": "2026-12",
+    "endLabel": "December"
+  }
+}
