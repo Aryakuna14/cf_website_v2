@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Same security policy as index.html (npm run check compares them). -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src https://formspree.io; form-action https://formspree.io; base-uri 'none'; object-src 'none'; frame-src 'none'; manifest-src 'self'; require-trusted-types-for 'script'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Volunteer with U&amp;I | U&amp;I x Maho</title>
+<meta name="description" content="Volunteer with U&amp;I: 2.5 hours a week teaching children from underserved communities. What we teach, why volunteer, and how to sign up.">
+<link rel="canonical" href="%SITE_URL%volunteer.html">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#ffda1b">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="U&amp;I x Maho">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="Volunteer with U&amp;I: be a part of the change">
+<meta property="og:description" content="2.5 hours a week teaching children from underserved communities. See what volunteering involves and how to sign up.">
+<meta property="og:url" content="%SITE_URL%volunteer.html">
+<meta property="og:image" content="%SITE_URL%images/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="U&amp;I x Maho: A steady adult, every week. A volunteer teaching boys at the shelter, faces covered.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Volunteer with U&amp;I: be a part of the change">
+<meta name="twitter:description" content="2.5 hours a week teaching children from underserved communities. See what volunteering involves and how to sign up.">
+<meta name="twitter:image" content="%SITE_URL%images/og-image.jpg">
+<link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-bg text-ink font-sans antialiased">
+
+<!-- Volunteering page. Facts (2.5 hours a week, June 2026 to March 2027, English/maths/life skills, the five steps,
+     the three reasons) are from https://uandi.org.in/volunteer, checked November 2026. Re-check them each year. -->
+<header class="fixed top-0 inset-x-0 z-50 bg-white/95 border-b border-line">
+  <div class="wrap h-[4.5rem] flex items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="images/logo.png" alt="U&amp;I logo" width="44" height="44" class="h-11 w-11 rounded-full bg-red p-1 object-contain">
+      <span class="font-extrabold text-lg">U&amp;I x Maho</span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7 text-[0.95rem] font-semibold" aria-label="Main">
+      <a href="index.html" class="hover:text-pink">Home</a>
+      <a href="#teach" class="hover:text-pink">What we teach</a>
+      <a href="#why" class="hover:text-pink">Why volunteer</a>
+      <a href="#how" class="hover:text-pink">How it works</a>
+      <a href="index.html#contact" class="hover:text-pink">Contact</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="https://uandi.org.in/volunteer" class="btn btn-outline btn-sm hidden sm:inline-flex">Sign up</a>
+      <a href="index.html#donate" class="btn btn-primary btn-sm">Donate</a>
+      <button id="menu-btn" class="lg:hidden p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.25" aria-hidden="true"><path d="M3 6h20M3 13h20M3 20h20"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav id="mobile-nav" class="hidden lg:hidden wrap pb-5 flex-col gap-4 text-lg font-semibold" aria-label="Main">
+    <a href="index.html">Home</a><a href="#teach">What we teach</a><a href="#why">Why volunteer</a><a href="#how">How it works</a><a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top" class="pt-[4.5rem]">
+
+  <!-- Hero -->
+  <section class="band bg-yellow">
+    <div class="wrap grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <div class="lg:col-span-7">
+        <p class="eyebrow">Volunteer with U&amp;I · Maho, Bengaluru</p>
+        <h1 class="display display-xl mt-5">Be a part of <span class="text-pink">the change.</span></h1>
+        <p class="lede mt-6">U&amp;I volunteers teach children from underserved communities, many of them first-generation learners. A few hours a week can make you a steady part of a child's education.</p>
+        <dl class="mt-8 grid sm:grid-cols-3 gap-6 max-w-2xl">
+          <div class="border-t-2 border-ink pt-3"><dt class="sr-only">Time</dt><dd class="heading heading-md">2.5 hours a week</dd><dd class="mt-1 text-[0.95rem]">on a day that works for you</dd></div>
+          <div class="border-t-2 border-ink pt-3"><dt class="sr-only">Volunteering year</dt><dd class="heading heading-md">June 2026 – March 2027</dd><dd class="mt-1 text-[0.95rem]">this volunteering year</dd></div>
+          <div class="border-t-2 border-ink pt-3"><dt class="sr-only">Subjects</dt><dd class="heading heading-md">English, maths or life skills</dd><dd class="mt-1 text-[0.95rem]">English at Maho</dd></div>
+        </dl>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="https://uandi.org.in/volunteer" class="btn btn-dark">Sign up on uandi.org.in</a>
+          <a href="#how" class="btn btn-outline">How it works</a>
+        </div>
+      </div>
+      <figure class="lg:col-span-5">
+        <div class="photo"><img src="images/session-2.webp" width="1000" height="750" fetchpriority="high" alt="A volunteer helping a boy with his work on the shelter steps"></div>
+        <figcaption class="caption">A volunteer at Maho. The boys' faces are covered to protect their privacy.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Who we are -->
+  <section id="who" class="band">
+    <div class="wrap grid lg:grid-cols-12 gap-8 lg:gap-12">
+      <div class="lg:col-span-5">
+        <p class="eyebrow text-red">About U&amp;I</p>
+        <h2 class="heading heading-xl mt-3">Who we are</h2>
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-lg leading-relaxed">
+        <p>U&amp;I is a volunteer-driven organisation working to make quality education accessible to children from underserved communities.</p>
+        <p>Through dedicated volunteers, U&amp;I creates learning spaces where children develop essential academic skills, build confidence and explore opportunities for a brighter future.</p>
+        <p>The focus is on meaningful connections between volunteers and children, built through consistent learning, mentorship and community engagement.</p>
+        <p>Maho is one of U&amp;I's centres: an all-boys centre in Bengaluru for about 50 boys living in residential care.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What we teach (teal, like the numbers on the home page; text stays ink on teal) -->
+  <section id="teach" class="band bg-teal">
+    <div class="wrap">
+      <div class="text-center">
+        <p class="eyebrow text-ink">What we teach</p>
+        <h2 class="display impact-title mt-3">Beyond textbooks</h2>
+        <p class="lede mt-5 mx-auto">U&amp;I's classes build strong academic foundations and the skills children need in everyday life.</p>
+      </div>
+      <div class="mt-12 lg:mt-16 grid lg:grid-cols-12 gap-14 lg:gap-12 items-center">
+        <dl class="lg:col-span-6 space-y-8">
+          <div><dt class="impact-label">English</dt><dd class="mt-2 text-lg leading-relaxed max-w-xl">Reading, writing, vocabulary, grammar and communication, so children can express themselves with confidence.</dd></div>
+          <div><dt class="impact-label">Mathematics</dt><dd class="mt-2 text-lg leading-relaxed max-w-xl">Numerical understanding, logical reasoning and problem-solving, through structured learning.</dd></div>
+          <div><dt class="impact-label">Life skills</dt><dd class="mt-2 text-lg leading-relaxed max-w-xl">Communication, critical thinking, creativity, teamwork and self-confidence, through interactive, practical activities.</dd></div>
+        </dl>
+        <figure class="offset-card bg-yellow p-8 sm:p-10 lg:col-span-5 lg:col-start-8 mr-4 lg:mr-4">
+          <p class="eyebrow">At Maho</p>
+          <p class="heading heading-lg mt-3">Volunteers teach the boys English, every week.</p>
+          <figcaption class="mt-4 text-lg leading-relaxed">The aim across U&amp;I: an inclusive learning environment where every child can learn, grow and realise their potential.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why volunteer -->
+  <section id="why" class="band">
+    <div class="wrap">
+      <p class="eyebrow text-red">Why volunteer</p>
+      <h2 class="heading heading-xl mt-3">What it gives you, and them</h2>
+      <div class="mt-12 grid md:grid-cols-3 gap-10 lg:gap-12">
+        <div>
+          <p class="step-num text-pink" aria-hidden="true">01</p>
+          <h3 class="heading heading-md mt-4">Make a difference</h3>
+          <p class="mt-3 text-lg leading-relaxed">Many children come from communities where they are first-generation learners. You can become an important part of their education.</p>
+        </div>
+        <div>
+          <p class="step-num text-pink" aria-hidden="true">02</p>
+          <h3 class="heading heading-md mt-4">Find your community</h3>
+          <p class="mt-3 text-lg leading-relaxed">Join a diverse network of like-minded people across India. Build friendships and grow together.</p>
+        </div>
+        <div>
+          <p class="step-num text-pink" aria-hidden="true">03</p>
+          <h3 class="heading heading-md mt-4">Develop real-world skills</h3>
+          <p class="mt-3 text-lg leading-relaxed">Gain practical experience, explore leadership roles and earn a recognised volunteering certification.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works (orange; text stays ink on orange) -->
+  <section id="how" class="band bg-orange">
+    <div class="wrap">
+      <p class="eyebrow text-ink">How it works</p>
+      <h2 class="heading heading-xl mt-3">From sign-up to your first class</h2>
+      <ol class="mt-12 grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
+        <li class="border-t-2 border-ink pt-4">
+          <span class="step-num" aria-hidden="true">1</span>
+          <h3 class="heading heading-md mt-3">Select your city and centre</h3>
+          <p class="mt-2 leading-relaxed">Choose a volunteering location that works for you.</p>
+        </li>
+        <li class="border-t-2 border-ink pt-4">
+          <span class="step-num" aria-hidden="true">2</span>
+          <h3 class="heading heading-md mt-3">Sign up</h3>
+          <p class="mt-2 leading-relaxed">Register your interest in joining U&amp;I.</p>
+        </li>
+        <li class="border-t-2 border-ink pt-4">
+          <span class="step-num" aria-hidden="true">3</span>
+          <h3 class="heading heading-md mt-3">Complete the application</h3>
+          <p class="mt-2 leading-relaxed">Fill in the volunteer application form.</p>
+        </li>
+        <li class="border-t-2 border-ink pt-4">
+          <span class="step-num" aria-hidden="true">4</span>
+          <h3 class="heading heading-md mt-3">Review and interview</h3>
+          <p class="mt-2 leading-relaxed">U&amp;I reviews your application and invites you to an interview.</p>
+        </li>
+        <li class="border-t-2 border-ink pt-4">
+          <span class="step-num" aria-hidden="true">5</span>
+          <h3 class="heading heading-md mt-3">Volunteering kickstart</h3>
+          <p class="mt-2 leading-relaxed">Begin your volunteering journey.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Sign up -->
+  <section id="signup" class="band bg-red text-white">
+    <div class="wrap max-w-3xl text-center">
+      <h2 class="heading heading-xl">Start your volunteering journey</h2>
+      <p class="lede mt-5 mx-auto">Sign-ups go through U&amp;I's volunteer page. Have a question about volunteering at Maho first? Write to us.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="https://uandi.org.in/volunteer" class="btn btn-primary">Sign up on uandi.org.in</a>
+        <a href="index.html#contact" class="btn btn-outline-light">Ask us a question</a>
+      </div>
+      <p class="mt-8 text-sm text-white/90">Volunteering details from <a href="https://uandi.org.in/volunteer" class="underline">uandi.org.in/volunteer</a>.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="bg-ink text-white pt-14 pb-8">
+  <div class="wrap grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div>
+      <img src="images/logo.png" alt="U&amp;I, be the change" width="88" height="88" class="h-[5.5rem] w-[5.5rem] rounded-full bg-red p-2 object-contain">
+      <!-- Same links as https://uandi.org.in/ . They open in the same tab, so they work in every browser. -->
+      <ul class="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-sm text-white/80" aria-label="U&amp;I on social media">
+        <li><a href="https://www.instagram.com/uandi.org.in/" class="underline hover:text-white">Instagram</a></li>
+        <li><a href="https://www.facebook.com/uandi.org.in/" class="underline hover:text-white">Facebook</a></li>
+        <li><a href="https://www.linkedin.com/company/u&amp;i-charity/" class="underline hover:text-white">LinkedIn</a></li>
+        <li><a href="https://www.youtube.com/channel/UCLiSn1bQSF7O2VGPIHD5E6A" class="underline hover:text-white">YouTube</a></li>
+      </ul>
+      <p class="mt-5 text-sm text-white/75 max-w-xs">U&amp;I Trust is a volunteer-run registered charity that empowers disadvantaged children and individuals across India.</p>
+    </div>
+    <div>
+      <h3 class="font-bold text-yellow">What we do</h3>
+      <ul class="mt-4 space-y-3 text-white/80">
+        <li><a href="https://uandi.org.in/volunteer" class="hover:text-white hover:underline">Volunteering</a></li>
+        <li><a href="https://uandi.my.canva.site/fellowship-2025" class="hover:text-white hover:underline">Fellowship</a></li>
+        <li><a href="https://forms.fillout.com/t/hA2LocEKo5us" class="hover:text-white hover:underline">Internship</a></li>
+        <li><a href="https://uandi.org.in/hiring" class="hover:text-white hover:underline">Work</a></li>
+        <li><a href="https://uandi.org.in/csr" class="hover:text-white hover:underline">CSR Partnership</a></li>
+        <li><a href="https://uandi.org.in/donatenow" class="hover:text-white hover:underline">Donate</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-bold text-yellow">U&amp;I office</h3>
+      <address class="mt-4 not-italic text-white/80 leading-relaxed">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=8%2F1%20Gover%20Road%2C%20Cox%20Town%2C%20Bangalore%20560005" class="hover:text-white hover:underline">8/1, Gover Road,<br>Cox Town, Bangalore<br>560 005</a>
+      </address>
+    </div>
+    <div>
+      <h3 class="font-bold text-yellow">Get in touch</h3>
+      <ul class="mt-4 space-y-3 text-white/80">
+        <li><span class="font-semibold text-white">M:</span> <a href="tel:+919663762016" class="hover:text-white hover:underline">+91 96637 62016</a></li>
+        <li><span class="font-semibold text-white">E:</span> <a href="mailto:info@uandi.org.in" class="hover:text-white hover:underline">info@uandi.org.in</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap mt-12 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
+    <p>© 2026 U&amp;I x Maho</p>
+    <a href="poster.html" class="underline hover:text-white">Printable poster</a>
+    <a href="privacy.html" class="underline hover:text-white">Privacy policy</a>
+    <a href="terms.html" class="underline hover:text-white">Terms of use</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
