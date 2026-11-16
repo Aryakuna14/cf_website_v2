@@ -55,8 +55,8 @@
   .btn-outline-light { background: transparent; color: #fff; border-color: #fff; }
   .btn-outline-light:hover { background: #fff; color: theme("colors.ink"); }
   .btn:focus-visible, .link:focus-visible { outline: 3px solid theme("colors.blue"); outline-offset: 3px; }
-  .bg-ink .btn:focus-visible, .bg-red .btn:focus-visible, .bg-blue .btn:focus-visible,
-  .bg-ink .link:focus-visible, .bg-red .link:focus-visible, .bg-blue .link:focus-visible { outline-color: theme("colors.yellow"); }
+  .bg-ink .btn:focus-visible, .bg-red .btn:focus-visible, .bg-donate .btn:focus-visible,
+  .bg-ink .link:focus-visible, .bg-red .link:focus-visible, .bg-donate .link:focus-visible { outline-color: theme("colors.yellow"); }
 
   .link { font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
@@ -95,20 +95,9 @@
   /* Rounded labels ("what we bring into every class") */
   .chip { display: inline-flex; align-items: center; border-radius: 9999px; padding: 0.7rem 1.25rem; font-weight: 700; font-size: clamp(1rem, 1.6vw, 1.15rem); }
 
-  /* Fundraiser goal card (fundraiser.html): yellow, with a solid ink block offset behind it, and an ink progress bar */
+  /* Fundraiser goal card (fundraiser.html): yellow, with a solid ink block offset behind it. Words only, no numbers. */
   .goal-card { box-shadow: 0.9rem 0.9rem 0 theme("colors.ink"); }
-  .goal-amount { font-family: theme("fontFamily.display"); font-weight: 900; font-stretch: 110%; white-space: nowrap;
-                 font-size: clamp(2.2rem, 3.6vw, 3.4rem); line-height: 1; letter-spacing: -0.02em; }
-  .goal-bar { appearance: none; -webkit-appearance: none; display: block; width: 100%; height: 0.9rem; border: 0; border-radius: 9999px; overflow: hidden; background: rgb(32 30 30 / 0.15); }
-  .goal-bar::-webkit-progress-bar { background: rgb(32 30 30 / 0.15); border-radius: 9999px; }
-  .goal-bar::-webkit-progress-value { background: theme("colors.ink"); border-radius: 9999px; }
-  .goal-bar::-moz-progress-bar { background: theme("colors.ink"); border-radius: 9999px; }
 
-  /* Campaign progress bar (a real <progress> element, so screen readers announce it) */
-  .campaign-bar { appearance: none; -webkit-appearance: none; display: block; width: 100%; height: 0.9rem; border: 0; border-radius: 9999px; overflow: hidden; background: rgb(255 255 255 / 0.3); }
-  .campaign-bar::-webkit-progress-bar { background: rgb(255 255 255 / 0.3); border-radius: 9999px; }
-  .campaign-bar::-webkit-progress-value { background: theme("colors.yellow"); border-radius: 9999px; }
-  .campaign-bar::-moz-progress-bar { background: theme("colors.yellow"); border-radius: 9999px; }
 
   /* Soft panel */
   .panel { background: #fff; border-radius: 1rem; padding: 1.75rem; }
