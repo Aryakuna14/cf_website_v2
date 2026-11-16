@@ -1,7 +1,8 @@
 // Builds the production site into dist/ (what gets deployed).
 // Usage: npm run build
 import { spawnSync } from "node:child_process";
-import { cpSync, existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -42,7 +43,19 @@ for (const file of readdirSync(root)) {
   if (file.endsWith(".html")) cpSync(join(root, file), join(dist, file));
 }
 
-// 4. Tell GitHub Pages not to run Jekyll (it would hide _headers and .well-known)
+// 4. Cache-busting: stamp each stylesheet/script link with a fingerprint of the file's contents
+//    (e.g. css/styles.css?v=1a2b3c4d5e). When a file changes, its address changes, so browsers and
+//    GitHub's caching servers can never pair a new page with an old stylesheet after an update.
+const fingerprint = (file) => createHash("sha256").update(readFileSync(join(dist, file))).digest("hex").slice(0, 10);
+const assets = ["css/styles.css", ...readdirSync(join(dist, "js")).filter((f) => f.endsWith(".js")).map((f) => `js/${f}`)];
+const versions = Object.fromEntries(assets.filter((a) => existsSync(join(dist, a))).map((a) => [a, fingerprint(a)]));
+for (const file of readdirSync(dist).filter((f) => f.endsWith(".html"))) {
+  let html = readFileSync(join(dist, file), "utf8");
+  for (const [asset, v] of Object.entries(versions)) html = html.replaceAll(`"${asset}"`, `"${asset}?v=${v}"`);
+  writeFileSync(join(dist, file), html);
+}
+
+// 5. Tell GitHub Pages not to run Jekyll (it would hide _headers and .well-known)
 writeFileSync(join(dist, ".nojekyll"), "");
 
 console.log("Built site in dist/");

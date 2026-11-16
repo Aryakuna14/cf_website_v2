@@ -126,6 +126,11 @@ for (const file of files) {
       const handlers = Object.keys(attr).filter((a) => /^on[a-z]+$/.test(a));
       if (handlers.length) errors.push(`${rel(file)}: <${t} ${handlers.join(" ")}="..."> is inline JavaScript, which the security policy blocks. Move it into a file in js/.`);
       if ("style" in attr) errors.push(`${rel(file)}: <${t} style="..."> is an inline style, which the security policy blocks. Use a class instead.`);
+      // Cache-busting: stylesheet and script links must carry the build's ?v= fingerprint
+      const asset = (t === "link" && (attr.rel || "").toLowerCase() === "stylesheet" && attr.href) || (t === "script" && attr.src);
+      if (asset && !/^https?:/i.test(asset) && !/\?v=[0-9a-f]{10}$/.test(asset)) {
+        errors.push(`${rel(file)}: "${asset}" has no ?v= fingerprint, so visitors could get an old cached copy after an update. Build with npm run build.`);
+      }
     }
     if (rel(file) !== "index.html") {
       const csp = metaCsp(html);
