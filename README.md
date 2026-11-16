@@ -58,6 +58,7 @@ When the link is shared, apps show `images/og-image.jpg` (1200×630) with the ti
 | `images/` | Photos, logo and link preview image | Ahna |
 | `site.config.json` | Site address and fundraising numbers | Anyone (see above) |
 | `poster.html` | Printable A4 poster with QR code | Ahna |
+| `volunteer.html` | Volunteering page. Its facts (hours, dates, subjects, steps) come from uandi.org.in/volunteer: re-check them every volunteering year | Ahna |
 | `favicon.png`, `apple-touch-icon.png` | Browser tab and home-screen icons | Ahna |
 | `index.html` `<head>`, `js/` | Security tags, form and payment code | Arya |
 | `tailwind.config.js` | Colours and font (the design system) | Arya, changes agreed with Ahna |

@@ -67,6 +67,9 @@
                 text-shadow: 0.05em 0.05em 0 theme("colors.ink"); }
   .impact-label { margin-top: 0.4rem; font-family: theme("fontFamily.display"); font-weight: 800; font-stretch: 125%;
                   text-transform: uppercase; font-size: clamp(1.05rem, 2.1vw, 1.75rem); line-height: 1.1; }
+  /* Big wide numbers for steps and lists (volunteer.html). Colour comes from a text-* class. */
+  .step-num { display: block; font-family: theme("fontFamily.display"); font-weight: 900; font-stretch: 125%;
+              font-size: clamp(2.5rem, 4.5vw, 3.75rem); line-height: 1; letter-spacing: -0.01em; }
   /* U&I's card look: a solid colour block offset behind the card (no blur, so not a soft shadow) */
   .offset-card { box-shadow: 0.9rem 0.9rem 0 theme("colors.pink"); }
   /* Photos: softly rounded, no frames or tilts */
