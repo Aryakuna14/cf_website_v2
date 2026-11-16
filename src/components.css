@@ -29,6 +29,7 @@
   /* The one loud moment: U&I-style wide capitals for the hero headline only */
   .display { font-family: theme("fontFamily.display"); font-weight: 900; font-stretch: 125%; text-transform: uppercase; line-height: 0.95; letter-spacing: -0.01em; }
   .display-xl { font-size: clamp(2.1rem, 5.6vw, 4.75rem); }
+  .display-lg { font-size: clamp(1.9rem, 4.2vw, 3.6rem); } /* longer hero lines (fundraiser.html) */
 
   /* Section headings: same font family, normal width, sentence case */
   .heading { font-family: theme("fontFamily.display"); font-weight: 800; font-stretch: 100%; line-height: 1.1; letter-spacing: -0.015em; }
@@ -93,6 +94,15 @@
 
   /* Rounded labels ("what we bring into every class") */
   .chip { display: inline-flex; align-items: center; border-radius: 9999px; padding: 0.7rem 1.25rem; font-weight: 700; font-size: clamp(1rem, 1.6vw, 1.15rem); }
+
+  /* Fundraiser goal card (fundraiser.html): yellow, with a solid ink block offset behind it, and an ink progress bar */
+  .goal-card { box-shadow: 0.9rem 0.9rem 0 theme("colors.ink"); }
+  .goal-amount { font-family: theme("fontFamily.display"); font-weight: 900; font-stretch: 110%; white-space: nowrap;
+                 font-size: clamp(2.2rem, 3.6vw, 3.4rem); line-height: 1; letter-spacing: -0.02em; }
+  .goal-bar { appearance: none; -webkit-appearance: none; display: block; width: 100%; height: 0.9rem; border: 0; border-radius: 9999px; overflow: hidden; background: rgb(32 30 30 / 0.15); }
+  .goal-bar::-webkit-progress-bar { background: rgb(32 30 30 / 0.15); border-radius: 9999px; }
+  .goal-bar::-webkit-progress-value { background: theme("colors.ink"); border-radius: 9999px; }
+  .goal-bar::-moz-progress-bar { background: theme("colors.ink"); border-radius: 9999px; }
 
   /* Campaign progress bar (a real <progress> element, so screen readers announce it) */
   .campaign-bar { appearance: none; -webkit-appearance: none; display: block; width: 100%; height: 0.9rem; border: 0; border-radius: 9999px; overflow: hidden; background: rgb(255 255 255 / 0.3); }

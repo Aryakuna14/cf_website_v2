@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Same security policy as index.html (npm run check compares them). -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src https://formspree.io; form-action https://formspree.io; base-uri 'none'; object-src 'none'; frame-src 'none'; manifest-src 'self'; require-trusted-types-for 'script'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>December fundraiser | U&amp;I x Maho</title>
+<meta name="description" content="#InThisTogether: U&amp;I's December crowdfunding for its children across India and at centres like Maho. See our goal and how to give.">
+<link rel="canonical" href="%SITE_URL%fundraiser.html">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#ffda1b">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="U&amp;I x Maho">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="#InThisTogether: fund their dreams, change their future">
+<meta property="og:description" content="U&amp;I's December crowdfunding for its children across India and at centres like Maho. See our goal and how to give.">
+<meta property="og:url" content="%SITE_URL%fundraiser.html">
+<meta property="og:image" content="%SITE_URL%images/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="U&amp;I x Maho: A steady adult, every week. A volunteer teaching boys at the shelter, faces covered.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="#InThisTogether: fund their dreams, change their future">
+<meta name="twitter:description" content="U&amp;I's December crowdfunding for its children across India and at centres like Maho. See our goal and how to give.">
+<meta name="twitter:image" content="%SITE_URL%images/og-image.jpg">
+<link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-bg text-ink font-sans antialiased">
+
+<!-- December fundraiser page. Facts: U&I's crowdfunding deck (6,000 students, 5,000 volunteers, 6 weeks; 29,000 supporters
+     last year; what is behind every class) and the Maho team (where the money goes). The goal and progress come from
+     site.config.json ("campaign"). No new numbers or claims without U&I confirming them. -->
+<header class="fixed top-0 inset-x-0 z-50 bg-white/95 border-b border-line">
+  <div class="wrap h-[4.5rem] flex items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="images/logo.png" alt="U&amp;I logo" width="44" height="44" class="h-11 w-11 rounded-full bg-red p-1 object-contain">
+      <span class="font-extrabold text-lg">U&amp;I x Maho</span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7 text-[0.95rem] font-semibold" aria-label="Main">
+      <a href="index.html" class="hover:text-pink">Home</a>
+      <a href="#campaign" class="hover:text-pink">The campaign</a>
+      <a href="#money" class="hover:text-pink">Where the money goes</a>
+      <a href="#help" class="hover:text-pink">How to help</a>
+      <a href="index.html#contact" class="hover:text-pink">Contact</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="volunteer.html" class="btn btn-outline btn-sm hidden sm:inline-flex">Volunteer</a>
+      <a href="https://uandi.org.in/donatenow" class="btn btn-primary btn-sm">Donate</a>
+      <button id="menu-btn" class="lg:hidden p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.25" aria-hidden="true"><path d="M3 6h20M3 13h20M3 20h20"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav id="mobile-nav" class="hidden lg:hidden wrap pb-5 flex-col gap-4 text-lg font-semibold" aria-label="Main">
+    <a href="index.html">Home</a><a href="#campaign">The campaign</a><a href="#money">Where the money goes</a><a href="#help">How to help</a><a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top" class="pt-[4.5rem]">
+
+  <!-- Hero with the goal -->
+  <section class="band bg-red text-white">
+    <div class="wrap grid lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-7">
+        <p class="eyebrow">#InThisTogether · December</p>
+        <h1 class="display display-lg mt-5">Fund their dreams. <span class="text-yellow">Change their future.</span></h1>
+        <p class="lede mt-6 text-white/95">Every December, U&amp;I comes together for its biggest crowdfunding moment of the year. What we raise goes to U&amp;I's work across India and to its centres, like Maho: to the children, their learning and their wellbeing.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="https://uandi.org.in/donatenow" class="btn btn-primary">Donate on uandi.org.in</a>
+          <a href="#help" class="btn btn-outline-light">Other ways to help</a>
+        </div>
+        <p class="mt-4 text-sm text-white/90">Any amount. Payment happens on U&amp;I Trust's own donation page, not on this website.</p>
+      </div>
+      <!-- Goal: numbers from site.config.json. "raised" = total so far in rupees; while it is 0 only the goal shows. -->
+      <!-- campaign:start -->
+      <div class="goal-card bg-yellow text-ink p-8 sm:p-10 lg:col-span-5 mr-4">
+        <p class="eyebrow">Maho's December goal</p>
+        <p class="goal-amount mt-4">%CAMPAIGN_GOAL%</p>
+        <p class="mt-2 text-lg">by %CAMPAIGN_END%</p>
+        <!-- raised:start -->
+        <progress class="goal-bar mt-6" max="100" value="%CAMPAIGN_PERCENT%" aria-label="Raised so far: %CAMPAIGN_PERCENT% percent of the goal">%CAMPAIGN_PERCENT%%</progress>
+        <p class="mt-3 text-lg"><span class="font-extrabold">%CAMPAIGN_RAISED%</span> raised so far</p>
+        <!-- raised:end -->
+        <!-- goalonly:start -->
+        <p class="mt-6 text-lg">For the boys at Maho and for U&amp;I's children across India.</p>
+        <!-- goalonly:end -->
+        <a href="https://uandi.org.in/donatenow" class="btn btn-dark w-full mt-6">Donate now</a>
+      </div>
+      <!-- campaign:end -->
+    </div>
+  </section>
+
+  <!-- The campaign (teal, like the numbers on the home page) -->
+  <section id="campaign" class="band bg-teal">
+    <div class="wrap">
+      <div class="text-center">
+        <p class="eyebrow text-ink">The campaign</p>
+        <h2 class="display impact-title mt-3">Our biggest #InThisTogether moment</h2>
+      </div>
+      <div class="mt-12 lg:mt-16 grid lg:grid-cols-12 gap-14 lg:gap-12 items-center">
+        <dl class="lg:col-span-6 space-y-8 lg:space-y-10">
+          <div><dt class="sr-only">Students</dt><dd class="impact-num">6,000</dd><dd class="impact-label" aria-hidden="true">Students</dd></div>
+          <div><dt class="sr-only">Volunteers</dt><dd class="impact-num">5,000</dd><dd class="impact-label" aria-hidden="true">Volunteers</dd></div>
+          <div><dt class="sr-only">Weeks</dt><dd class="impact-num">6</dd><dd class="impact-label" aria-hidden="true">Weeks</dd></div>
+        </dl>
+        <figure class="offset-card bg-yellow p-8 sm:p-10 lg:col-span-5 lg:col-start-8 mr-4 lg:mr-4">
+          <p class="eyebrow">Last year</p>
+          <p class="heading heading-lg mt-3">29,000 supporters built the village for U&amp;I's students.</p>
+          <figcaption class="mt-4 text-lg leading-relaxed">This year, Maho is part of it too.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Where the money goes -->
+  <section id="money" class="band">
+    <div class="wrap">
+      <p class="eyebrow text-red">Where the money goes</p>
+      <h2 class="heading heading-xl mt-3">For the children, across U&amp;I and at Maho</h2>
+      <div class="mt-10 grid md:grid-cols-2 gap-10 lg:gap-12">
+        <div class="border-t-2 border-ink pt-5">
+          <h3 class="heading heading-md">Across U&amp;I</h3>
+          <p class="mt-3 text-lg leading-relaxed">Money raised in December supports U&amp;I's work with children from underserved communities across India.</p>
+        </div>
+        <div class="border-t-2 border-ink pt-5">
+          <h3 class="heading heading-md">At centres like Maho</h3>
+          <p class="mt-3 text-lg leading-relaxed">It also goes to U&amp;I's centres, like Maho, home to about 50 boys in residential care, for the children's learning and wellbeing.</p>
+        </div>
+      </div>
+      <h3 class="heading heading-md mt-14">Behind every class</h3>
+      <ul class="mt-5 flex flex-wrap gap-3">
+        <li class="chip bg-yellow">Curriculum for every class</li>
+        <li class="chip bg-pink">Textbooks and workbooks</li>
+        <li class="chip bg-red text-white">Life-skills workshops</li>
+        <li class="chip bg-teal">Centre celebrations</li>
+      </ul>
+      <p class="lede mt-6">Across U&amp;I that takes 5,348 volunteer teachers and leaders, and 19,500 hours of volunteer training.</p>
+    </div>
+  </section>
+
+  <!-- How to help (orange; text stays ink on orange) -->
+  <section id="help" class="band bg-orange">
+    <div class="wrap">
+      <p class="eyebrow text-ink">How to help</p>
+      <h2 class="heading heading-xl mt-3">Three ways to be part of it</h2>
+      <ol class="mt-12 grid md:grid-cols-3 gap-8">
+        <li class="border-t-2 border-ink pt-4">
+          <span class="step-num" aria-hidden="true">1</span>
+          <h3 class="heading heading-md mt-3">Give any amount</h3>
+          <p class="mt-2 leading-relaxed">Donate on U&amp;I Trust's own donation page. Every amount counts.</p>
+          <a href="https://uandi.org.in/donatenow" class="link mt-3 inline-block">Donate on uandi.org.in</a>
+        </li>
+        <li class="border-t-2 border-ink pt-4">
+          <span class="step-num" aria-hidden="true">2</span>
+          <h3 class="heading heading-md mt-3">Give monthly, or as a company</h3>
+          <p class="mt-2 leading-relaxed">Write to us about a monthly gift, a CSR partnership, or funding Maho specifically.</p>
+          <a href="index.html#contact" class="link mt-3 inline-block">Write to us</a>
+        </li>
+        <li class="border-t-2 border-ink pt-4">
+          <span class="step-num" aria-hidden="true">3</span>
+          <h3 class="heading heading-md mt-3">Spread the word</h3>
+          <p class="mt-2 leading-relaxed">Share this page with friends and family, or print our poster for your office, college or building.</p>
+          <a href="poster.html" class="link mt-3 inline-block">Print the poster</a>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Final call -->
+  <section class="band bg-yellow">
+    <div class="wrap max-w-3xl text-center">
+      <h2 class="display impact-title">Be part of <span class="text-pink">#InThisTogether</span></h2>
+      <p class="lede mt-5 mx-auto">Give, share, or join the volunteers who teach at Maho every week.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="https://uandi.org.in/donatenow" class="btn btn-dark">Donate on uandi.org.in</a>
+        <a href="volunteer.html" class="btn btn-outline">Volunteer with us</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="bg-ink text-white pt-14 pb-8">
+  <div class="wrap grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div>
+      <img src="images/logo.png" alt="U&amp;I, be the change" width="88" height="88" class="h-[5.5rem] w-[5.5rem] rounded-full bg-red p-2 object-contain">
+      <!-- Same links as https://uandi.org.in/ . They open in the same tab, so they work in every browser. -->
+      <ul class="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-sm text-white/80" aria-label="U&amp;I on social media">
+        <li><a href="https://www.instagram.com/uandi.org.in/" class="underline hover:text-white">Instagram</a></li>
+        <li><a href="https://www.facebook.com/uandi.org.in/" class="underline hover:text-white">Facebook</a></li>
+        <li><a href="https://www.linkedin.com/company/u&amp;i-charity/" class="underline hover:text-white">LinkedIn</a></li>
+        <li><a href="https://www.youtube.com/channel/UCLiSn1bQSF7O2VGPIHD5E6A" class="underline hover:text-white">YouTube</a></li>
+      </ul>
+      <p class="mt-5 text-sm text-white/75 max-w-xs">U&amp;I Trust is a volunteer-run registered charity that empowers disadvantaged children and individuals across India.</p>
+    </div>
+    <div>
+      <h3 class="font-bold text-yellow">What we do</h3>
+      <ul class="mt-4 space-y-3 text-white/80">
+        <li><a href="https://uandi.org.in/volunteer" class="hover:text-white hover:underline">Volunteering</a></li>
+        <li><a href="https://uandi.my.canva.site/fellowship-2025" class="hover:text-white hover:underline">Fellowship</a></li>
+        <li><a href="https://forms.fillout.com/t/hA2LocEKo5us" class="hover:text-white hover:underline">Internship</a></li>
+        <li><a href="https://uandi.org.in/hiring" class="hover:text-white hover:underline">Work</a></li>
+        <li><a href="https://uandi.org.in/csr" class="hover:text-white hover:underline">CSR Partnership</a></li>
+        <li><a href="https://uandi.org.in/donatenow" class="hover:text-white hover:underline">Donate</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-bold text-yellow">U&amp;I office</h3>
+      <address class="mt-4 not-italic text-white/80 leading-relaxed">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=8%2F1%20Gover%20Road%2C%20Cox%20Town%2C%20Bangalore%20560005" class="hover:text-white hover:underline">8/1, Gover Road,<br>Cox Town, Bangalore<br>560 005</a>
+      </address>
+    </div>
+    <div>
+      <h3 class="font-bold text-yellow">Get in touch</h3>
+      <ul class="mt-4 space-y-3 text-white/80">
+        <li><span class="font-semibold text-white">M:</span> <a href="tel:+919663762016" class="hover:text-white hover:underline">+91 96637 62016</a></li>
+        <li><span class="font-semibold text-white">E:</span> <a href="mailto:info@uandi.org.in" class="hover:text-white hover:underline">info@uandi.org.in</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap mt-12 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
+    <p>© 2026 U&amp;I x Maho</p>
+    <a href="poster.html" class="underline hover:text-white">Printable poster</a>
+    <a href="privacy.html" class="underline hover:text-white">Privacy policy</a>
+    <a href="terms.html" class="underline hover:text-white">Terms of use</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
