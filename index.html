@@ -10,7 +10,7 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>U&amp;I x Maho</title>
-<meta name="description" content="Maho is a U&amp;I centre in Bengaluru where volunteers spend time every week with boys growing up in residential care.">
+<meta name="description" content="Maho is an all-boys U&amp;I centre in Bengaluru where volunteers teach English every week to about 50 boys growing up in residential care.">
 <link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/styles.css">
@@ -25,9 +25,10 @@
     </a>
     <nav class="hidden lg:flex items-center gap-7 text-sm font-bold uppercase tracking-wide" aria-label="Main">
       <a href="#about" class="hover:underline">About</a>
-      <a href="#sponsor" class="hover:underline">Sponsor</a>
-      <a href="#sessions" class="hover:underline">Sessions</a>
+      <a href="#numbers" class="hover:underline">Impact</a>
       <a href="#programs" class="hover:underline">What we do</a>
+      <a href="#sessions" class="hover:underline">Sessions</a>
+      <a href="#sponsor" class="hover:underline">Sponsor</a>
       <a href="#contact" class="hover:underline">Contact</a>
     </nav>
     <div class="flex items-center gap-2">
@@ -38,7 +39,7 @@
     </div>
   </div>
   <nav id="mobile-nav" class="hidden lg:hidden wrap pb-5 flex-col gap-4 text-base font-bold uppercase" aria-label="Main">
-    <a href="#about">About</a><a href="#sponsor">Sponsor</a><a href="#sessions">Sessions</a><a href="#programs">What we do</a><a href="#contact">Contact</a>
+    <a href="#about">About</a><a href="#numbers">Impact</a><a href="#programs">What we do</a><a href="#sessions">Sessions</a><a href="#sponsor">Sponsor</a><a href="#contact">Contact</a>
   </nav>
 </header>
 
@@ -50,7 +51,7 @@
       <div class="lg:col-span-7">
         <span class="sticker sticker-red">U&amp;I · volunteer-run</span>
         <h1 class="display display-xl mt-6">A steady adult, <span class="text-blue">every week.</span></h1>
-        <p class="lede mt-8">Maho is a U&amp;I centre in Bengaluru. Volunteers spend three hours every week with boys growing up in residential care: schoolwork, mentoring, and someone who keeps showing up.</p>
+        <p class="lede mt-8">Maho is an all-boys U&amp;I centre in Bengaluru, home to about 50 boys growing up in residential care. Every week, U&amp;I volunteers teach them English and are role models and mentors they can count on.</p>
         <div class="mt-10 flex flex-col sm:flex-row sm:items-center gap-5">
           <a href="#sponsor" class="bar sm:min-w-[18rem]">Sponsor a boy <span aria-hidden="true">→</span></a>
           <a href="#about" class="link">What is Maho?</a>
@@ -60,7 +61,7 @@
         <figure class="frame tilt-r">
           <img src="images/hero.webp" width="1000" height="750" fetchpriority="high" alt="A volunteer mentor working through a workbook with boys at the shelter home" class="block w-full h-auto bg-line">
         </figure>
-        <span class="sticker absolute -top-4 left-2 lg:-left-5">Three hours a week</span>
+        <span class="sticker absolute -top-4 left-2 lg:-left-5">About 50 boys</span>
       </div>
     </div>
   </section>
@@ -70,28 +71,43 @@
     <div class="wrap">
       <h2 class="display display-lg">What is Maho?</h2>
       <div class="mt-10 grid md:grid-cols-2 gap-8 lg:gap-16 text-lg leading-relaxed">
-        <p>U&amp;I is a volunteer-driven NGO working with children from underserved communities. Volunteers provide after-school learning support, life skills training and career guidance.</p>
-        <p>Maho is a U&amp;I centre for boys living in residential care in Bengaluru. Volunteers spend three hours with them every week on schoolwork, mentoring and activities.</p>
+        <p>U&amp;I is a volunteer-run registered charity working with children from underserved communities across India.</p>
+        <p>Maho is an all-boys U&amp;I centre in Bengaluru for about 50 boys living in residential care. U&amp;I volunteers teach them English every week.</p>
       </div>
     </div>
   </section>
 
-  <!-- Sponsor: white block, heading left, two big action bars right -->
-  <section id="sponsor" class="band bg-white">
-    <div class="wrap grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-      <div>
-        <h2 class="display display-lg">Sponsor<br>a boy</h2>
-        <p class="lede mt-6">Maho runs on volunteers and donations. Pick whichever suits you.</p>
-      </div>
-      <!-- TODO (Arya): confirm with U&I how donations can be marked for Maho, and link a Maho-specific page if there is one. -->
-      <div class="flex flex-col gap-8">
-        <div>
-          <a href="https://uandi.org.in/donatenow" class="bar">Donate online at uandi.org.in <span aria-hidden="true">→</span></a>
-          <p class="mt-3 text-ink/80">Any amount. Payment happens on U&amp;I Trust's own donation page, not on this website.</p>
-        </div>
-        <div>
-          <a href="#contact" data-plan="Sponsoring a boy" class="bar bar-light">Sponsor every month, or as a company <span aria-hidden="true">→</span></a>
-          <p class="mt-3 text-ink/80">For a monthly gift, a CSR partnership, or funding Maho specifically, write to us and we will set it up with you.</p>
+  <!-- U&I in numbers (source: U&I's 2025 crowdfunding deck). These are U&I-wide, not Maho's. -->
+  <section id="numbers" class="band bg-white">
+    <div class="wrap">
+      <span class="sticker sticker-blue">U&amp;I in 2025</span>
+      <h2 class="display display-lg mt-6">Every week, U&amp;I taught</h2>
+      <dl class="mt-12 grid sm:grid-cols-2 border-t-[3px] border-ink">
+        <div class="py-8 sm:pr-8 border-b-[3px] border-ink sm:border-r-[3px]"><dt class="sr-only">Students</dt><dd class="display stat text-blue">4,542</dd><dd class="mt-3 font-bold uppercase tracking-wide">students</dd></div>
+        <div class="py-8 sm:pl-8 border-b-[3px] border-ink"><dt class="sr-only">Learning centres</dt><dd class="display stat text-blue">153</dd><dd class="mt-3 font-bold uppercase tracking-wide">learning centres</dd></div>
+        <div class="py-8 sm:pr-8 border-b-[3px] border-ink sm:border-r-[3px]"><dt class="sr-only">Cities</dt><dd class="display stat text-blue">38</dd><dd class="mt-3 font-bold uppercase tracking-wide">cities</dd></div>
+        <div class="py-8 sm:pl-8 border-b-[3px] border-ink"><dt class="sr-only">Teaching hours in 2025</dt><dd class="display stat text-blue">1,70,213</dd><dd class="mt-3 font-bold uppercase tracking-wide">teaching hours in the year</dd></div>
+      </dl>
+      <p class="display display-md mt-12 max-w-3xl">“They are not an exception, they’re our template.”</p>
+      <p class="mt-3 text-ink/80">Every student story U&amp;I shares is not a one-kid wonder. They all make it.</p>
+    </div>
+  </section>
+
+  <!-- What we bring: off-white block, big coloured labels (source: U&I's crowdfunding deck) -->
+  <section id="programs" class="band bg-bg">
+    <div class="wrap">
+      <h2 class="display display-lg">What we bring into every class</h2>
+      <ul class="mt-12 flex flex-wrap gap-4 sm:gap-5">
+        <li class="tag display display-md bg-yellow">Role models &amp; mentors</li>
+        <li class="tag display display-md bg-blue text-white">Personalised teaching</li>
+        <li class="tag display display-md bg-red text-white">Learning materials</li>
+        <li class="tag display display-md bg-white">Creativity &amp; play</li>
+      </ul>
+      <div class="mt-14 grid lg:grid-cols-12 gap-8 border-t-[3px] border-ink pt-10">
+        <h3 class="lg:col-span-4 display display-md">Behind every class</h3>
+        <div class="lg:col-span-8 text-lg leading-relaxed">
+          <p>A curriculum for the class, textbooks and workbooks, life-skills workshops and centre celebrations.</p>
+          <p class="mt-4">Across U&amp;I that takes 5,348 volunteer teachers and leaders, and 19,500 hours of volunteer training a year.</p>
         </div>
       </div>
     </div>
@@ -125,25 +141,25 @@
     </div>
   </section>
 
-  <!-- What volunteers do: off-white block, big coloured labels -->
-  <section id="programs" class="band bg-bg">
-    <div class="wrap">
-      <h2 class="display display-lg">What volunteers do</h2>
-      <!-- TODO (Ahna): confirm these details with the Maho team. -->
-      <ul class="mt-12 border-t-[3px] border-ink">
-        <li class="py-8 border-b-[3px] border-ink grid lg:grid-cols-12 gap-4 lg:gap-10 items-center">
-          <span class="lg:col-span-5"><span class="tag display display-md bg-yellow">Schoolwork</span></span>
-          <p class="lg:col-span-7 text-lg">Reading, writing and maths, with a study plan for each boy.</p>
-        </li>
-        <li class="py-8 border-b-[3px] border-ink grid lg:grid-cols-12 gap-4 lg:gap-10 items-center">
-          <span class="lg:col-span-5"><span class="tag display display-md bg-blue text-white">Confidence</span></span>
-          <p class="lg:col-span-7 text-lg">Small-group sessions where boys learn to talk about how they feel and look out for each other.</p>
-        </li>
-        <li class="py-8 border-b-[3px] border-ink grid lg:grid-cols-12 gap-4 lg:gap-10 items-center">
-          <span class="lg:col-span-5"><span class="tag display display-md bg-red text-white">Life skills</span></span>
-          <p class="lg:col-span-7 text-lg">Spoken English, managing money and career guidance for older boys preparing to leave the shelter.</p>
-        </li>
-      </ul>
+  <!-- Sponsor: black block, the #InThisTogether campaign (source: U&I's crowdfunding deck) -->
+  <section id="sponsor" class="band bg-ink text-white">
+    <div class="wrap grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+      <div>
+        <span class="sticker">#InThisTogether</span>
+        <h2 class="display display-lg mt-6 text-yellow">Fund their dreams. Change their future.</h2>
+        <p class="lede mt-6 text-white/90">Maho is part of #InThisTogether, U&amp;I's biggest crowdfunding moment of the year: 6,000 students, 5,000 volunteers, 6 weeks. Last year, 29,000 supporters built the village for U&amp;I's students.</p>
+      </div>
+      <!-- TODO (Arya): confirm with U&I how donations can be marked for Maho, and link a Maho-specific page if there is one. -->
+      <div class="flex flex-col gap-8 lg:pt-16">
+        <div>
+          <a href="https://uandi.org.in/donatenow" class="bar bar-yellow">Donate online at uandi.org.in <span aria-hidden="true">→</span></a>
+          <p class="mt-3 text-white/80">Any amount. Payment happens on U&amp;I Trust's own donation page, not on this website.</p>
+        </div>
+        <div>
+          <a href="#contact" data-plan="Sponsoring a boy" class="bar bar-light">Sponsor every month, or as a company <span aria-hidden="true">→</span></a>
+          <p class="mt-3 text-white/80">For a monthly gift, a CSR partnership, or funding Maho specifically, write to us and we will set it up with you.</p>
+        </div>
+      </div>
     </div>
   </section>
 

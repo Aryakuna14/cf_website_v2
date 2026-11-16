@@ -33,9 +33,15 @@
          background: theme("colors.ink"); color: #fff; border: 3px solid theme("colors.ink"); }
   .bar:hover { background: theme("colors.red"); }
   .bar-light { background: #fff; color: theme("colors.ink"); }
-  .bar-light:hover { background: theme("colors.ink"); color: #fff; }
+  .bar-light:hover { background: theme("colors.red"); color: #fff; }
+  .bar-yellow { background: theme("colors.yellow"); color: theme("colors.ink"); }
+  .bar-yellow:hover { background: #fff; color: theme("colors.ink"); }
   .bar-sm { display: inline-flex; padding: 0.7rem 1rem; font-size: 0.85rem; gap: 0.6rem; border-width: 2px; }
   .bar:focus-visible, .link:focus-visible { outline: 3px solid theme("colors.blue"); outline-offset: 3px; }
+  .bg-ink .bar:focus-visible, .bg-ink .link:focus-visible, .bg-blue .link:focus-visible { outline-color: theme("colors.yellow"); }
+
+  /* Big numbers, like U&I's "65,000 BENEFICIARIES" (normal width so long numbers fit) */
+  .stat { font-stretch: 100%; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: 0.9; }
 
   .link { font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
