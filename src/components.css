@@ -1,7 +1,8 @@
 /* Shared building blocks. Owner: Ahna.
-   Style: U&I's colours, calm and warm. The wide capital headline is used once (the hero); everything else is
-   sentence case. Rounded pill buttons like uandi.org.in, softly rounded photos, plenty of space.
-   No shadows, no gradients, no animations. Colours come from tailwind.config.js. */
+   Style: U&I's colours, calm and warm. Wide capitals are used for the hero headline and the "U&I in 2025"
+   numbers (copied from uandi.org.in); everything else is sentence case. Rounded pill buttons like
+   uandi.org.in, softly rounded photos, plenty of space. No soft shadows (only U&I's solid offset colour
+   block on the numbers card), no gradients, no animations. Colours come from tailwind.config.js. */
 /* Printing (used by poster.html): A4, no browser margins, hide on-screen-only bits */
 @page { size: A4; margin: 0; }
 @media print {
@@ -58,9 +59,14 @@
 
   .link { font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
-  /* Big numbers (normal width so long numbers fit) */
-  .stat { font-family: theme("fontFamily.display"); font-weight: 800; font-stretch: 100%; font-size: clamp(2.4rem, 5.5vw, 4.25rem); line-height: 1; letter-spacing: -0.02em; }
-
+  /* "U&I in 2025" numbers, styled like uandi.org.in: blue wide figures with wide capital labels underneath */
+  .impact-title { font-size: clamp(1.75rem, 4.4vw, 3.75rem); }
+  .impact-num { font-family: theme("fontFamily.display"); font-weight: 900; font-stretch: 125%; color: theme("colors.blue");
+                font-size: clamp(3rem, 6.2vw, 5.5rem); line-height: 1; letter-spacing: -0.01em; }
+  .impact-label { margin-top: 0.4rem; font-family: theme("fontFamily.display"); font-weight: 800; font-stretch: 125%;
+                  text-transform: uppercase; font-size: clamp(1.05rem, 2.1vw, 1.75rem); line-height: 1.1; }
+  /* U&I's card look: a solid colour block offset behind the card (no blur, so not a soft shadow) */
+  .offset-card { box-shadow: 0.9rem 0.9rem 0 theme("colors.blue"); }
   /* Photos: softly rounded, no frames or tilts */
   .photo { border-radius: 0.9rem; overflow: hidden; background: theme("colors.line"); }
   .photo img { display: block; width: 100%; height: auto; }

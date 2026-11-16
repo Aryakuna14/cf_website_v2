@@ -78,4 +78,4 @@ Put files in `images/` with these names, or change the `src` in `index.html`:
 - Only use photos of boys with consent from the shelter. Keep every child's face covered or cropped out.
 - The "What we do" details and the privacy policy and terms are drafts: get them confirmed by the Maho team and U&I Trust.
 - The contact form needs its Formspree ID before it can send messages. Donations go to U&I's own donation page.
-- Design rules: U&I's colours only, pill buttons and softly rounded photos, wide capitals only for the hero headline. No shadows, gradients, animations, emojis or icon sets, no rows of identical cards.
+- Design rules: U&I's colours only, pill buttons and softly rounded photos. Wide capitals only for the hero headline and the "U&I in 2025" numbers, which copy uandi.org.in's style (blue wide numbers, a card with a solid colour block offset behind it). No soft shadows, gradients, animations, emojis or icon sets, no rows of identical cards.
