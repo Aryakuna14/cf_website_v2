@@ -16,13 +16,16 @@ module.exports = {
         pink: "#e843a1",      // U&I pink (uandi.my.canva.site/fellowship-2025): accent text, numbers, boxes
         orange: "#ff914d",    // U&I orange (same fellowship page): section background, ink text on top
         red: "#cb0100",       // U&I red: logo, small labels, chips (white text on top)
-        donate: "#b8001f",    // deeper red for the big Donate sections (white text on top, 6.9:1)
+        crimson: "#e5024a",   // U&I volunteer-page crimson (uandi.org.in/volunteer): home hero, Donate sections.
+                              // On it: white text (4.7:1), black only at 24px+ (4.4:1), sun-yellow only at 24px+ (3.9:1)
+        sun: "#f9ed32",       // U&I volunteer-page yellow: big headline words and pill buttons on crimson (black text on top)
         yellow: "#ffda1b",    // U&I yellow: main buttons (ink text on top)
         teal: "#0cc0df",      // U&I teal (uandi.org.in/volunteer): section background, ink text on top
       },
       fontFamily: {
         sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
         display: ["Archivo", "Arial Black", "Impact", "sans-serif"],
+        hand: ["Londrina Solid", "Archivo", "Impact", "sans-serif"], // U&I volunteer-page style capitals
       },
     },
   },

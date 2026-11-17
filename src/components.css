@@ -54,9 +54,25 @@
   .btn-outline:hover { background: theme("colors.ink"); color: #fff; }
   .btn-outline-light { background: transparent; color: #fff; border-color: #fff; }
   .btn-outline-light:hover { background: #fff; color: theme("colors.ink"); }
+  /* U&I volunteer-page pills (uandi.org.in/volunteer): bold Arial capitals, sun-yellow with black text or black with white */
+  .btn-sun { background: theme("colors.sun"); color: #000; border-color: theme("colors.sun");
+             font-family: Arial, Helvetica, sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; }
+  .btn-sun:hover { background: #000; border-color: #000; color: theme("colors.sun"); }
+  .btn-black { background: #000; color: #fff; border-color: #000;
+               font-family: Arial, Helvetica, sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; }
+  .btn-black:hover { background: theme("colors.sun"); border-color: theme("colors.sun"); color: #000; }
+  /* Every button in a crimson section uses U&I's button lettering, outline buttons included */
+  .bg-crimson .btn { font-family: Arial, Helvetica, sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; }
   .btn:focus-visible, .link:focus-visible { outline: 3px solid theme("colors.blue"); outline-offset: 3px; }
-  .bg-ink .btn:focus-visible, .bg-red .btn:focus-visible, .bg-donate .btn:focus-visible,
-  .bg-ink .link:focus-visible, .bg-red .link:focus-visible, .bg-donate .link:focus-visible { outline-color: theme("colors.yellow"); }
+  .bg-ink .btn:focus-visible, .bg-red .btn:focus-visible, .bg-crimson .btn:focus-visible,
+  .bg-ink .link:focus-visible, .bg-red .link:focus-visible, .bg-crimson .link:focus-visible { outline-color: theme("colors.yellow"); }
+
+  /* U&I volunteer-page capitals (Londrina Solid Black) for the crimson sections: a black line, then a big sun-yellow line */
+  .hand { font-family: theme("fontFamily.hand"); font-weight: 900; text-transform: uppercase; line-height: 0.92; letter-spacing: 0.01em; }
+  .hand-lg { font-size: clamp(2rem, 4.6vw, 3.6rem); }
+  .hand-xl { font-size: clamp(3rem, 8.4vw, 6.75rem); }
+  /* Black text on crimson is only 4.4:1, so it must stay 24px or larger (WCAG large text) */
+  .hand-sub { font-size: clamp(1.5rem, 2.2vw, 1.75rem); font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; }
 
   .link { font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
@@ -73,19 +89,16 @@
               font-size: clamp(2.5rem, 4.5vw, 3.75rem); line-height: 1; letter-spacing: -0.01em; }
   /* U&I's card look: a solid colour block offset behind the card (no blur, so not a soft shadow) */
   .offset-card { box-shadow: 0.9rem 0.9rem 0 theme("colors.pink"); }
-  /* Photo carousel (home page hero, js/carousel.js). Swiping is the browser's own scrolling with snap points,
-     so it works on every phone even if the script fails to load. Each slide is a rounded photo plus its caption. */
+  /* Full-width photo slideshow at the top of the home page (format from uandiadheera.vercel.app): edge to edge,
+     square corners, moves by itself (js/carousel.js). Swiping is the browser's own scrolling with snap points,
+     so it works on every phone even if the script fails to load. Crop per photo with object-[x_y] classes. */
   .carousel-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
                     scrollbar-width: none; }
   .carousel-track::-webkit-scrollbar { display: none; }
-  .carousel-track:focus-visible { outline: 3px solid theme("colors.blue"); outline-offset: 3px; border-radius: 0.9rem; }
+  .carousel-track:focus-visible { outline: 3px solid theme("colors.yellow"); outline-offset: -3px; }
   .carousel-slide { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; }
-  .carousel-slide .photo img { aspect-ratio: 4 / 3; object-fit: cover; }
-  /* Dots: ink, so they stand out on the yellow hero (3:1 or better); the current one is a wider pill */
-  .carousel-dot { padding: 0.45rem; border-radius: 9999px; }
-  .carousel-dot::before { content: ""; display: block; width: 0.7rem; height: 0.7rem; border-radius: 9999px; background: rgb(32 30 30 / 0.6); }
-  .carousel-dot[aria-current="true"]::before { width: 1.6rem; background: theme("colors.ink"); }
-  .carousel-dot:focus-visible { outline: 3px solid theme("colors.blue"); outline-offset: 0; }
+  .slides .carousel-slide { height: clamp(15rem, 44vw, 40rem); }
+  .slides .carousel-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
   /* Photos: softly rounded, no frames or tilts */
   .photo { border-radius: 0.9rem; overflow: hidden; background: theme("colors.line"); }
