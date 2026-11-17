@@ -66,9 +66,9 @@ Notes:
 
 ## Add pictures
 Put files in `images/` with these names, or change the `src` in `index.html`:
-`logo.png` (optional), `hero.webp`, `session-2.webp`, `session-3.webp` (about 1000px wide, under 200 KB each, so the page loads fast)
+`logo.png` (optional), `session-2.webp`, `session-3.webp` (about 1000px wide, under 200 KB each, so the page loads fast)
 
-**Photo slideshow** (full width at the top of the home page): `hero.webp` first, then `volunteers-1.webp` to `volunteers-4.webp`, 1200 x 900 (4:3), under 200 KB each. Each photo is cropped to a wide strip: set what stays in view with an `object-[x%_y%]` class on its `<img>` (e.g. `object-bottom`). To add a photo, copy one `<figure class="carousel-slide">` line in `index.html` and update the numbers ("6 of 6"). Only photos of volunteers and staff who have agreed to be on the site. **Never the boys**, and nothing that shows where the shelter is. It moves every 5 seconds (`DELAY_MS` in `js/carousel.js`).
+**Photo slideshow** (full width at the top of the home page): `volunteers-1.webp` to `volunteers-4.webp`, 1200 x 900 (4:3), under 200 KB each. Each photo is cropped to a wide strip: set what stays in view with an `object-[x%_y%]` class on its `<img>` (e.g. `object-bottom`). To add a photo, copy one `<figure class="carousel-slide">` line in `index.html` and update the numbers ("5 of 5"). Only photos of volunteers and staff who have agreed to be on the site. **Never the boys**, and nothing that shows where the shelter is. It moves every 5 seconds (`DELAY_MS` in `js/carousel.js`).
 **Hero heading**: `for-every-child.webp` is U&I's "for Every Child" lockup, used as an image so the lettering and the smiley stay exact. It is transparent outside the salmon shape and keeps the original colours (salmon #fd8964, black). Don't stretch it, recolour it, or swap it for a screenshot.
 
 ## Before publishing
