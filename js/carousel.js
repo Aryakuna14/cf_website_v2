@@ -1,8 +1,8 @@
-// Photo carousel in the home page hero. Owner: Arya.
+// Full-width photo slideshow at the top of the home page (format from uandiadheera.vercel.app). Owner: Arya.
 // Swiping (and trackpad scrolling) is the browser's own, using CSS scroll snap, so it works without this script.
-// This script adds dots, previous/next buttons, a pause button, and moves to the next photo every few seconds.
-// It holds still while a mouse is over it or a keyboard user is on it, while it is off screen or the tab is
-// hidden, and never moves on its own for people whose device asks for reduced motion.
+// This script moves to the next photo every few seconds and runs the Pause button (dots and previous/next
+// buttons too, if the page has them). It holds still while a keyboard user is on it, while it is off screen or
+// the tab is hidden, and never moves on its own for people whose device asks for reduced motion.
 const DELAY_MS = 5000; // how long each photo stays before the next one
 
 const root = document.querySelector("[data-carousel]");
@@ -16,11 +16,10 @@ if (root) {
   let index = 0;
   let timer = 0;
   let userPaused = reduceMotion;
-  let hovered = false;
   let keyboardFocus = false;
   let onScreen = false;
 
-  const dots = slides.map((_, i) => {
+  const dots = !dotsBox ? [] : slides.map((_, i) => {
     const dot = document.createElement("button");
     dot.type = "button";
     dot.className = "carousel-dot";
@@ -45,7 +44,7 @@ if (root) {
   function schedule() {
     clearTimeout(timer);
     preloadNext();
-    if (userPaused || hovered || keyboardFocus || !onScreen || document.hidden) return;
+    if (userPaused || keyboardFocus || !onScreen || document.hidden) return;
     timer = setTimeout(() => go(index + 1), DELAY_MS);
   }
 
@@ -68,17 +67,15 @@ if (root) {
   }, { passive: true });
   track.addEventListener("touchstart", () => clearTimeout(timer), { passive: true });
 
-  root.querySelector("[data-prev]").addEventListener("click", () => go(index - 1));
-  root.querySelector("[data-next]").addEventListener("click", () => go(index + 1));
+  root.querySelector("[data-prev]")?.addEventListener("click", () => go(index - 1));
+  root.querySelector("[data-next]")?.addEventListener("click", () => go(index + 1));
   toggle.addEventListener("click", () => { userPaused = !userPaused; show(); schedule(); });
   track.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight") { e.preventDefault(); go(index + 1); }
     if (e.key === "ArrowLeft") { e.preventDefault(); go(index - 1); }
   });
 
-  // Hold still under a mouse, or while a keyboard user is inside (touch taps don't count)
-  root.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") { hovered = true; schedule(); } });
-  root.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") { hovered = false; schedule(); } });
+  // Hold still while a keyboard user is inside (the Pause button is there for everyone else)
   root.addEventListener("focusin", (e) => { keyboardFocus = e.target.matches(":focus-visible"); schedule(); });
   root.addEventListener("focusout", (e) => { if (!root.contains(e.relatedTarget)) { keyboardFocus = false; schedule(); } });
   document.addEventListener("visibilitychange", schedule);

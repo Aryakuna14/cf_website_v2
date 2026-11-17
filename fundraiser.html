@@ -28,6 +28,7 @@
 <meta name="twitter:description" content="U&amp;I's December crowdfunding for its children across India and at centres like Maho. See our goal and how to give.">
 <meta name="twitter:image" content="%SITE_URL%images/og-image.jpg">
 <link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/londrina-solid-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -64,25 +65,29 @@
 
 <main id="top" class="pt-[4.5rem]">
 
-  <!-- Hero with the goal -->
-  <section class="band bg-donate text-white">
-    <div class="wrap grid lg:grid-cols-12 gap-12 items-center">
-      <div class="lg:col-span-7">
-        <p class="eyebrow">#InThisTogether · December</p>
-        <h1 class="display display-lg mt-5">Fund their dreams. <span class="text-yellow">Change their future.</span></h1>
-        <p class="lede mt-6 text-white/95">Every December, U&amp;I comes together for its biggest crowdfunding moment of the year. What we raise goes to U&amp;I's work across India and to its centres, like Maho: to the children, their learning and their wellbeing.</p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="https://uandi.org.in/donatenow" class="btn btn-primary">Donate on uandi.org.in</a>
-          <a href="#help" class="btn btn-outline-light">Other ways to help</a>
-        </div>
-        <p class="mt-4 text-sm text-white/90">Any amount. Payment happens on U&amp;I Trust's own donation page, not on this website.</p>
+  <!-- Hero with the goal: same look as the top of the home page (U&I volunteer-page style), so the two pages match.
+       Goal in words only. The target, totals and exact dates are private to the team: never put numbers or dates here. -->
+  <section class="band bg-crimson relative overflow-hidden" aria-labelledby="fund-title">
+    <svg class="absolute left-[6%] bottom-8 w-10 h-10 lg:w-16 lg:h-16 text-black" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.6 7.2 16.8 11.4 24 12C16.8 12.6 12.6 16.8 12 24C11.4 16.8 7.2 12.6 0 12C7.2 11.4 11.4 7.2 12 0Z"/></svg>
+    <svg class="absolute right-[7%] top-10 w-8 h-8 lg:w-12 lg:h-12 text-black" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.6 7.2 16.8 11.4 24 12C16.8 12.6 12.6 16.8 12 24C11.4 16.8 7.2 12.6 0 12C7.2 11.4 11.4 7.2 12 0Z"/></svg>
+    <div class="wrap relative text-center">
+      <p class="eyebrow text-white">#InThisTogether · December</p>
+      <h1 id="fund-title" class="mt-5">
+        <span class="hand hand-lg block text-black">U&amp;I for Every Child</span>
+        <span class="hand hand-xl block text-sun mt-3">Fund their dreams.</span>
+        <span class="hand hand-xl block text-sun">Change their future.</span>
+      </h1>
+      <p class="lede mt-6 mx-auto text-white">Every December, U&amp;I comes together for its biggest crowdfunding moment of the year. What we raise goes to U&amp;I's work across India and to its centres, like Maho: to the children, their learning and their wellbeing.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="https://uandi.org.in/donatenow" class="btn btn-sun">Donate on uandi.org.in</a>
+        <a href="#help" class="btn btn-black">Other ways to help</a>
       </div>
-      <!-- Goal in words only. The target, totals and exact dates are private to the team: never put numbers or dates here. -->
-      <div class="goal-card bg-yellow text-ink p-8 sm:p-10 lg:col-span-5 mr-4">
+      <p class="mt-4 text-sm text-white">Any amount. Payment happens on U&amp;I Trust's own donation page, not on this website.</p>
+      <div class="goal-card bg-sun text-black p-8 sm:p-10 mt-14 max-w-xl mx-auto mr-4 sm:mx-auto text-left">
         <p class="eyebrow">Our December goal</p>
         <p class="heading heading-lg mt-4">Raise as much as we can for the boys at Maho and for U&amp;I's children across India.</p>
         <p class="mt-4 text-lg">Every amount helps, and every share brings in someone new.</p>
-        <a href="https://uandi.org.in/donatenow" class="btn btn-dark w-full mt-6">Donate now</a>
+        <a href="https://uandi.org.in/donatenow" class="btn btn-black w-full mt-6">Donate now</a>
       </div>
     </div>
   </section>
