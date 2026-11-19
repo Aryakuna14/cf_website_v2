@@ -1,12 +1,12 @@
-// Full-width photo slideshow at the top of the home page (format from uandiadheera.vercel.app). Owner: Arya.
+// Photo slideshows: full width at the top of the home page (format from uandiadheera.vercel.app) and in the opening
+// of the fundraiser page. Every element marked data-carousel gets one. Owner: Arya.
 // Swiping (and trackpad scrolling) is the browser's own, using CSS scroll snap, so it works without this script.
 // This script moves to the next photo every few seconds and runs the Pause button (dots and previous/next
 // buttons too, if the page has them). It holds still while a keyboard user is on it, while it is off screen or
 // the tab is hidden, and never moves on its own for people whose device asks for reduced motion.
 const DELAY_MS = 5000; // how long each photo stays before the next one
 
-const root = document.querySelector("[data-carousel]");
-if (root) {
+function setupCarousel(root) {
   const track = root.querySelector(".carousel-track");
   const slides = Array.from(track.children);
   const dotsBox = root.querySelector(".carousel-dots");
@@ -17,7 +17,10 @@ if (root) {
   let timer = 0;
   let userPaused = reduceMotion;
   let keyboardFocus = false;
-  let onScreen = false;
+  // Start from where it is right now (the browser's on-screen signal below can arrive late, or not at all while a
+  // page isn't being drawn), then keep it updated
+  const box = root.getBoundingClientRect();
+  let onScreen = box.bottom > 0 && box.top < window.innerHeight;
 
   const dots = !dotsBox ? [] : slides.map((_, i) => {
     const dot = document.createElement("button");
@@ -86,3 +89,5 @@ if (root) {
   show();
   schedule();
 }
+
+document.querySelectorAll("[data-carousel]").forEach(setupCarousel);

@@ -96,10 +96,19 @@
           <a href="#money" class="btn btn-black">Where the money goes</a>
         </div>
       </div>
-      <figure class="lg:col-span-6">
-        <div class="photo"><img src="images/volunteers-4.webp" width="1200" height="900" fetchpriority="high" alt="Maho's volunteers making heart shapes with their hands outside a building"></div>
-        <figcaption class="mt-3 text-sm text-white">Maho's volunteers.</figcaption>
-      </figure>
+      <!-- Photo slideshow (js/carousel.js): weekly sessions at Maho. The boys' faces are covered, and any sign that names
+           the organisation running the shelter is pixelated. Only volunteers and staff who agreed show their faces. -->
+      <div class="lg:col-span-6" data-carousel role="region" aria-roledescription="carousel" aria-label="Photos from weekly sessions at Maho">
+        <div class="carousel-track rounded-[0.9rem] bg-line" tabindex="0" aria-live="off" aria-label="Photos. Swipe, or use the arrow keys.">
+          <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 of 3"><img src="images/fundraiser-1.webp" width="1200" height="900" fetchpriority="high" class="block w-full h-auto" alt="Volunteers chatting with boys in the shelter courtyard. The boys' faces are covered."></figure>
+          <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 3"><img src="images/fundraiser-2.webp" width="1200" height="900" loading="lazy" class="block w-full h-auto" alt="Volunteers sitting in a circle on the floor with boys during a session. The boys' faces are covered."></figure>
+          <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 3"><img src="images/fundraiser-3.webp" width="1200" height="900" loading="lazy" class="block w-full h-auto" alt="Volunteers laughing with boys during a session under the shelter's shade. The boys' faces are covered."></figure>
+        </div>
+        <div class="mt-3 flex items-center justify-between gap-3">
+          <p class="text-sm text-white">Weekly sessions at Maho. The boys' faces are covered to protect their privacy.</p>
+          <div data-controls hidden><button type="button" data-toggle class="btn btn-sm btn-outline-light">Pause</button></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -284,5 +293,6 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/carousel.js"></script>
 </body>
 </html>
