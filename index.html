@@ -88,9 +88,12 @@
     </div>
   </section>
 
-  <!-- Heading, styled like the hero of uandi.org.in/volunteer: crimson, a black line, a big sun-yellow line, black subline,
-       pill buttons, black sparkles. Text colours on crimson: white for small text; black and yellow only at 24px+. -->
-  <section class="band bg-crimson relative overflow-hidden" aria-labelledby="hero-title">
+  <!-- Heading + donate, in one section (it used to be two near-identical crimson sections, top and bottom of the page).
+       Styled like the hero of uandi.org.in/volunteer: crimson, a black line, a big sun-yellow line, black subline, pill
+       buttons, black sparkles. Text colours on crimson: white for small text; black and yellow only at 24px+.
+       id="donate" keeps old links to the home page's Donate section working. The giving details (what a gift does,
+       annual report, campaign numbers) live on fundraiser.html. -->
+  <section id="donate" class="band bg-crimson relative overflow-hidden" aria-labelledby="hero-title">
     <svg class="absolute left-[6%] bottom-8 w-10 h-10 lg:w-16 lg:h-16 text-black" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.6 7.2 16.8 11.4 24 12C16.8 12.6 12.6 16.8 12 24C11.4 16.8 7.2 12.6 0 12C7.2 11.4 11.4 7.2 12 0Z"/></svg>
     <svg class="absolute right-[7%] top-10 w-8 h-8 lg:w-12 lg:h-12 text-black" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.6 7.2 16.8 11.4 24 12C16.8 12.6 12.6 16.8 12 24C11.4 16.8 7.2 12.6 0 12C7.2 11.4 11.4 7.2 12 0Z"/></svg>
     <div class="wrap relative text-center">
@@ -101,10 +104,19 @@
         <span class="hand hand-xl block text-sun">Change their future.</span>
       </h1>
       <p class="hand-sub text-black mt-6 max-w-2xl mx-auto">Every week, U&amp;I volunteers teach the boys at Maho English, and are role models they can count on.</p>
+      <p class="lede mt-5 mx-auto text-white">Maho is part of #InThisTogether, U&amp;I's biggest crowdfunding moment of the year.</p>
+      <p class="mt-3 text-lg text-white"><strong>Every donation gets a 50% tax benefit under Section 80G.</strong></p>
       <div class="mt-8 flex flex-wrap justify-center gap-3">
         <a href="fundraiser.html#give" class="btn btn-sun">Donate now</a>
         <a href="#volunteer" class="btn btn-black">Volunteer now</a>
       </div>
+      <div class="mt-4 flex flex-wrap justify-center gap-3">
+        <a href="fundraiser.html" class="btn btn-sm btn-outline-light">See the December fundraiser</a>
+        <a href="https://uandi.org.in/donatenow" class="btn btn-sm btn-outline-light">Donate on uandi.org.in</a>
+        <a href="#contact" data-plan="Sponsoring a boy" class="btn btn-sm btn-outline-light">Give monthly, or as a company</a>
+      </div>
+      <p class="mt-5 text-sm text-white max-w-xl mx-auto">Payment happens on U&amp;I Trust's own donation page, not on this website.</p>
+      <!-- TODO (Arya): Maho-specific donation link if U&I has one. -->
     </div>
   </section>
 
@@ -209,31 +221,6 @@
         </ul>
         <p class="mt-6 text-ink/75">Sign-ups go through U&amp;I's volunteer page: choose your city and centre, fill in the application, then a review and interview. Ready already? <a href="https://uandi.org.in/volunteer" class="link text-ink">Sign up on uandi.org.in</a></p>
       </div>
-    </div>
-  </section>
-
-  <!-- Fundraiser: #InThisTogether (from U&I's crowdfunding deck) -->
-  <section id="donate" class="band bg-crimson relative overflow-hidden" aria-labelledby="donate-title">
-    <!-- Short teaser: the giving details (what a gift does, 80G, annual report, campaign numbers) live on fundraiser.html,
-         so the two pages don't repeat each other. Same look as the top of this page, so the page ends where it began. -->
-    <svg class="absolute right-[6%] bottom-8 w-10 h-10 lg:w-16 lg:h-16 text-black" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.6 7.2 16.8 11.4 24 12C16.8 12.6 12.6 16.8 12 24C11.4 16.8 7.2 12.6 0 12C7.2 11.4 11.4 7.2 12 0Z"/></svg>
-    <svg class="absolute left-[7%] top-10 w-8 h-8 lg:w-12 lg:h-12 text-black" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.6 7.2 16.8 11.4 24 12C16.8 12.6 12.6 16.8 12 24C11.4 16.8 7.2 12.6 0 12C7.2 11.4 11.4 7.2 12 0Z"/></svg>
-    <div class="wrap relative text-center">
-      <p class="eyebrow text-white">Donate</p>
-      <h2 id="donate-title" class="mt-5">
-        <span class="hand hand-lg block text-black">Be part of #InThisTogether</span>
-        <span class="hand hand-xl block text-sun mt-3">Fund their dreams.</span>
-        <span class="hand hand-xl block text-sun">Change their future.</span>
-      </h2>
-      <p class="lede mt-6 mx-auto text-white">Maho is part of #InThisTogether, U&amp;I's biggest crowdfunding moment of the year. See what your gift does, where the money goes and how to help.</p>
-      <p class="mt-4 text-lg text-white"><strong>Every donation gets a 50% tax benefit under Section 80G.</strong></p>
-      <div class="mt-8 flex flex-wrap justify-center gap-3">
-        <a href="fundraiser.html" class="btn btn-sun">See the December fundraiser</a>
-        <a href="https://uandi.org.in/donatenow" class="btn btn-black">Donate on uandi.org.in</a>
-        <a href="#contact" data-plan="Sponsoring a boy" class="btn btn-outline-light">Give monthly, or as a company</a>
-      </div>
-      <p class="mt-5 text-sm text-white max-w-xl mx-auto">Payment happens on U&amp;I Trust's own donation page, not on this website.</p>
-      <!-- TODO (Arya): Maho-specific donation link if U&I has one. -->
     </div>
   </section>
 

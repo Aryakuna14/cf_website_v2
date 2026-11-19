@@ -35,7 +35,7 @@ The team's fundraising target, totals and exact dates are **never** shown on the
 - On the home page, links to its own sections are `#about`; on other pages `index.html#about`.
 - Inner pages have a "← Home / page name" strip under the menu. The logo always goes home.
 - **Donate** (menu button and "Donate now") always goes to `fundraiser.html#give`, the giving section of the fundraiser page.
-- The fundraiser page owns the giving details (what a gift does, 80G, annual report, campaign numbers). The home page's red Donate section is a short teaser that points to it, so the two pages don't repeat each other.
+- The fundraiser page owns the giving details (what a gift does, 80G, annual report, campaign numbers). The home page has one crimson section under the slideshow (heading + donate, `id="donate"`) with all the donate and volunteer buttons; it points to the fundraiser page for the details, so the two pages don't repeat each other.
 - Arriving at a `#section` from another page jumps straight there (`js/main.js`); smooth scrolling switches on after the page loads.
 
 ## Print the QR poster
