@@ -1,0 +1,40 @@
+{
+  "_help": "Volunteer stories for stories.html, shown in this order: the volunteer's photo, then their words in a yellow card. Edit on GitHub (pencil icon), then commit: the site republishes itself. One story = one { } block, separated by commas. VOLUNTEERS ONLY: never a kid's story, name, age or photo here. Every real story needs the volunteer's written OK: put the month you got it in \"consent\" (like \"2026-11\"). \"photo\" is optional: a portrait photo of the volunteer, the shape of a normal phone photo (3:4, 900 x 1200, under 200 KB, webp, no kids in it) in images/stories/; without one the page shows 'Photo coming soon'. \"rating\" (1 to 5 stars) is optional. While any story has \"placeholder\": true, the page stays out of search results and must not be linked from other pages: replace the placeholder blocks as real stories come in.",
+
+  "_example": {
+    "name": "First name, or first name + initial",
+    "role": "Volunteer at Maho since 2025",
+    "quote": "What a session is like, a moment they remember, why they keep coming back. 40 to 100 words works best. A line break (\n) starts a new paragraph.",
+    "photo": "images/stories/volunteer-1.webp",
+    "rating": 5,
+    "consent": "2026-11"
+  },
+
+  "stories": [
+    {
+      "name": "Manmohan",
+      "role": "Volunteer at Maho",
+      "quote": "I began volunteering because I have a love for teaching and enjoy spending time with kids. However, I never anticipated the level of happiness and purpose this would add to my own life. I know that I have impacted the children’s lives here but little do they know how much of an impact they have on my life.\nThis experience has surprised me in many ways and has shown me a greater appreciation for the things I have in life and for the many little things that we often take for granted. It has truly been a humbling and loving experience for me this far.",
+      "photo": "images/stories/volunteer-1.webp",
+      "consent": "2026-11"
+    },
+    {
+      "placeholder": true,
+      "name": "Volunteer name",
+      "role": "Volunteer at Maho",
+      "quote": "Placeholder: the second volunteer's story goes here."
+    },
+    {
+      "placeholder": true,
+      "name": "Volunteer name",
+      "role": "Volunteer at Maho",
+      "quote": "Placeholder: the third volunteer's story goes here."
+    },
+    {
+      "placeholder": true,
+      "name": "Volunteer name",
+      "role": "Volunteer at Maho",
+      "quote": "Placeholder: the fourth volunteer's story goes here."
+    }
+  ]
+}
