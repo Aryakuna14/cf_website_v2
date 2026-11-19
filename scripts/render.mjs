@@ -32,22 +32,30 @@ function stars(rating) {
   return `<p class="text-ink text-xl tracking-widest mt-3" role="img" aria-label="Rated ${n} out of 5">${"★".repeat(n)}${"☆".repeat(5 - n)}</p>`;
 }
 
+// Portrait (3:4), the shape of a normal phone photo, so volunteers' photos need no cropping
 function photo(s) {
   if (PHOTO.test(s.photo || "")) {
-    return `<div class="photo"><img src="${esc(s.photo)}" width="1200" height="900" loading="lazy" alt="${esc(s.name)}, a volunteer at Maho" class="block w-full h-auto aspect-[4/3] object-cover"></div>`;
+    return `<div class="photo"><img src="${esc(s.photo)}" width="900" height="1200" loading="lazy" alt="${esc(s.name)}, a volunteer at Maho" class="block w-full h-auto aspect-[3/4] object-cover"></div>`;
   }
-  return `<div class="aspect-[4/3] rounded-[0.9rem] border-2 border-dashed border-ink/60 grid place-items-center text-ink font-bold text-lg">Photo coming soon</div>`;
+  return `<div class="aspect-[3/4] rounded-[0.9rem] border-2 border-dashed border-ink/60 grid place-items-center text-ink font-bold text-lg">Photo coming soon</div>`;
+}
+
+// The quote: a short one is big and bold like the fundraiser card; a long one uses a calmer size so it stays easy
+// to read. A line break in stories.json starts a new paragraph.
+function quote(text) {
+  const paras = String(text || "").split(/\n+/).map((p) => p.trim()).filter(Boolean);
+  const short = String(text || "").length <= 110;
+  const cls = short ? "heading heading-lg" : "text-[clamp(1.05rem,1.35vw,1.2rem)] font-semibold leading-relaxed";
+  return paras.map((p, n) => `<p class="${cls} ${n ? "mt-4" : "mt-3"}">${n ? "" : "“"}${esc(p)}${n === paras.length - 1 ? "”" : ""}</p>`).join("");
 }
 
 function story(s, i) {
-  // Long quotes get a smaller size so the card stays readable
-  const size = String(s.quote || "").length <= 110 ? "heading-lg" : "text-[clamp(1.2rem,1.8vw,1.5rem)] leading-snug";
   return `<article class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center ${i === 0 ? "mt-12 lg:mt-16" : "mt-16 lg:mt-24"}" aria-label="Story ${i + 1}">
-        <div class="lg:col-span-6">${photo(s)}</div>
-        <figure class="offset-card bg-yellow p-8 sm:p-10 lg:col-span-5 lg:col-start-8 mr-4 lg:mr-4">
+        <div class="lg:col-span-5">${photo(s)}</div>
+        <figure class="offset-card bg-yellow p-8 sm:p-10 lg:col-span-6 lg:col-start-7 mr-4 lg:mr-4">
           ${s.placeholder ? BADGE : ""}<p class="eyebrow">${esc(s.role)}</p>${stars(s.rating)}
-          <blockquote><p class="heading ${size} mt-3">“${esc(s.quote)}”</p></blockquote>
-          <figcaption class="mt-4 text-lg font-bold">${esc(s.name)}</figcaption>
+          <blockquote>${quote(s.quote)}</blockquote>
+          <figcaption class="mt-5 text-lg font-bold">${esc(s.name)}</figcaption>
         </figure>
       </article>`;
 }
