@@ -113,10 +113,14 @@
       </div>
       <div class="mt-4 flex flex-wrap justify-center gap-3">
         <a href="fundraiser.html" class="btn btn-sm btn-outline-light">See the December fundraiser</a>
-        <a href="https://uandi.org.in/donatenow" class="btn btn-sm btn-outline-light">Donate on uandi.org.in</a>
-        <a href="#contact" data-plan="Sponsoring a kid" class="btn btn-sm btn-outline-light">Give monthly, or as a company</a>
+        <a href="#contact" data-plan="Sponsoring a kid" class="btn btn-sm btn-outline-light">Donate individually, or as a company</a>
       </div>
-      <p class="mt-5 text-sm text-white max-w-xl mx-auto">Payment happens on U&amp;I Trust's own donation page, not on this website.</p>
+      <!-- QR code to U&I's donation page (uandi.org.in/donatenow), made by the build (scripts/build.mjs), so people on a
+           laptop can pay on their phone. On a phone, tapping it opens the same page. -->
+      <a href="https://uandi.org.in/donatenow" class="qr-card mt-8" aria-label="Donate on U&amp;I's donation page, uandi.org.in">
+        <img src="images/qr-donate.svg" width="400" height="400" alt="QR code for U&amp;I's donation page, uandi.org.in" class="block w-32 h-32 sm:w-36 sm:h-36">
+      </a>
+      <p class="mt-3 text-white font-bold">Scan to donate on uandi.org.in</p>
       <!-- TODO (Arya): Maho-specific donation link if U&I has one. -->
     </div>
   </section>

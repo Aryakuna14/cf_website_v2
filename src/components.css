@@ -96,6 +96,8 @@
               font-size: clamp(2.5rem, 4.5vw, 3.75rem); line-height: 1; letter-spacing: -0.01em; }
   /* U&I's card look: a solid colour block offset behind the card (no blur, so not a soft shadow) */
   .offset-card { box-shadow: 0.9rem 0.9rem 0 theme("colors.pink"); }
+  /* Donate QR code on crimson: a white card, so phones can read it (QR codes need a light background) */
+  .qr-card { display: inline-block; background: #fff; border-radius: 0.9rem; padding: 0.6rem; }
   /* Full-width photo slideshow at the top of the home page (format from uandiadheera.vercel.app): edge to edge,
      square corners, moves by itself (js/carousel.js). Swiping is the browser's own scrolling with snap points,
      so it works on every phone even if the script fails to load. Crop per photo with object-[x_y] classes. */
