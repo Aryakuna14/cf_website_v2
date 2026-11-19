@@ -91,6 +91,11 @@
                 text-shadow: 0.05em 0.05em 0 theme("colors.ink"); }
   .impact-label { margin-top: 0.4rem; font-family: theme("fontFamily.display"); font-weight: 800; font-stretch: 125%;
                   text-transform: uppercase; font-size: clamp(1.05rem, 2.1vw, 1.75rem); line-height: 1.1; }
+  /* The same look in smaller sizes, for the facts under the volunteer page's heading. ink-offset gives any pink
+     heading word the impact numbers' solid ink offset. */
+  .fact-num { font-size: clamp(1.5rem, 2.3vw, 2rem); text-transform: uppercase; }
+  .fact-label { margin-top: 0.35rem; font-size: clamp(0.85rem, 1vw, 0.95rem); }
+  .ink-offset { text-shadow: 0.05em 0.05em 0 theme("colors.ink"); }
   /* Big wide numbers for steps and lists (volunteer.html). Colour comes from a text-* class. */
   .step-num { display: block; font-family: theme("fontFamily.display"); font-weight: 900; font-stretch: 125%;
               font-size: clamp(2.5rem, 4.5vw, 3.75rem); line-height: 1; letter-spacing: -0.01em; }
