@@ -1,5 +1,5 @@
 {
-  "_help": "Volunteer stories for stories.html. Edit on GitHub (pencil icon), then commit: the site republishes itself. One story = one { } block, separated by commas. VOLUNTEERS ONLY: never a kid's story, name, age or photo here. Every real story needs the volunteer's written OK: put the month you got it in \"consent\" (like \"2026-11\"). Optional: \"photo\" (a file in images/stories/, faces of volunteers only), \"rating\" (1 to 5 stars), \"featured\": true (shown big at the top). While any story has \"placeholder\": true, the page stays out of search results and must not be linked from other pages: delete the placeholder blocks once real stories are in.",
+  "_help": "Volunteer stories for stories.html, shown in this order: the volunteer's photo, then their words in a yellow card. Edit on GitHub (pencil icon), then commit: the site republishes itself. One story = one { } block, separated by commas. VOLUNTEERS ONLY: never a kid's story, name, age or photo here. Every real story needs the volunteer's written OK: put the month you got it in \"consent\" (like \"2026-11\"). \"photo\" is optional: a landscape photo of the volunteer (1200 x 900, under 200 KB, webp) in images/stories/; without one the page shows 'Photo coming soon'. \"rating\" (1 to 5 stars) is optional. While any story has \"placeholder\": true, the page stays out of search results and must not be linked from other pages: replace the placeholder blocks as real stories come in.",
 
   "_example": {
     "name": "First name, or first name + initial",
@@ -7,38 +7,33 @@
     "quote": "What a session is like, a moment they remember, why they keep coming back. 40 to 80 words works best.",
     "photo": "images/stories/first-name.webp",
     "rating": 5,
-    "featured": false,
     "consent": "2026-11"
   },
 
   "stories": [
     {
       "placeholder": true,
-      "featured": true,
       "name": "Volunteer name",
       "role": "Volunteer at Maho",
-      "quote": "Placeholder: a volunteer's story about teaching at Maho goes here. What a weekly session is like, a moment they remember, and why they keep coming back.",
-      "rating": 5
+      "quote": "Placeholder: the first volunteer's story goes here."
     },
     {
       "placeholder": true,
       "name": "Volunteer name",
       "role": "Volunteer at Maho",
-      "quote": "Placeholder: a short volunteer review goes here.",
-      "rating": 5
+      "quote": "Placeholder: the second volunteer's story goes here."
     },
     {
       "placeholder": true,
       "name": "Volunteer name",
       "role": "Volunteer at Maho",
-      "quote": "Placeholder: a longer volunteer story goes here. Something about the first session, how the kids warmed up over the weeks, and what it means to be a steady adult in their week.",
-      "rating": 5
+      "quote": "Placeholder: the third volunteer's story goes here."
     },
     {
       "placeholder": true,
       "name": "Volunteer name",
       "role": "Volunteer at Maho",
-      "quote": "Placeholder: a volunteer's story goes here."
+      "quote": "Placeholder: the fourth volunteer's story goes here."
     }
   ]
 }

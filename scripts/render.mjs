@@ -19,62 +19,49 @@ export function qrSvg(url) {
 }
 
 // ---- Volunteer stories ----
+// Layout, per story: the volunteer's photo on the left, their words on the right in a yellow card with a pink block
+// behind it (the same look as the "#InThisTogether moment" section on fundraiser.html), on a teal background.
 // Everything from stories.json is escaped, so a quote can never add HTML or scripts to the page.
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 const PHOTO = /^images\/[a-z0-9/_-]+\.(webp|jpg|jpeg|png)$/;
 const BADGE = '<span class="inline-block mb-4 rounded-full bg-ink text-white text-xs font-bold uppercase tracking-wider px-3 py-1">Placeholder</span>';
 
-function stars(rating, color) {
+function stars(rating) {
   const n = Number(rating);
   if (!Number.isInteger(n) || n < 1 || n > 5) return "";
-  return `<p class="${color} text-xl tracking-widest mb-3" role="img" aria-label="Rated ${n} out of 5">${"★".repeat(n)}${"☆".repeat(5 - n)}</p>`;
+  return `<p class="text-ink text-xl tracking-widest mt-3" role="img" aria-label="Rated ${n} out of 5">${"★".repeat(n)}${"☆".repeat(5 - n)}</p>`;
 }
 
-function person(s, nameSize) {
-  const photo = PHOTO.test(s.photo || "")
-    ? `<img src="${esc(s.photo)}" width="64" height="64" loading="lazy" alt="" class="h-14 w-14 rounded-full object-cover shrink-0">`
-    : "";
-  return `<figcaption class="mt-6 flex items-center gap-4">${photo}<span><span class="block font-extrabold ${nameSize}">${esc(s.name)}</span><span class="block">${esc(s.role)}</span></span></figcaption>`;
+function photo(s) {
+  if (PHOTO.test(s.photo || "")) {
+    return `<div class="photo"><img src="${esc(s.photo)}" width="1200" height="900" loading="lazy" alt="${esc(s.name)}, a volunteer at Maho" class="block w-full h-auto aspect-[4/3] object-cover"></div>`;
+  }
+  return `<div class="aspect-[4/3] rounded-[0.9rem] border-2 border-dashed border-ink/60 grid place-items-center text-ink font-bold text-lg">Photo coming soon</div>`;
 }
 
-function featuredCard(s) {
-  const look = s.placeholder ? "bg-white border-2 border-dashed border-ink/40" : "bg-sun";
-  return `<figure class="offset-card ${look} text-black p-8 sm:p-12 mt-12 max-w-4xl mx-auto mr-4 sm:mr-auto text-left">
-          ${s.placeholder ? BADGE : ""}${stars(s.rating, "text-black")}
-          <blockquote><p class="heading heading-lg">“${esc(s.quote)}”</p></blockquote>
-          ${person(s, "text-lg")}
-        </figure>`;
-}
-
-function card(s) {
-  const look = s.placeholder ? "bg-bg border-2 border-dashed border-ink/40" : "bg-white border border-line";
-  return `<figure class="break-inside-avoid mb-6 rounded-2xl p-7 ${look}">
-          ${s.placeholder ? BADGE : ""}${stars(s.rating, "text-pink")}
-          <blockquote><p class="text-lg leading-relaxed">“${esc(s.quote)}”</p></blockquote>
-          ${person(s, "")}
-        </figure>`;
+function story(s, i) {
+  // Long quotes get a smaller size so the card stays readable
+  const size = String(s.quote || "").length <= 110 ? "heading-lg" : "text-[clamp(1.2rem,1.8vw,1.5rem)] leading-snug";
+  return `<article class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center ${i === 0 ? "mt-12 lg:mt-16" : "mt-16 lg:mt-24"}" aria-label="Story ${i + 1}">
+        <div class="lg:col-span-6">${photo(s)}</div>
+        <figure class="offset-card bg-yellow p-8 sm:p-10 lg:col-span-5 lg:col-start-8 mr-4 lg:mr-4">
+          ${s.placeholder ? BADGE : ""}<p class="eyebrow">${esc(s.role)}</p>${stars(s.rating)}
+          <blockquote><p class="heading ${size} mt-3">“${esc(s.quote)}”</p></blockquote>
+          <figcaption class="mt-4 text-lg font-bold">${esc(s.name)}</figcaption>
+        </figure>
+      </article>`;
 }
 
 export function renderStories(html, stories) {
   if (!html.includes("<!-- stories:")) return html;
   const list = (Array.isArray(stories) ? stories : []).filter((s) => s && typeof s === "object");
-  const featured = list.find((s) => s.featured) || list[0];
-  const rest = list.filter((s) => s !== featured);
   const hidden = list.length === 0 || list.some((s) => s.placeholder); // keep out of search until real stories
-  const more = rest.length
-    ? `<section class="band" aria-labelledby="more-title">
-    <div class="wrap">
-      <h2 id="more-title" class="display impact-title">More stories</h2>
-      <div class="mt-10 columns-1 md:columns-2 lg:columns-3 gap-6">
-        ${rest.map(card).join("\n        ")}
-      </div>
-    </div>
-  </section>`
-    : "";
+  const body = list.length
+    ? list.map(story).join("\n      ")
+    : '<p class="lede mt-10 mx-auto text-center">Stories from Maho\'s volunteers are coming soon.</p>';
   return html
     .replace("<!-- stories:robots -->", hidden ? '<meta name="robots" content="noindex">' : "")
-    .replace("<!-- stories:featured -->", featured ? featuredCard(featured) : '<p class="lede mt-10 mx-auto">Stories from Maho\'s volunteers are coming soon.</p>')
-    .replace("<!-- stories:more -->", more);
+    .replace("<!-- stories:list -->", body);
 }
 
 export function renderHtml(html, cfg) {
