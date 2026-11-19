@@ -4,7 +4,7 @@
   "_example": {
     "name": "First name, or first name + initial",
     "role": "Volunteer at Maho since 2025",
-    "quote": "What a session is like, a moment they remember, why they keep coming back. 40 to 100 words works best. A line break (\n) starts a new paragraph.",
+    "quote": "What a class is like, a moment they remember, why they keep coming back. 40 to 100 words works best. A line break (\n) starts a new paragraph.",
     "photo": "images/stories/volunteer-1.webp",
     "rating": 5,
     "consent": "2026-11"
