@@ -37,58 +37,69 @@
 <!-- December fundraiser page. Facts: U&I's crowdfunding deck (6,000 students, 5,000 volunteers, 6 weeks; 29,000 supporters
      last year; what is behind every class) and the Maho team (where the money goes). Keep it vague on purpose:
      no fundraising target, totals or exact dates (month only). npm run check blocks amounts and dates. -->
+<!-- Site menu: identical on every page (npm run check compares them). Home is first, the current page is underlined,
+     the logo always goes home, and Donate always goes to the giving section of the fundraiser page. -->
 <header class="fixed top-0 inset-x-0 z-50 bg-white/95 border-b border-line">
   <div class="wrap h-[4.5rem] flex items-center justify-between gap-4">
     <a href="index.html" class="flex items-center gap-3">
-      <img src="images/logo.png" alt="U&amp;I logo" width="44" height="44" class="h-11 w-11 rounded-full bg-red p-1 object-contain">
-      <span class="font-extrabold text-lg">U&amp;I x Maho</span>
+      <img src="images/logo.png" alt="U&amp;I x Maho home" width="44" height="44" class="h-11 w-11 rounded-full bg-red p-1 object-contain">
+      <span class="font-extrabold text-lg whitespace-nowrap">U&amp;I x Maho</span>
     </a>
-    <nav class="hidden lg:flex items-center gap-7 text-[0.95rem] font-semibold" aria-label="Main">
-      <a href="index.html" class="hover:text-pink">Home</a>
-      <a href="#campaign" class="hover:text-pink">The campaign</a>
-      <a href="#money" class="hover:text-pink">Where the money goes</a>
-      <a href="#help" class="hover:text-pink">How to help</a>
-      <a href="index.html#contact" class="hover:text-pink">Contact</a>
+    <nav class="hidden xl:flex items-center gap-6 text-[0.95rem] font-semibold" aria-label="Main">
+      <a href="index.html" class="nav-link hover:text-pink">Home</a>
+      <a href="index.html#about" class="nav-link hover:text-pink">About</a>
+      <a href="index.html#impact" class="nav-link hover:text-pink">Impact</a>
+      <a href="index.html#sessions" class="nav-link hover:text-pink">Sessions</a>
+      <a href="volunteer.html" class="nav-link hover:text-pink">Volunteer</a>
+      <a href="fundraiser.html" class="nav-link hover:text-pink" aria-current="page">Fundraiser</a>
+      <a href="index.html#contact" class="nav-link hover:text-pink">Contact</a>
     </nav>
     <div class="flex items-center gap-2">
       <a href="volunteer.html" class="btn btn-outline btn-sm hidden sm:inline-flex">Volunteer</a>
-      <a href="https://uandi.org.in/donatenow" class="btn btn-primary btn-sm">Donate</a>
-      <button id="menu-btn" class="lg:hidden p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <a href="#give" class="btn btn-primary btn-sm">Donate</a>
+      <button id="menu-btn" class="xl:hidden p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
         <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.25" aria-hidden="true"><path d="M3 6h20M3 13h20M3 20h20"/></svg>
       </button>
     </div>
   </div>
-  <nav id="mobile-nav" class="hidden lg:hidden wrap pb-5 flex-col gap-4 text-lg font-semibold" aria-label="Main">
-    <a href="index.html">Home</a><a href="#campaign">The campaign</a><a href="#money">Where the money goes</a><a href="#help">How to help</a><a href="index.html#contact">Contact</a>
+  <nav id="mobile-nav" class="hidden xl:hidden wrap pb-5 flex-col gap-4 text-lg font-semibold" aria-label="Main">
+    <a href="index.html" class="nav-link">Home</a><a href="index.html#about" class="nav-link">About</a><a href="index.html#impact" class="nav-link">Impact</a><a href="index.html#sessions" class="nav-link">Sessions</a><a href="volunteer.html" class="nav-link">Volunteer</a><a href="fundraiser.html" class="nav-link" aria-current="page">Fundraiser</a><a href="index.html#contact" class="nav-link">Contact</a>
   </nav>
 </header>
 
 <main id="top" class="pt-[4.5rem]">
 
-  <!-- Hero with the goal: same look as the top of the home page (U&I volunteer-page style), so the two pages match.
-       Goal in words only. The target, totals and exact dates are private to the team: never put numbers or dates here. -->
+  <!-- Way back: "Home / this page" under the menu on every inner page -->
+  <nav aria-label="Breadcrumb" class="bg-white border-b border-line">
+    <ol class="wrap py-3 flex items-center gap-2 text-sm font-semibold">
+      <li><a href="index.html" class="link">&larr; Home</a></li>
+      <li aria-hidden="true" class="text-ink/70">/</li>
+      <li aria-current="page">December fundraiser</li>
+    </ol>
+  </nav>
+
+  <!-- Opening: same crimson and lettering as the home page, but its own layout (text left, photo right, like the hero
+       of uandi.org.in/volunteer) and its own heading, so it never feels like a copy of the home page.
+       Goal in words only: the target, totals and exact dates are private to the team. -->
   <section class="band bg-crimson relative overflow-hidden" aria-labelledby="fund-title">
-    <svg class="absolute left-[6%] bottom-8 w-10 h-10 lg:w-16 lg:h-16 text-black" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.6 7.2 16.8 11.4 24 12C16.8 12.6 12.6 16.8 12 24C11.4 16.8 7.2 12.6 0 12C7.2 11.4 11.4 7.2 12 0Z"/></svg>
-    <svg class="absolute right-[7%] top-10 w-8 h-8 lg:w-12 lg:h-12 text-black" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.6 7.2 16.8 11.4 24 12C16.8 12.6 12.6 16.8 12 24C11.4 16.8 7.2 12.6 0 12C7.2 11.4 11.4 7.2 12 0Z"/></svg>
-    <div class="wrap relative text-center">
-      <p class="eyebrow text-white">#InThisTogether · December</p>
-      <h1 id="fund-title" class="mt-5">
-        <span class="hand hand-lg block text-black">U&amp;I for Every Child</span>
-        <span class="hand hand-xl block text-sun mt-3">Fund their dreams.</span>
-        <span class="hand hand-xl block text-sun">Change their future.</span>
-      </h1>
-      <p class="lede mt-6 mx-auto text-white">Every December, U&amp;I comes together for its biggest crowdfunding moment of the year. What we raise goes to U&amp;I's work across India and to its centres, like Maho: to the children, their learning and their wellbeing.</p>
-      <div class="mt-8 flex flex-wrap justify-center gap-3">
-        <a href="https://uandi.org.in/donatenow" class="btn btn-sun">Donate on uandi.org.in</a>
-        <a href="#help" class="btn btn-black">Other ways to help</a>
+    <svg class="absolute left-[3%] bottom-6 w-10 h-10 lg:w-14 lg:h-14 text-black" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.6 7.2 16.8 11.4 24 12C16.8 12.6 12.6 16.8 12 24C11.4 16.8 7.2 12.6 0 12C7.2 11.4 11.4 7.2 12 0Z"/></svg>
+    <div class="wrap relative grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <div class="lg:col-span-6">
+        <p class="eyebrow text-white">December fundraiser</p>
+        <h1 id="fund-title" class="mt-5">
+          <span class="hand hand-lg block text-black">This December,</span>
+          <span class="hand block text-sun mt-2 text-[clamp(2.5rem,5vw,4.5rem)]">we're #InThisTogether.</span>
+        </h1>
+        <p class="lede mt-6 text-white">U&amp;I's biggest crowdfunding moment of the year. Our goal: raise as much as we can for the boys at Maho and for U&amp;I's children across India, for their learning and their wellbeing.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#give" class="btn btn-sun">Donate now</a>
+          <a href="#money" class="btn btn-black">Where the money goes</a>
+        </div>
       </div>
-      <p class="mt-4 text-sm text-white">Any amount. Payment happens on U&amp;I Trust's own donation page, not on this website.</p>
-      <div class="goal-card bg-sun text-black p-8 sm:p-10 mt-14 max-w-xl mx-auto mr-4 sm:mx-auto text-left">
-        <p class="eyebrow">Our December goal</p>
-        <p class="heading heading-lg mt-4">Raise as much as we can for the boys at Maho and for U&amp;I's children across India.</p>
-        <p class="mt-4 text-lg">Every amount helps, and every share brings in someone new.</p>
-        <a href="https://uandi.org.in/donatenow" class="btn btn-black w-full mt-6">Donate now</a>
-      </div>
+      <figure class="lg:col-span-6">
+        <div class="photo"><img src="images/volunteers-4.webp" width="1200" height="900" fetchpriority="high" alt="Maho's volunteers making heart shapes with their hands outside a building"></div>
+        <figcaption class="mt-3 text-sm text-white">Maho's volunteers.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -137,6 +148,49 @@
         <li class="chip bg-teal">Centre celebrations</li>
       </ul>
       <p class="lede mt-6">Across U&amp;I that takes 5,348 volunteer teachers and leaders, and 19,500 hours of volunteer training.</p>
+      <div class="mt-14 grid md:grid-cols-2 gap-8">
+        <figure>
+          <div class="photo"><img src="images/session-2.webp" width="1000" height="750" loading="lazy" alt="A volunteer helping a boy with his work on the shelter steps"></div>
+          <figcaption class="caption">A weekly session at Maho. The boys' faces are covered to protect their privacy.</figcaption>
+        </figure>
+        <figure>
+          <div class="photo"><img src="images/session-3.webp" width="1000" height="750" loading="lazy" alt="A volunteer working with boys on a workbook in the shelter courtyard"></div>
+          <figcaption class="caption">Study time in the courtyard.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Giving: what a gift does and the 50% (80G) tax benefit, exactly as on U&I's donation page (uandi.org.in/donatenow,
+       checked November 2026), and U&I's annual report. These are U&I's public prices, not the team's private target:
+       data-public-amount tells npm run check this one amount is meant to be shown. Re-check them every year. -->
+  <section id="give" class="band bg-crimson relative overflow-hidden" aria-labelledby="give-title">
+    <svg class="absolute right-[6%] bottom-8 w-10 h-10 lg:w-16 lg:h-16 text-black" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.6 7.2 16.8 11.4 24 12C16.8 12.6 12.6 16.8 12 24C11.4 16.8 7.2 12.6 0 12C7.2 11.4 11.4 7.2 12 0Z"/></svg>
+    <svg class="absolute left-[7%] top-10 w-8 h-8 lg:w-12 lg:h-12 text-black" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.6 7.2 16.8 11.4 24 12C16.8 12.6 12.6 16.8 12 24C11.4 16.8 7.2 12.6 0 12C7.2 11.4 11.4 7.2 12 0Z"/></svg>
+    <div class="wrap relative text-center">
+      <p class="eyebrow text-white">Donate</p>
+      <h2 id="give-title" class="hand hand-lg text-black mt-5">What your gift does</h2>
+      <dl class="mt-10 grid sm:grid-cols-2 gap-x-16 gap-y-10 max-w-5xl mx-auto">
+        <div>
+          <dt class="sr-only">One child, one year of 1-on-1 tutoring</dt>
+          <dd class="impact-num text-sun" data-public-amount>₹9,000</dd>
+          <dd class="impact-label text-black text-[clamp(1.2rem,1.8vw,1.5rem)]" aria-hidden="true">One child, one year</dd>
+          <dd class="mt-2 text-white" aria-hidden="true">of 1-on-1 tutoring</dd>
+        </div>
+        <div>
+          <dt class="sr-only">One child, six months of 1-on-1 tutoring</dt>
+          <dd class="impact-num text-sun" data-public-amount>₹4,500</dd>
+          <dd class="impact-label text-black text-[clamp(1.2rem,1.8vw,1.5rem)]" aria-hidden="true">One child, six months</dd>
+          <dd class="mt-2 text-white" aria-hidden="true">of 1-on-1 tutoring</dd>
+        </div>
+      </dl>
+      <p class="mt-10 text-lg text-white max-w-2xl mx-auto"><strong>Every donation gets a 50% tax benefit under Section 80G.</strong> After paying, enter your details on U&amp;I's donation page to claim it.</p>
+      <p class="mt-3 text-white"><a href="https://uandi.my.canva.site/annual-report-2024-25" class="link">Read U&amp;I's annual report 2024-25</a></p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="https://uandi.org.in/donatenow" class="btn btn-sun">Donate on uandi.org.in</a>
+        <a href="index.html#contact" class="btn btn-outline-light">Give monthly, or as a company</a>
+      </div>
+      <p class="mt-5 text-sm text-white max-w-xl mx-auto">Any amount. Payment happens on U&amp;I Trust's own donation page, not on this website.</p>
     </div>
   </section>
 
@@ -168,14 +222,15 @@
     </div>
   </section>
 
-  <!-- Final call -->
+  <!-- Final call, with a clear way back home -->
   <section class="band bg-yellow">
     <div class="wrap max-w-3xl text-center">
       <h2 class="display impact-title">Be part of <span class="text-pink">#InThisTogether</span></h2>
       <p class="lede mt-5 mx-auto">Give, share, or join the volunteers who teach at Maho every week.</p>
       <div class="mt-8 flex flex-wrap justify-center gap-3">
-        <a href="https://uandi.org.in/donatenow" class="btn btn-dark">Donate on uandi.org.in</a>
+        <a href="#give" class="btn btn-dark">Donate now</a>
         <a href="volunteer.html" class="btn btn-outline">Volunteer with us</a>
+        <a href="index.html" class="btn btn-outline">Back to home</a>
       </div>
     </div>
   </section>

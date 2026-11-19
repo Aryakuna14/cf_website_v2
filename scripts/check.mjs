@@ -184,6 +184,29 @@ for (const file of files) {
   }
 }
 
+// Every page with the site menu must have the same menu (same labels, same destinations), so visitors never get lost.
+// On the home page, links to its own sections are written "#about"; elsewhere "index.html#about". Both count as the same.
+function menusOf(file) {
+  const html = readFileSync(file, "utf8");
+  const onHome = rel(file) === "index.html";
+  return [...html.matchAll(/<nav\b[^>]*aria-label="Main"[^>]*>([\s\S]*?)<\/nav>/g)].map(([, inner]) =>
+    [...inner.matchAll(/<a\b[^>]*href="([^"]*)"[^>]*>([^<]*)<\/a>/g)].map(([, href, label]) => {
+      const to = onHome && href === "#top" ? "index.html" : onHome && href.startsWith("#") ? "index.html" + href : href;
+      return `${label.trim()} -> ${to}`;
+    }).join(", "));
+}
+const homeMenus = menusOf(join(dist, "index.html"));
+for (const file of files.filter((f) => f.endsWith(".html"))) {
+  const menus = menusOf(file);
+  if (!menus.length) continue; // pages without the site menu (e.g. the printable poster)
+  for (const menu of menus) {
+    if (menu !== homeMenus[0]) {
+      errors.push(`${rel(file)}: its menu differs from the home page's. Copy the <header> from index.html (only aria-current changes).\n           home: ${homeMenus[0]}\n           here: ${menu}`);
+      break;
+    }
+  }
+}
+
 // security.txt must have a Contact and a future Expires date (RFC 9116)
 const securityTxt = join(dist, ".well-known", "security.txt");
 if (existsSync(securityTxt)) {

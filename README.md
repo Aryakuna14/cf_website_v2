@@ -28,7 +28,15 @@ Live site: https://aryakuna14.github.io/cf_website_v2/
 The team's fundraising target, totals and exact dates are **never** shown on the site or kept in this repo (it is public). The fundraiser page (`fundraiser.html`) describes the goal in words, and mentions the month only.
 - `npm run check` fails the build if a page shows a money amount (₹ figures, lakh, crore) or an exact date (a day and a month). A month on its own is fine.
 - Keep the plan, targets and progress in the team's private notes, not here.
-- One exception: U&I's own public per-child prices in the home Donate section (₹9,000 for one child for a year, ₹4,500 for six months, from uandi.org.in/donatenow). Each sits alone in an element marked `data-public-amount`, which the check allows. Re-check them, the 50% (80G) tax line and the annual report link against U&I's site every year.
+- One exception: U&I's own public per-child prices in the fundraiser page's giving section (`#give`) (₹9,000 for one child for a year, ₹4,500 for six months, from uandi.org.in/donatenow). Each sits alone in an element marked `data-public-amount`, which the check allows. Re-check them, the 50% (80G) tax line and the annual report link against U&I's site every year.
+
+## Menu and page flow
+- **One menu on every page** (home, volunteer, fundraiser, privacy, terms): Home · About · Impact · Sessions · Volunteer · Fundraiser · Contact. Only `aria-current="page"` (the underlined item) changes per page. To change the menu, change it in every page's `<header>`: `npm run check` fails if any page's menu differs from the home page's.
+- On the home page, links to its own sections are `#about`; on other pages `index.html#about`.
+- Inner pages have a "← Home / page name" strip under the menu. The logo always goes home.
+- **Donate** (menu button and "Donate now") always goes to `fundraiser.html#give`, the giving section of the fundraiser page.
+- The fundraiser page owns the giving details (what a gift does, 80G, annual report, campaign numbers). The home page's red Donate section is a short teaser that points to it, so the two pages don't repeat each other.
+- Arriving at a `#section` from another page jumps straight there (`js/main.js`); smooth scrolling switches on after the page loads.
 
 ## Print the QR poster
 Open the site's `poster.html` (linked as "Printable poster" in the footer). Press **Ctrl+P** (Cmd+P on Mac), choose **A4**, margins **None**, and tick **Background graphics**. It prints on one page. The QR code points to `siteUrl` from `site.config.json` and is made fresh on every build.
@@ -53,7 +61,7 @@ When the link is shared, apps show `images/og-image.jpg` (1200×630) with the ti
 | `site.config.json` | Site address (used for previews, canonical links and the poster QR code) | Anyone |
 | `poster.html` | Printable A4 poster with QR code | Ahna |
 | `volunteer.html` | Volunteering page. Its facts (hours, dates, subjects, steps) come from uandi.org.in/volunteer: re-check them every volunteering year | Ahna |
-| `fundraiser.html` | December #InThisTogether fundraiser page with the goal card. Facts come from U&I's crowdfunding deck. No targets, totals or exact dates | Arya |
+| `fundraiser.html` | December #InThisTogether fundraiser page: photo-led opening, campaign numbers, where the money goes, what a gift does (`#give`), how to help. Facts come from U&I's crowdfunding deck and donation page. No targets, totals or exact dates | Arya |
 | `favicon.png`, `apple-touch-icon.png` | Browser tab and home-screen icons | Ahna |
 | `index.html` `<head>`, `js/` | Security tags, form and payment code | Arya |
 | `tailwind.config.js` | Colours and font (the design system) | Arya, changes agreed with Ahna |

@@ -16,4 +16,12 @@ document.querySelectorAll('[data-plan]').forEach(a => a.addEventListener('click'
   if (sel) sel.value = a.dataset.plan;
 }));
 
+// Arriving at a section (e.g. the menu's Donate button opens fundraiser.html#give): once everything has loaded, jump
+// straight to it, then switch on smooth scrolling for links within the page.
+window.addEventListener('load', () => {
+  const target = location.hash.length > 1 ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+  if (target) target.scrollIntoView();
+  document.documentElement.classList.add('smooth-scroll');
+});
+
 // Contact form sending lives in js/contact-form.js

@@ -13,8 +13,10 @@
 
 @layer base {
   html { scroll-padding-top: 5rem; }
+  /* Smooth scrolling only once the page has loaded (js/main.js adds .smooth-scroll). Smooth scrolling during load
+     stops part-way, so arriving at e.g. fundraiser.html#give would leave you near the top of the page. */
   @media (prefers-reduced-motion: no-preference) {
-    html { scroll-behavior: smooth; }
+    html.smooth-scroll { scroll-behavior: smooth; }
   }
 }
 
@@ -76,6 +78,11 @@
 
   .link { font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
+  /* Site menu: the page you're on is underlined in crimson (aria-current="page"), so you always know where you are */
+  .nav-link[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 7px;
+                                   text-decoration-color: theme("colors.crimson"); }
+  .nav-link:focus-visible { outline: 3px solid theme("colors.blue"); outline-offset: 3px; border-radius: 2px; }
+
   /* "U&I in 2025" numbers, styled like uandi.org.in: pink wide figures with wide capital labels underneath */
   .impact-title { font-size: clamp(1.75rem, 4.4vw, 3.75rem); }
   .impact-num { font-family: theme("fontFamily.display"); font-weight: 900; font-stretch: 125%; color: theme("colors.pink");
@@ -107,9 +114,6 @@
 
   /* Rounded labels ("what we bring into every class") */
   .chip { display: inline-flex; align-items: center; border-radius: 9999px; padding: 0.7rem 1.25rem; font-weight: 700; font-size: clamp(1rem, 1.6vw, 1.15rem); }
-
-  /* Fundraiser goal card (fundraiser.html): yellow, with a solid ink block offset behind it. Words only, no numbers. */
-  .goal-card { box-shadow: 0.9rem 0.9rem 0 theme("colors.ink"); }
 
 
   /* Soft panel */
