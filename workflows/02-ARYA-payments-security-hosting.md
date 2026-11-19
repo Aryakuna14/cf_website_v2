@@ -46,7 +46,7 @@ Do not edit: body content, copy, images (Ahna). Ask first.
 - [x] ~~Turnstile/hCaptcha~~: skipped for now. Both add third-party scripts, and Formspree's free spam filter plus domain restriction cover us. Revisit if spam gets through.
 - [x] `js/contact-form.js` submits with `fetch`: success/failure/offline/timeout messages, button disabled while sending, no double sends, provider errors shown as plain text, honest "not connected" message if the ID is missing.
 - [x] No personal data in URLs or console logs; no cookies sent.
-- [ ] **Connect:** create the Formspree form (NGO inbox), put its ID in the form `action`, send one test message, then turn on domain restriction for `aryakuna14.github.io`.
+- [ ] **Connect:** create the Formspree form (NGO inbox), put its ID in the form `action`, send one test message, then turn on domain restriction for `uandi-maho.vercel.app`.
 - **Done when:** a message reaches the NGO inbox, spam bot posts are rejected.
 
 ---

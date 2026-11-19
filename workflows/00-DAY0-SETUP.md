@@ -1,7 +1,7 @@
 # Day 0: shared setup (do this first, together, ~30 min)
 
 Repo: https://github.com/Aryakuna14/cf_website_v2 (owner: Aryakuna14). Ahna (`Ahnaak`) must be added as a collaborator with **Write** access: Settings > Collaborators.
-Live site: https://aryakuna14.github.io/cf_website_v2/
+Live site: https://uandi-maho.vercel.app/
 
 > Moved on 2026-11-16 from `Ahnaak/cfwebsite`, with the history restarted so that earlier photo versions (some children's faces uncovered) are not public. The old repo must be deleted.
 
