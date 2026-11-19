@@ -69,7 +69,7 @@ When the link is shared, apps show `images/og-image.jpg` (1200×630) with the ti
 | `site.config.json` | Site address (used for previews, canonical links and the poster QR code) | Anyone |
 | `poster.html` | Printable A4 poster with QR code | Ahna |
 | `volunteer.html` | Volunteering page. Its facts (hours, dates, subjects, steps) come from uandi.org.in/volunteer: re-check them every volunteering year | Ahna |
-| `fundraiser.html` | December #InThisTogether fundraiser page: photo-led opening, campaign numbers, where the money goes, what a gift does (`#give`), how to help. Facts come from U&I's crowdfunding deck and donation page. No targets, totals or exact dates | Arya |
+| `fundraiser.html` | December–January #InThisTogether fundraiser page: photo-led opening, campaign numbers, where the money goes, what a gift does (`#give`), how to help. Facts come from U&I's crowdfunding deck and donation page. No targets, totals or exact dates | Arya |
 | `favicon.png`, `apple-touch-icon.png` | Browser tab and home-screen icons | Ahna |
 | `index.html` `<head>`, `js/` | Security tags, form and payment code | Arya |
 | `tailwind.config.js` | Colours and font (the design system) | Arya, changes agreed with Ahna |
