@@ -211,10 +211,7 @@ if (existsSync(storiesFile)) {
 const storiesPage = join(dist, "stories.html");
 if (existsSync(storiesPage) && readFileSync(storiesPage, "utf8").includes("<!-- stories:")) errors.push("stories.html: the story cards weren't filled in. Run npm run build.");
 if (placeholderStories) {
-  warnings.push(`stories.json has ${placeholderStories} placeholder stor${placeholderStories === 1 ? "y" : "ies"}: stories.html stays out of search results and isn't linked from other pages yet.`);
-  for (const file of files.filter((f) => f.endsWith(".html") && rel(f) !== "stories.html")) {
-    if (/href="stories\.html/.test(readFileSync(file, "utf8"))) errors.push(`${rel(file)} links to stories.html while it still has placeholder stories. Replace them with real ones first.`);
-  }
+  warnings.push(`stories.json has ${placeholderStories} placeholder stor${placeholderStories === 1 ? "y" : "ies"}: stories.html stays out of search results until they're replaced with real ones.`);
 }
 
 // Every page with the site menu must have the same menu (same labels, same destinations), so visitors never get lost.

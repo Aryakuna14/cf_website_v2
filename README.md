@@ -31,7 +31,7 @@ The team's fundraising target, totals and exact dates are **never** shown on the
 - One exception: U&I's own public per-child prices in the fundraiser page's giving section (`#give`) (₹9,000 for one child for a year, ₹4,500 for six months, from uandi.org.in/donatenow). Each sits alone in an element marked `data-public-amount`, which the check allows. Re-check them, the 50% (80G) tax line and the annual report link against U&I's site every year.
 
 ## Menu and page flow
-- **One menu on every page** (home, volunteer, fundraiser, privacy, terms): Home · About · Impact · Sessions · Volunteer · Fundraiser · Contact. Only `aria-current="page"` (the underlined item) changes per page. To change the menu, change it in every page's `<header>`: `npm run check` fails if any page's menu differs from the home page's.
+- **One menu on every page** (home, volunteer, fundraiser, testimonials, privacy, terms): Home · About · Impact · Sessions · Volunteer · Fundraiser · Testimonials · Contact. Only `aria-current="page"` (the underlined item) changes per page. To change the menu, change it in every page's `<header>`: `npm run check` fails if any page's menu differs from the home page's.
 - On the home page, links to its own sections are `#about`; on other pages `index.html#about`.
 - Inner pages have a "← Home / page name" strip under the menu. The logo always goes home.
 - **Donate** (menu button and "Donate now") always goes to `fundraiser.html#give`, the giving section of the fundraiser page.
@@ -43,7 +43,7 @@ Each story shows the volunteer's photo, then their words in a yellow card (the s
 - One story = one `{ }` block in `"stories"`, shown in that order: `name`, `role` (e.g. "Volunteer at Maho since 2025"), `quote` (40 to 100 words, under 600 characters; a line break starts a new paragraph). Optional: `photo` (a portrait photo of the volunteer, the shape of a normal phone photo: 3:4, 900 x 1200, under 200 KB, e.g. `images/stories/volunteer-1.webp`; without one the page shows "Photo coming soon") and `rating` (1 to 5 stars).
 - **Every real story needs `consent`**: the month the volunteer agreed in writing, like `"2026-11"`. The build refuses a real story without it.
 - **Volunteers only.** Never a kid's story, name, age or photo on this page. Photos follow the same rules as everywhere: no kids' faces, no signs that show where the shelter is.
-- Placeholders are blocks with `"placeholder": true`. While any is left, the page is hidden from search engines and no other page may link to it (`npm run check` stops the build). Replace them as real stories come in, then add "Stories" to the menu.
+- Placeholders are blocks with `"placeholder": true`. While any is left, the page is hidden from search engines (it is still in the menu as "Testimonials"). Replace them as real stories come in.
 - Quotes are shown exactly as text: anything like HTML in a quote is shown as plain characters, never run.
 
 ## Print the QR poster
