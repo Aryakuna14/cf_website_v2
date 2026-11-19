@@ -24,7 +24,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
-        display: ["Archivo", "Arial Black", "Impact", "sans-serif"],
+        display: ["Archivo", "Plus Jakarta Sans", "Arial Black", "Impact", "sans-serif"], // Jakarta draws ₹, which Archivo lacks
         hand: ["Londrina Solid", "Archivo", "Impact", "sans-serif"], // U&I volunteer-page style capitals
       },
     },
