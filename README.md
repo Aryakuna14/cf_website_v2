@@ -38,6 +38,14 @@ The team's fundraising target, totals and exact dates are **never** shown on the
 - The fundraiser page owns the giving details (what a gift does, 80G, annual report, campaign numbers). The home page has one crimson section under the slideshow (heading + donate, `id="donate"`) with all the donate and volunteer buttons; it points to the fundraiser page for the details, so the two pages don't repeat each other.
 - Arriving at a `#section` from another page jumps straight there (`js/main.js`); smooth scrolling switches on after the page loads.
 
+## Volunteer stories (stories.html)
+Stories live in `stories.json`, not in the HTML. To add or change one, open `stories.json` on GitHub, click the pencil icon, edit, and commit. The site rebuilds itself.
+- One story = one `{ }` block in `"stories"`: `name`, `role` (e.g. "Volunteer at Maho since 2025"), `quote` (40 to 80 words, under 600 characters). Optional: `photo` (e.g. `images/stories/first-name.webp`, volunteer only), `rating` (1 to 5 stars), `featured: true` (shown big at the top).
+- **Every real story needs `consent`**: the month the volunteer agreed in writing, like `"2026-11"`. The build refuses a real story without it.
+- **Volunteers only.** Never a kid's story, name, age or photo on this page.
+- Placeholders are blocks with `"placeholder": true`. While any is left, the page is hidden from search engines and no other page may link to it (`npm run check` stops the build). Replace them with real stories, then add "Stories" to the menu.
+- Quotes are shown exactly as text: anything like HTML in a quote is shown as plain characters, never run.
+
 ## Print the QR poster
 Open the site's `poster.html` (linked as "Printable poster" in the footer). Press **Ctrl+P** (Cmd+P on Mac), choose **A4**, margins **None**, and tick **Background graphics**. It prints on one page. The QR code points to `siteUrl` from `site.config.json` and is made fresh on every build.
 

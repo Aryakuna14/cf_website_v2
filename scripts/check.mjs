@@ -184,6 +184,39 @@ for (const file of files) {
   }
 }
 
+// ---- stories.json: volunteer stories shown on stories.html (volunteers only, never a kid's story) ----
+const storiesFile = join(root, "stories.json");
+let placeholderStories = 0;
+if (existsSync(storiesFile)) {
+  try {
+    const list = JSON.parse(readFileSync(storiesFile, "utf8")).stories;
+    if (!Array.isArray(list)) throw new Error('"stories" must be a list in square brackets [ ... ]');
+    list.forEach((s, i) => {
+      const where = `stories.json, story ${i + 1}`;
+      for (const k of ["name", "role", "quote"]) if (typeof s?.[k] !== "string" || !s[k].trim()) errors.push(`${where}: "${k}" is missing.`);
+      if (typeof s?.quote === "string" && s.quote.length > 600) errors.push(`${where}: the quote is ${s.quote.length} characters. Keep it under 600.`);
+      if (s?.rating !== undefined && !(Number.isInteger(s.rating) && s.rating >= 1 && s.rating <= 5)) errors.push(`${where}: "rating" must be a whole number from 1 to 5, or left out.`);
+      if (s?.photo !== undefined && (!/^images\/[a-z0-9/_-]+\.(webp|jpg|jpeg|png)$/.test(s.photo) || !existsSync(join(root, s.photo)))) {
+        errors.push(`${where}: "photo" must be a file in images/ with a lowercase name, e.g. images/stories/first-name.webp.`);
+      }
+      if (s?.placeholder) placeholderStories++;
+      else if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(s?.consent || "")) {
+        errors.push(`${where}: a real story needs "consent": the month the volunteer agreed in writing, like "2026-11".`);
+      }
+    });
+  } catch (e) {
+    errors.push(`stories.json is not valid (${e.message}). Check for a missing comma or quote.`);
+  }
+}
+const storiesPage = join(dist, "stories.html");
+if (existsSync(storiesPage) && readFileSync(storiesPage, "utf8").includes("<!-- stories:")) errors.push("stories.html: the story cards weren't filled in. Run npm run build.");
+if (placeholderStories) {
+  warnings.push(`stories.json has ${placeholderStories} placeholder stor${placeholderStories === 1 ? "y" : "ies"}: stories.html stays out of search results and isn't linked from other pages yet.`);
+  for (const file of files.filter((f) => f.endsWith(".html") && rel(f) !== "stories.html")) {
+    if (/href="stories\.html/.test(readFileSync(file, "utf8"))) errors.push(`${rel(file)} links to stories.html while it still has placeholder stories. Replace them with real ones first.`);
+  }
+}
+
 // Every page with the site menu must have the same menu (same labels, same destinations), so visitors never get lost.
 // On the home page, links to its own sections are written "#about"; elsewhere "index.html#about". Both count as the same.
 function menusOf(file) {

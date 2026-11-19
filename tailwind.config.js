@@ -3,7 +3,7 @@
 // near-black blocks, pink accents, near-black text, wide heavy capital headings (Archivo, like U&I's Druk).
 // Change colours here, never as one-off hex values in the HTML.
 module.exports = {
-  content: ["./*.html", "./js/**/*.js"],
+  content: ["./*.html", "./js/**/*.js", "./scripts/render.mjs"], // render.mjs writes the story cards
   darkMode: "class",
   theme: {
     extend: {
