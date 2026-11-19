@@ -18,6 +18,14 @@ export function qrSvg(url) {
   return QRCode.toString(url, { type: "svg", errorCorrectionLevel: "M", margin: 2, color: { dark: "#201e1e", light: "#ffffff" } });
 }
 
+// U&I's own donation page: the only place payments happen
+export const DONATE_URL = "https://uandi.org.in/donatenow";
+
+// QR code images the build makes (they're not in the repo): file path -> the address it opens
+export function qrImages(cfg) {
+  return { "images/qr.svg": cfg.siteUrl, "images/qr-donate.svg": DONATE_URL };
+}
+
 // ---- Volunteer stories ----
 // Layout, per story: the volunteer's photo on the left, their words on the right in a yellow card with a pink block
 // behind it (the same look as the "#InThisTogether moment" section on fundraiser.html), on a teal background.

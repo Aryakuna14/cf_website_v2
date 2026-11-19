@@ -5,7 +5,7 @@ import { createHash } from "node:crypto";
 import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { loadConfig, qrSvg, renderHtml } from "./render.mjs";
+import { loadConfig, qrImages, qrSvg, renderHtml } from "./render.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const config = loadConfig(root);
@@ -46,8 +46,8 @@ for (const file of readdirSync(root)) {
   if (file.endsWith(".html")) writeFileSync(join(dist, file), renderHtml(readFileSync(join(root, file), "utf8"), config));
 }
 
-// QR code for the printable poster, always pointing at the address in site.config.json
-writeFileSync(join(dist, "images", "qr.svg"), await qrSvg(config.siteUrl));
+// QR codes: the poster's (the address in site.config.json) and the donate one (U&I's donation page)
+for (const [file, url] of Object.entries(qrImages(config))) writeFileSync(join(dist, file), await qrSvg(url));
 
 // 4. Cache-busting: stamp each stylesheet/script link with a fingerprint of the file's contents
 //    (e.g. css/styles.css?v=1a2b3c4d5e). When a file changes, its address changes, so browsers and
