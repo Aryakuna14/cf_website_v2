@@ -2,7 +2,7 @@
 
 Sponsor/donation website for U&I x Maho. Static site styled with Tailwind CSS. Team plan: [WORKFLOW.md](WORKFLOW.md).
 
-Live site: https://aryakuna14.github.io/cf_website_v2/
+Live site: https://uandi-maho.vercel.app/ (Vercel, project "uandi-maho" on the asquare team). The old GitHub Pages copy, https://aryakuna14.github.io/cf_website_v2/, still updates too, and its pages tell search engines the Vercel address is the real one.
 
 ## First-time setup
 1. Install [Node.js](https://nodejs.org) version 20 or newer (the "LTS" download).
