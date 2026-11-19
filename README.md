@@ -28,6 +28,7 @@ Live site: https://aryakuna14.github.io/cf_website_v2/
 The team's fundraising target, totals and exact dates are **never** shown on the site or kept in this repo (it is public). The fundraiser page (`fundraiser.html`) describes the goal in words, and mentions the month only.
 - `npm run check` fails the build if a page shows a money amount (₹ figures, lakh, crore) or an exact date (a day and a month). A month on its own is fine.
 - Keep the plan, targets and progress in the team's private notes, not here.
+- One exception: U&I's own public per-child prices in the home Donate section (₹9,000 for one child for a year, ₹4,500 for six months, from uandi.org.in/donatenow). Each sits alone in an element marked `data-public-amount`, which the check allows. Re-check them, the 50% (80G) tax line and the annual report link against U&I's site every year.
 
 ## Print the QR poster
 Open the site's `poster.html` (linked as "Printable poster" in the footer). Press **Ctrl+P** (Cmd+P on Mac), choose **A4**, margins **None**, and tick **Background graphics**. It prints on one page. The QR code points to `siteUrl` from `site.config.json` and is made fresh on every build.

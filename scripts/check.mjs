@@ -110,6 +110,8 @@ function checkUrl(file, url, { loads }) {
 
 // Private details stay private: pages must not show money amounts or exact dates (month only).
 // Checks the whole page source, comments included, because anyone can read those too.
+// Exception: an amount that is deliberately public (U&I's own per-child donation prices) sits alone in an element
+// marked data-public-amount, e.g. <dd data-public-amount>₹9,000</dd>. Only that element's own text is skipped.
 const MONTHS = "January|February|March|April|May|June|July|August|September|October|November|December";
 const AMOUNT = /₹\s?\d|\bRs\.?\s?\d|\b\d+(\.\d+)?\s?(lakh|lakhs|lac|crore|crores|k)\b/i;
 const DAY_MONTH = new RegExp(`\\b\\d{1,2}(st|nd|rd|th)?\\s+(${MONTHS})\\b|\\b(${MONTHS})\\s+\\d{1,2}(st|nd|rd|th)?\\b(?!\\d)`, "i");
@@ -117,7 +119,7 @@ const DAY_MONTH = new RegExp(`\\b\\d{1,2}(st|nd|rd|th)?\\s+(${MONTHS})\\b|\\b(${
 for (const file of files) {
   if (file.endsWith(".html")) {
     const html = readFileSync(file, "utf8");
-    const amount = html.match(AMOUNT);
+    const amount = html.replace(/(<[^>]*\sdata-public-amount(?:[\s=][^>]*)?>)[^<]*/g, "$1").match(AMOUNT);
     if (amount) errors.push(`${rel(file)}: shows a money amount ("${amount[0]}"). Fundraising targets and totals stay private: say it in words.`);
     const day = html.match(DAY_MONTH);
     if (day) errors.push(`${rel(file)}: shows an exact date ("${day[0]}"). Use the month only.`);
