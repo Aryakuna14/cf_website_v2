@@ -38,8 +38,7 @@
 <!-- Student journeys page. Anonymous stories of how a kid at Maho has grown, told by their volunteer teacher. The
      journeys live in journeys.json; scripts/render.mjs turns each one into a card at build time. Never a child's
      name, age, class or photo (Juvenile Justice Act, Section 74), and only with the shelter's written OK: npm run
-     check enforces what it can. While any journey is a placeholder, this page stays out of search results.
-     It is not in the menu yet. -->
+     check enforces what it can. While any journey is a placeholder, this page stays out of search results. -->
 <!-- Site menu: identical on every page (npm run check compares them). Home is first, the current page is underlined,
      the logo always goes home, and Donate always goes to the giving section of the fundraiser page. -->
 <header class="fixed top-0 inset-x-0 z-50 bg-white/95 border-b border-line">
@@ -53,6 +52,7 @@
       <a href="volunteer.html" class="nav-link hover:text-pink">Volunteer</a>
       <a href="fundraiser.html" class="nav-link hover:text-pink">Fundraiser</a>
       <a href="stories.html" class="nav-link hover:text-pink">Testimonials</a>
+      <a href="journeys.html" class="nav-link hover:text-pink" aria-current="page">Student journeys</a>
       <a href="index.html#contact" class="nav-link hover:text-pink">Contact</a>
     </nav>
     <div class="flex items-center gap-2">
@@ -64,7 +64,7 @@
     </div>
   </div>
   <nav id="mobile-nav" class="hidden xl:hidden wrap pb-5 flex-col gap-4 text-lg font-semibold" aria-label="Main">
-    <a href="index.html" class="nav-link">Home</a><a href="volunteer.html" class="nav-link">Volunteer</a><a href="fundraiser.html" class="nav-link">Fundraiser</a><a href="stories.html" class="nav-link">Testimonials</a><a href="index.html#contact" class="nav-link">Contact</a>
+    <a href="index.html" class="nav-link">Home</a><a href="volunteer.html" class="nav-link">Volunteer</a><a href="fundraiser.html" class="nav-link">Fundraiser</a><a href="stories.html" class="nav-link">Testimonials</a><a href="journeys.html" class="nav-link" aria-current="page">Student journeys</a><a href="index.html#contact" class="nav-link">Contact</a>
   </nav>
 </header>
 
