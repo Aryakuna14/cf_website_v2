@@ -88,7 +88,7 @@ export function renderStories(html, stories) {
 function journey(j, i) {
   const by = j.teacher ? `Shared by ${esc(j.teacher)}, their volunteer teacher` : "Shared by their volunteer teacher";
   return `<div class="max-w-4xl mx-auto pr-4 ${i === 0 ? "mt-12 lg:mt-16" : "mt-14 lg:mt-16"}">
-        <article class="offset-card bg-teal p-8 sm:p-10" aria-label="Journey ${i + 1}">
+        <article class="offset-card bg-white p-8 sm:p-10" aria-label="Journey ${i + 1}">
           ${j.placeholder ? BADGE : ""}<p class="eyebrow">A student at Maho</p>
           <h2 class="heading heading-lg mt-3">${esc(j.title)}</h2>
           <div class="mt-8 grid md:grid-cols-2 gap-8">
