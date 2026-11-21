@@ -48,7 +48,7 @@ Each story shows the volunteer's photo, then their words in a yellow card (the s
 - A volunteer's quote often names the kid they teach. Take the name out before it goes in ("my student", "he", "she").
 
 ## Student journeys (journeys.html)
-Anonymous stories of how a kid at Maho has grown, told by their volunteer teacher. Each one is a U&I blue (teal) card with a pink block behind it: a short title, "When they started", "Now", and "Shared by ... , their volunteer teacher". Journeys live in `journeys.json` (pencil icon on GitHub, edit, commit).
+Anonymous stories of how a kid at Maho has grown, told by their volunteer teacher. Each one is a white card with a pink block behind it: a short title, "When they started", "Now", and "Shared by ... , their volunteer teacher". Journeys live in `journeys.json` (pencil icon on GitHub, edit, commit).
 - One journey = one `{ }` block in `"journeys"`: `title` (under 80 characters), `before` and `after` (20 to 60 words each, under 500 characters). Optional: `teacher`, the volunteer's name, only if they agree to be named.
 - **Never anything that could identify the child** (Juvenile Justice Act, Section 74): no name or nickname, no age, no class or grade, no photo, no school. Write "a student", "he" or "she". The build refuses photos, ages and classes; names it can't spot, so read every journey before committing.
 - **Every real journey needs `shelterConsent`**: the month the shelter agreed in writing to that story, like `"2026-11"`.
