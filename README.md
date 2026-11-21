@@ -31,7 +31,7 @@ The team's fundraising target, totals and exact dates are **never** shown on the
 - One exception: U&I's own public per-child prices in the fundraiser page's giving section (`#give`) (₹9,000 for one child for a year, ₹4,500 for six months, from uandi.org.in/donatenow). Each sits alone in an element marked `data-public-amount`, which the check allows. Re-check them, the 50% (80G) tax line and the annual report link against U&I's site every year.
 
 ## Menu and page flow
-- **One menu on every page** (home, volunteer, fundraiser, testimonials, privacy, terms): Home · Volunteer · Fundraiser · Testimonials · Contact. Only `aria-current="page"` (the underlined item) changes per page. To change the menu, change it in every page's `<header>`: `npm run check` fails if any page's menu differs from the home page's.
+- **One menu on every page** (home, volunteer, fundraiser, testimonials, student journeys, privacy, terms): Home · Volunteer · Fundraiser · Testimonials · Student journeys · Contact. Only `aria-current="page"` (the underlined item) changes per page. To change the menu, change it in every page's `<header>`: `npm run check` fails if any page's menu differs from the home page's.
 - On the home page, links to its own sections are `#about`; on other pages `index.html#about`.
 - Inner pages have a "← Home / page name" strip under the menu. The logo always goes home.
 - **Donate** (menu button and "Donate now") always goes to `fundraiser.html#give`, the giving section of the fundraiser page.
@@ -52,7 +52,7 @@ Anonymous stories of how a kid at Maho has grown, told by their volunteer teache
 - One journey = one `{ }` block in `"journeys"`: `title` (under 80 characters), `before` and `after` (20 to 60 words each, under 500 characters). Optional: `teacher`, the volunteer's name, only if they agree to be named.
 - **Never anything that could identify the child** (Juvenile Justice Act, Section 74): no name or nickname, no age, no class or grade, no photo, no school. Write "a student", "he" or "she". The build refuses photos, ages and classes; names it can't spot, so read every journey before committing.
 - **Every real journey needs `shelterConsent`**: the month the shelter agreed in writing to that story, like `"2026-11"`.
-- Placeholders are blocks with `"placeholder": true`. While any is left, the page is hidden from search engines. It isn't in the menu yet: add it once the journeys are real.
+- Placeholders are blocks with `"placeholder": true`. While any is left, the page is hidden from search engines (it is still in the menu as "Student journeys").
 
 ## Print the QR poster
 Open the site's `poster.html` (linked as "Printable poster" in the footer). Press **Ctrl+P** (Cmd+P on Mac), choose **A4**, margins **None**, and tick **Background graphics**. It prints on one page. The QR code points to `siteUrl` from `site.config.json` and is made fresh on every build.
