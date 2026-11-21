@@ -214,6 +214,38 @@ if (placeholderStories) {
   warnings.push(`stories.json has ${placeholderStories} placeholder stor${placeholderStories === 1 ? "y" : "ies"}: stories.html stays out of search results until they're replaced with real ones.`);
 }
 
+// ---- journeys.json: anonymous student journeys shown on journeys.html (Juvenile Justice Act, Section 74) ----
+// Nothing that could identify a child: no photos, no ages, no class or grade. Names can't be detected
+// automatically, so the help text in journeys.json and the shelter's OK ("shelterConsent") cover those.
+const journeysFile = join(root, "journeys.json");
+let placeholderJourneys = 0;
+if (existsSync(journeysFile)) {
+  const AGE_OR_CLASS = /\b\d{1,2}\s*-?\s*(?:years?|yrs?)\s*-?\s*old\b|\baged?\s+\d{1,2}\b|\b(?:class|grade|std\.?|standard)\s*\d{1,2}\b|\b\d{1,2}(?:st|nd|rd|th)\s+(?:class|grade|std|standard)\b/i;
+  try {
+    const list = JSON.parse(readFileSync(journeysFile, "utf8")).journeys;
+    if (!Array.isArray(list)) throw new Error('"journeys" must be a list in square brackets [ ... ]');
+    list.forEach((j, i) => {
+      const where = `journeys.json, journey ${i + 1}`;
+      for (const k of ["title", "before", "after"]) if (typeof j?.[k] !== "string" || !j[k].trim()) errors.push(`${where}: "${k}" is missing.`);
+      if (typeof j?.title === "string" && j.title.length > 80) errors.push(`${where}: the title is ${j.title.length} characters. Keep it under 80.`);
+      for (const k of ["before", "after"]) if (typeof j?.[k] === "string" && j[k].length > 500) errors.push(`${where}: "${k}" is ${j[k].length} characters. Keep it under 500.`);
+      for (const k of ["photo", "image", "picture", "name", "age"]) if (j?.[k] !== undefined) errors.push(`${where}: remove "${k}". This page never shows a child's photo, name or age.`);
+      for (const k of ["title", "before", "after"]) if (typeof j?.[k] === "string" && AGE_OR_CLASS.test(j[k])) errors.push(`${where}: "${k}" mentions an age or a class/grade ("${j[k].match(AGE_OR_CLASS)[0]}"). Remove it: it could identify the child.`);
+      if (j?.placeholder) placeholderJourneys++;
+      else if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(j?.shelterConsent || "")) {
+        errors.push(`${where}: a real journey needs "shelterConsent": the month the shelter agreed in writing, like "2026-11".`);
+      }
+    });
+  } catch (e) {
+    errors.push(`journeys.json is not valid (${e.message}). Check for a missing comma or quote.`);
+  }
+}
+const journeysPage = join(dist, "journeys.html");
+if (existsSync(journeysPage) && readFileSync(journeysPage, "utf8").includes("<!-- journeys:")) errors.push("journeys.html: the journey cards weren't filled in. Run npm run build.");
+if (placeholderJourneys) {
+  warnings.push(`journeys.json has ${placeholderJourneys} placeholder journey${placeholderJourneys === 1 ? "" : "s"}: journeys.html stays out of search results until they're replaced with real ones.`);
+}
+
 // Every page with the site menu must have the same menu (same labels, same destinations), so visitors never get lost.
 // On the home page, links to its own sections are written "#about"; elsewhere "index.html#about". Both count as the same.
 function menusOf(file) {

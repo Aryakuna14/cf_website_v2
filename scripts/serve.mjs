@@ -17,7 +17,7 @@ export function serve(folder = ".", port = 8000, basePath = "/") {
     ".webp": "image/webp", ".ico": "image/x-icon", ".woff2": "font/woff2", ".txt": "text/plain; charset=utf-8", ".xml": "application/xml",
   };
   // Tooling folders and config files are never served. Hidden files (.env, .git...) are blocked below.
-  const blocked = ["node_modules", "scripts", "src", "package.json", "package-lock.json", "tailwind.config.js", "vercel.json", "site.config.json", "stories.json"];
+  const blocked = ["node_modules", "scripts", "src", "package.json", "package-lock.json", "tailwind.config.js", "vercel.json", "site.config.json", "stories.json", "journeys.json"];
   // In dev mode (serving the source folder) pages get the same values the build fills in
   const hasConfig = () => existsSync(join(root, "site.config.json"));
 
