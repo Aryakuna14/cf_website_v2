@@ -45,6 +45,14 @@ Each story shows the volunteer's photo, then their words in a yellow card (the s
 - **Volunteers only.** Never a kid's story, name, age or photo on this page. Photos follow the same rules as everywhere: no kids' faces, no signs that show where the shelter is.
 - Placeholders are blocks with `"placeholder": true`. While any is left, the page is hidden from search engines (it is still in the menu as "Testimonials"). Replace them as real stories come in.
 - Quotes are shown exactly as text: anything like HTML in a quote is shown as plain characters, never run.
+- A volunteer's quote often names the kid they teach. Take the name out before it goes in ("my student", "he", "she").
+
+## Student journeys (journeys.html)
+Anonymous stories of how a kid at Maho has grown, told by their volunteer teacher. Each one is a white card: a short title, "When they started", "Now", and "Shared by ... , their volunteer teacher". Journeys live in `journeys.json` (pencil icon on GitHub, edit, commit).
+- One journey = one `{ }` block in `"journeys"`: `title` (under 80 characters), `before` and `after` (20 to 60 words each, under 500 characters). Optional: `teacher`, the volunteer's name, only if they agree to be named.
+- **Never anything that could identify the child** (Juvenile Justice Act, Section 74): no name or nickname, no age, no class or grade, no photo, no school. Write "a student", "he" or "she". The build refuses photos, ages and classes; names it can't spot, so read every journey before committing.
+- **Every real journey needs `shelterConsent`**: the month the shelter agreed in writing to that story, like `"2026-11"`.
+- Placeholders are blocks with `"placeholder": true`. While any is left, the page is hidden from search engines. It isn't in the menu yet: add it once the journeys are real.
 
 ## Print the QR poster
 Open the site's `poster.html` (linked as "Printable poster" in the footer). Press **Ctrl+P** (Cmd+P on Mac), choose **A4**, margins **None**, and tick **Background graphics**. It prints on one page. The QR code points to `siteUrl` from `site.config.json` and is made fresh on every build.

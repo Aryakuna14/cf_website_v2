@@ -10,6 +10,8 @@ export function loadConfig(root) {
   const cfg = JSON.parse(readFileSync(join(root, "site.config.json"), "utf8"));
   const storiesFile = join(root, "stories.json");
   cfg.stories = existsSync(storiesFile) ? JSON.parse(readFileSync(storiesFile, "utf8")).stories || [] : [];
+  const journeysFile = join(root, "journeys.json");
+  cfg.journeys = existsSync(journeysFile) ? JSON.parse(readFileSync(journeysFile, "utf8")).journeys || [] : [];
   return cfg;
 }
 
@@ -80,7 +82,37 @@ export function renderStories(html, stories) {
     .replace("<!-- stories:list -->", body);
 }
 
+// ---- Student journeys (journeys.html, from journeys.json) ----
+// Anonymous: a short title, what the kid was like when they started, how they've grown, and (optionally) the
+// volunteer teacher who tells it. No photos, names, ages or classes, ever: npm run check refuses them.
+function journey(j, i) {
+  const by = j.teacher ? `Shared by ${esc(j.teacher)}, their volunteer teacher` : "Shared by their volunteer teacher";
+  return `<div class="max-w-4xl mx-auto pr-4 ${i === 0 ? "mt-12 lg:mt-16" : "mt-14 lg:mt-16"}">
+        <article class="offset-card bg-white p-8 sm:p-10" aria-label="Journey ${i + 1}">
+          ${j.placeholder ? BADGE : ""}<p class="eyebrow">A student at Maho</p>
+          <h2 class="heading heading-lg mt-3">${esc(j.title)}</h2>
+          <div class="mt-8 grid md:grid-cols-2 gap-8">
+            <div class="border-t-2 border-ink pt-4"><h3 class="impact-label fact-label">When they started</h3><p class="mt-3 text-lg leading-relaxed">${esc(j.before)}</p></div>
+            <div class="border-t-2 border-ink pt-4"><h3 class="impact-label fact-label">Now</h3><p class="mt-3 text-lg leading-relaxed">${esc(j.after)}</p></div>
+          </div>
+          <p class="mt-8 font-bold">${by}</p>
+        </article>
+      </div>`;
+}
+
+export function renderJourneys(html, journeys) {
+  if (!html.includes("<!-- journeys:")) return html;
+  const list = (Array.isArray(journeys) ? journeys : []).filter((j) => j && typeof j === "object");
+  const hidden = list.length === 0 || list.some((j) => j.placeholder); // keep out of search until real journeys
+  const body = list.length
+    ? list.map(journey).join("\n      ")
+    : '<p class="lede mt-10 mx-auto text-center">Stories of how the kids at Maho grow are coming soon.</p>';
+  return html
+    .replace("<!-- journeys:robots -->", hidden ? '<meta name="robots" content="noindex">' : "")
+    .replace("<!-- journeys:list -->", body);
+}
+
 export function renderHtml(html, cfg) {
   const site = cfg.siteUrl.endsWith("/") ? cfg.siteUrl : `${cfg.siteUrl}/`;
-  return renderStories(html, cfg.stories).replaceAll("%SITE_URL%", site);
+  return renderJourneys(renderStories(html, cfg.stories), cfg.journeys).replaceAll("%SITE_URL%", site);
 }

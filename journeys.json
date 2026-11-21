@@ -1,0 +1,32 @@
+{
+  "_help": "Student journeys for journeys.html: anonymous stories of how a kid at Maho has grown, told by their volunteer teacher. Edit on GitHub (pencil icon), then commit: the site republishes itself. One journey = one { } block, separated by commas. NEVER a child's name or nickname, age, class or grade, photo, or anything else that could identify them (Juvenile Justice Act, Section 74): write 'a student', 'he' or 'she'. Every real journey needs the shelter's written OK for that story: put the month you got it in \"shelterConsent\" (like \"2026-11\"). \"teacher\" is optional: the volunteer who tells the story, only if they agree to be named. There are no photos on this page, on purpose. While any journey has \"placeholder\": true, the page stays out of search results: replace the placeholder blocks as real journeys come in.",
+
+  "_example": {
+    "title": "From quiet to confident",
+    "before": "What they were like when they started: shy, unsure, stuck on something. 20 to 60 words.",
+    "after": "How they have grown since: what changed, what they can do now. 20 to 60 words.",
+    "teacher": "Trisha Paul",
+    "shelterConsent": "2026-11"
+  },
+
+  "journeys": [
+    {
+      "placeholder": true,
+      "title": "Placeholder: a short title for the first journey",
+      "before": "Placeholder: what this student was like when they started at Maho.",
+      "after": "Placeholder: how they have grown since."
+    },
+    {
+      "placeholder": true,
+      "title": "Placeholder: a short title for the second journey",
+      "before": "Placeholder: what this student was like when they started at Maho.",
+      "after": "Placeholder: how they have grown since."
+    },
+    {
+      "placeholder": true,
+      "title": "Placeholder: a short title for the third journey",
+      "before": "Placeholder: what this student was like when they started at Maho.",
+      "after": "Placeholder: how they have grown since."
+    }
+  ]
+}

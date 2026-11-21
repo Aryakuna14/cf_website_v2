@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Same security policy as index.html (npm run check compares them). -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src https://formspree.io; form-action https://formspree.io; base-uri 'none'; object-src 'none'; frame-src 'none'; manifest-src 'self'; require-trusted-types-for 'script'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- While journeys.json has placeholder journeys, this becomes <meta name="robots" content="noindex"> -->
+<!-- journeys:robots -->
+<title>Student journeys | U&amp;I x Maho</title>
+<meta name="description" content="How kids at Maho grow, told by the volunteers who teach them. No names, ages or photos, to protect their privacy.">
+<link rel="canonical" href="%SITE_URL%journeys.html">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#ffda1b">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="U&amp;I x Maho">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="Student journeys at Maho">
+<meta property="og:description" content="How kids at Maho grow, told by the volunteers who teach them.">
+<meta property="og:url" content="%SITE_URL%journeys.html">
+<meta property="og:image" content="%SITE_URL%images/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="U&amp;I for Every Child. Fund their dreams. Change their future. Maho's volunteers, smiling.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Student journeys at Maho">
+<meta name="twitter:description" content="How kids at Maho grow, told by the volunteers who teach them.">
+<meta name="twitter:image" content="%SITE_URL%images/og-image.jpg">
+<link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-bg text-ink font-sans antialiased">
+
+<!-- Student journeys page. Anonymous stories of how a kid at Maho has grown, told by their volunteer teacher. The
+     journeys live in journeys.json; scripts/render.mjs turns each one into a card at build time. Never a child's
+     name, age, class or photo (Juvenile Justice Act, Section 74), and only with the shelter's written OK: npm run
+     check enforces what it can. While any journey is a placeholder, this page stays out of search results.
+     It is not in the menu yet. -->
+<!-- Site menu: identical on every page (npm run check compares them). Home is first, the current page is underlined,
+     the logo always goes home, and Donate always goes to the giving section of the fundraiser page. -->
+<header class="fixed top-0 inset-x-0 z-50 bg-white/95 border-b border-line">
+  <div class="wrap h-[4.5rem] flex items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="images/logo.png" alt="U&amp;I x Maho home" width="44" height="44" class="h-11 w-11 rounded-full bg-red p-1 object-contain">
+      <span class="font-extrabold text-lg whitespace-nowrap">U&amp;I x Maho</span>
+    </a>
+    <nav class="hidden xl:flex items-center gap-6 text-[0.95rem] font-semibold" aria-label="Main">
+      <a href="index.html" class="nav-link hover:text-pink">Home</a>
+      <a href="volunteer.html" class="nav-link hover:text-pink">Volunteer</a>
+      <a href="fundraiser.html" class="nav-link hover:text-pink">Fundraiser</a>
+      <a href="stories.html" class="nav-link hover:text-pink">Testimonials</a>
+      <a href="index.html#contact" class="nav-link hover:text-pink">Contact</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="volunteer.html" class="btn btn-outline btn-sm hidden sm:inline-flex">Volunteer</a>
+      <a href="fundraiser.html#give" class="btn btn-primary btn-sm">Donate</a>
+      <button id="menu-btn" class="xl:hidden p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.25" aria-hidden="true"><path d="M3 6h20M3 13h20M3 20h20"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav id="mobile-nav" class="hidden xl:hidden wrap pb-5 flex-col gap-4 text-lg font-semibold" aria-label="Main">
+    <a href="index.html" class="nav-link">Home</a><a href="volunteer.html" class="nav-link">Volunteer</a><a href="fundraiser.html" class="nav-link">Fundraiser</a><a href="stories.html" class="nav-link">Testimonials</a><a href="index.html#contact" class="nav-link">Contact</a>
+  </nav>
+</header>
+
+<main id="top" class="pt-[4.5rem]">
+
+  <!-- Way back: "Home / this page" under the menu on every inner page -->
+  <nav aria-label="Breadcrumb" class="bg-white border-b border-line">
+    <ol class="wrap py-3 flex items-center gap-2 text-sm font-semibold">
+      <li><a href="index.html" class="link">&larr; Home</a></li>
+      <li aria-hidden="true" class="text-ink/70">/</li>
+      <li aria-current="page">Student journeys</li>
+    </ol>
+  </nav>
+
+  <!-- Journeys (orange, like the home page's Classes section; text stays ink on orange). Each journey is a white
+       card: a short title, "When they started", "Now", and who shared it. Filled in from journeys.json. -->
+  <section class="band bg-orange" aria-labelledby="journeys-title">
+    <div class="wrap">
+      <div class="text-center">
+        <p class="eyebrow text-ink">Student journeys</p>
+        <h1 id="journeys-title" class="display impact-title mt-3">How they grow</h1>
+        <p class="lede mt-5 mx-auto">Stories of the kids at Maho, told by the volunteers who teach them. To protect them, we never share a child's name, age or photo.</p>
+      </div>
+      <!-- journeys:list -->
+    </div>
+  </section>
+
+  <!-- Be part of it (crimson, like the home page) -->
+  <section class="band bg-crimson relative overflow-hidden" aria-labelledby="join-title">
+    <svg class="absolute right-[6%] bottom-8 w-10 h-10 lg:w-16 lg:h-16 text-black" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.6 7.2 16.8 11.4 24 12C16.8 12.6 12.6 16.8 12 24C11.4 16.8 7.2 12.6 0 12C7.2 11.4 11.4 7.2 12 0Z"/></svg>
+    <svg class="absolute left-[7%] top-10 w-8 h-8 lg:w-12 lg:h-12 text-black" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.6 7.2 16.8 11.4 24 12C16.8 12.6 12.6 16.8 12 24C11.4 16.8 7.2 12.6 0 12C7.2 11.4 11.4 7.2 12 0Z"/></svg>
+    <div class="wrap relative text-center">
+      <p class="eyebrow text-white">Be part of it</p>
+      <h2 id="join-title" class="mt-5">
+        <span class="hand hand-lg block text-black">Help a kid</span>
+        <span class="hand hand-xl block text-sun mt-2">start their journey.</span>
+      </h2>
+      <p class="lede mt-6 mx-auto text-white">Every week, U&amp;I volunteers teach the kids at Maho. Give to the fundraiser, or come and teach.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="fundraiser.html#give" class="btn btn-sun">Donate now</a>
+        <a href="volunteer.html" class="btn btn-black">Volunteer with us</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="bg-ink text-white pt-14 pb-8">
+  <div class="wrap grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div>
+      <img src="images/logo.png" alt="U&amp;I, be the change" width="88" height="88" class="h-[5.5rem] w-[5.5rem] rounded-full bg-red p-2 object-contain">
+      <!-- Same links as https://uandi.org.in/ . They open in the same tab, so they work in every browser. -->
+      <ul class="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-sm text-white/80" aria-label="U&amp;I on social media">
+        <li><a href="https://www.instagram.com/uandi.org.in/" class="underline hover:text-white">Instagram</a></li>
+        <li><a href="https://www.facebook.com/uandi.org.in/" class="underline hover:text-white">Facebook</a></li>
+        <li><a href="https://www.linkedin.com/company/u&amp;i-charity/" class="underline hover:text-white">LinkedIn</a></li>
+        <li><a href="https://www.youtube.com/channel/UCLiSn1bQSF7O2VGPIHD5E6A" class="underline hover:text-white">YouTube</a></li>
+      </ul>
+      <p class="mt-5 text-sm text-white/75 max-w-xs">U&amp;I Trust is a volunteer-run registered charity that empowers disadvantaged children and individuals across India.</p>
+    </div>
+    <div>
+      <h3 class="font-bold text-yellow">What we do</h3>
+      <ul class="mt-4 space-y-3 text-white/80">
+        <li><a href="https://uandi.org.in/volunteer" class="hover:text-white hover:underline">Volunteering</a></li>
+        <li><a href="https://uandi.my.canva.site/fellowship-2025" class="hover:text-white hover:underline">Fellowship</a></li>
+        <li><a href="https://forms.fillout.com/t/hA2LocEKo5us" class="hover:text-white hover:underline">Internship</a></li>
+        <li><a href="https://uandi.org.in/hiring" class="hover:text-white hover:underline">Work</a></li>
+        <li><a href="https://uandi.org.in/csr" class="hover:text-white hover:underline">CSR Partnership</a></li>
+        <li><a href="https://uandi.org.in/donatenow" class="hover:text-white hover:underline">Donate</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-bold text-yellow">U&amp;I office</h3>
+      <address class="mt-4 not-italic text-white/80 leading-relaxed">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=8%2F1%20Gover%20Road%2C%20Cox%20Town%2C%20Bangalore%20560005" class="hover:text-white hover:underline">8/1, Gover Road,<br>Cox Town, Bangalore<br>560 005</a>
+      </address>
+    </div>
+    <div>
+      <h3 class="font-bold text-yellow">Get in touch</h3>
+      <ul class="mt-4 space-y-3 text-white/80">
+        <li><span class="font-semibold text-white">M:</span> <a href="tel:+919663762016" class="hover:text-white hover:underline">+91 96637 62016</a></li>
+        <li><span class="font-semibold text-white">E:</span> <a href="mailto:uandimaho@gmail.com" class="hover:text-white hover:underline">uandimaho@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap mt-12 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
+    <p>© 2026 U&amp;I x Maho</p>
+    <a href="poster.html" class="underline hover:text-white">Printable poster</a>
+    <a href="privacy.html" class="underline hover:text-white">Privacy policy</a>
+    <a href="terms.html" class="underline hover:text-white">Terms of use</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
