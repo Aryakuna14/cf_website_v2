@@ -161,7 +161,7 @@ for (const file of files) {
       else if (pageCsp && normCsp(csp) !== normCsp(pageCsp)) errors.push(`${rel(file)}: its security policy differs from index.html's.`);
     }
     if (html.includes("REPLACE_WITH")) {
-      warnings.push(`${rel(file)}: still contains a REPLACE_WITH placeholder (e.g. the contact form isn't connected to Formspree yet).`);
+      warnings.push(`${rel(file)}: still contains a REPLACE_WITH placeholder that needs filling in.`);
     }
     // Build placeholders like %SITE_URL% must all be filled in (scripts/render.mjs)
     for (const m of new Set(html.match(/%[A-Z][A-Z_]+%/g) || [])) errors.push(`${rel(file)}: placeholder ${m} was not filled in. Check site.config.json and scripts/render.mjs.`);

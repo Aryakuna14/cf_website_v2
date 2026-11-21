@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <!-- Security policy (owner: Arya). The browser refuses anything not listed here: no outside scripts,
-     styles, images, fonts or frames; the page may only send data to our form service (Formspree).
+     styles, images, fonts or frames; the page sends no data anywhere (there is no form).
      Keep it identical to the policy in _headers and vercel.json (`npm run check` compares them).
      frame-ancestors (clickjacking) only works as a real header, so it lives in _headers / vercel.json. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src https://formspree.io; form-action https://formspree.io; base-uri 'none'; object-src 'none'; frame-src 'none'; manifest-src 'self'; require-trusted-types-for 'script'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'; frame-src 'none'; manifest-src 'self'; require-trusted-types-for 'script'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>U&amp;I for Every Child | Donate or volunteer at Maho, Bengaluru</title>
@@ -110,7 +110,7 @@
       </div>
       <div class="mt-4 flex flex-wrap justify-center gap-3">
         <a href="fundraiser.html" class="btn btn-sm btn-outline-light">See the December–January fundraiser</a>
-        <a href="#contact" data-plan="Sponsoring a kid" class="btn btn-sm btn-outline-light">Donate individually, or as a company</a>
+        <a href="#contact" class="btn btn-sm btn-outline-light">Donate individually, or as a company</a>
       </div>
       <!-- The 80G tax benefit and the donate QR code live in the fundraiser page's giving section (fundraiser.html#give). -->
       <!-- TODO (Arya): Maho-specific donation link if U&I has one. -->
@@ -204,7 +204,7 @@
         <!-- TODO (Maho team): add the class day/time and the commitment asked of volunteers, once confirmed. -->
         <div class="mt-8 flex flex-wrap gap-3">
           <a href="volunteer.html" class="btn btn-dark">Learn about volunteering</a>
-          <a href="#contact" data-plan="Volunteering" class="btn btn-outline">Ask us a question</a>
+          <a href="#contact" class="btn btn-outline">Ask us a question</a>
         </div>
       </div>
       <div class="lg:col-span-6 panel">
@@ -219,43 +219,16 @@
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- Contact: phone and email only. There is no form, so the site collects no personal data. -->
   <section id="contact" class="band">
-    <div class="wrap grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-      <div class="lg:col-span-5">
-        <p class="eyebrow text-red">Contact</p>
-        <h2 class="heading heading-xl mt-3">Write to us</h2>
-        <p class="lede mt-5">Donations, sponsorship, volunteering or a question. We reply by email.</p>
-        <p class="mt-6">Or call <a href="tel:+919663762016" class="link">+91 96637 62016</a>, or email <a href="mailto:uandimaho@gmail.com" class="link">uandimaho@gmail.com</a>.</p>
-      </div>
-      <div class="lg:col-span-7">
-        <!-- Messages are sent to Formspree (free plan), which emails them to the NGO. Owner: Arya.
-             To connect: replace REPLACE_WITH_FORM_ID with the form ID from the Formspree dashboard. -->
-        <form id="question-form" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="POST" class="panel relative flex flex-col gap-5">
-          <div><label for="q-name" class="block mb-2 font-semibold">Full name*</label>
-            <input id="q-name" name="name" autocomplete="name" required maxlength="100" class="field"></div>
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div><label for="q-email" class="block mb-2 font-semibold">Email address*</label>
-              <input id="q-email" name="email" type="email" autocomplete="email" required maxlength="254" class="field"></div>
-            <div><label for="q-phone" class="block mb-2 font-semibold">Contact number*</label>
-              <input id="q-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required minlength="7" maxlength="20" pattern="[0-9+\(\)\- ]{7,20}" title="Digits, spaces, +, - and brackets only" class="field"></div>
-          </div>
-          <div><label for="q-interest" class="block mb-2 font-semibold">I am writing about*</label>
-            <select id="q-interest" name="interest" required class="field">
-              <option>A donation</option><option>Sponsoring a kid</option><option>Volunteering</option><option>CSR partnership</option><option>Something else</option>
-            </select></div>
-          <div><label for="q-text" class="block mb-2 font-semibold">Message*</label>
-            <textarea id="q-text" name="message" rows="4" required maxlength="2000" class="field"></textarea></div>
-          <!-- Spam trap: hidden from people (and screen readers); bots fill it in. It is never sent. -->
-          <div class="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true">
-            <label for="q-website">Leave this empty</label>
-            <input id="q-website" name="website" type="text" tabindex="-1" autocomplete="off">
-          </div>
-          <p class="text-sm text-ink/75">We only use these details to reply to you. They are sent to our form provider, Formspree, which emails them to our team. See our <a href="privacy.html" class="underline">privacy policy</a>.</p>
-          <button type="submit" class="btn btn-dark self-start disabled:opacity-60 disabled:cursor-wait">Send message</button>
-          <p class="form-status hidden font-semibold" role="status" aria-live="polite"></p>
-        </form>
-      </div>
+    <div class="wrap">
+      <p class="eyebrow text-red">Contact</p>
+      <h2 class="heading heading-xl mt-3">Write to us</h2>
+      <p class="lede mt-5">Donations, sponsorship, volunteering or a question? Call or email us.</p>
+      <ul class="mt-8 grid sm:grid-cols-2 gap-6 max-w-3xl">
+        <li class="border-t-2 border-ink pt-4"><p class="eyebrow block">Call</p><a href="tel:+919663762016" class="heading heading-md link mt-2 inline-block">+91 96637 62016</a></li>
+        <li class="border-t-2 border-ink pt-4"><p class="eyebrow block">Email</p><a href="mailto:uandimaho@gmail.com" class="heading heading-md link mt-2 inline-block break-words">uandimaho@gmail.com</a></li>
+      </ul>
     </div>
   </section>
 </main>
@@ -307,7 +280,6 @@
 </footer>
 
 <script src="js/main.js"></script>
-<script src="js/contact-form.js"></script>
 <script src="js/carousel.js"></script>
 </body>
 </html>
