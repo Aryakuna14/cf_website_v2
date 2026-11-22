@@ -39,7 +39,6 @@
       "highlight": "He is now more confident and tries his best."
     },
     {
-      "placeholder": true,
       "title": "Curious, brave and always running",
       "story": "When I first met him, I remember how excited he was to learn what happens when different colours are mixed together. Initially, he was a little reserved and hesitant to speak or ask questions, but with time, I've seen him become much more open, expressive and confident. It has been wonderful watching him grow. I also love that we share a common love for running; it's always nice to bond over something we both enjoy. In many ways, he reminds me of Spider-Man: curious, brave, energetic and always ready to take on new challenges. I hope he continues to believe in himself, push his limits, stay curious and never stop exploring. It's been a pleasure watching him grow, and I'm excited to see all that he achieves ahead!",
       "highlight": "In many ways, he reminds me of Spider-Man: curious, brave, energetic and always ready to take on new challenges.",
@@ -50,7 +49,8 @@
         "cricket",
         "art"
       ],
-      "teacher": "Lishna"
+      "teacher": "Lishna",
+      "shelterConsent": "2026-11"
     }
   ]
 }
