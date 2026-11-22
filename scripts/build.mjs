@@ -57,11 +57,26 @@ const assets = ["css/styles.css", ...readdirSync(join(dist, "js")).filter((f) =>
 const versions = Object.fromEntries(assets.filter((a) => existsSync(join(dist, a))).map((a) => [a, fingerprint(a)]));
 for (const file of readdirSync(dist).filter((f) => f.endsWith(".html"))) {
   let html = readFileSync(join(dist, file), "utf8");
-  for (const [asset, v] of Object.entries(versions)) html = html.replaceAll(`"${asset}"`, `"${asset}?v=${v}"`);
+  for (const [asset, v] of Object.entries(versions)) {
+    html = html.replaceAll(`"${asset}"`, `"${asset}?v=${v}"`).replaceAll(`"/${asset}"`, `"/${asset}?v=${v}"`); // "/..." only in 404.html
+  }
   writeFileSync(join(dist, file), html);
 }
 
 // 5. Tell GitHub Pages not to run Jekyll (it would hide _headers and .well-known)
 writeFileSync(join(dist, ".nojekyll"), "");
+
+// 6. sitemap.xml and robots.txt for search engines, from the address in site.config.json. A page that is hidden from
+//    search (it has placeholders, so it carries <meta name="robots" content="noindex">) is left out of the sitemap.
+const site = config.siteUrl.endsWith("/") ? config.siteUrl : `${config.siteUrl}/`;
+const listed = ["index.html", "fundraiser.html", "journeys.html", "stories.html", "volunteer.html", "privacy.html", "terms.html"]
+  .filter((p) => existsSync(join(dist, p)) && !/^<meta name="robots" content="noindex">/m.test(readFileSync(join(dist, p), "utf8")));
+const today = new Date().toISOString().slice(0, 10);
+writeFileSync(join(dist, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${listed.map((p) => `  <url><loc>${site}${p === "index.html" ? "" : p}</loc><lastmod>${today}</lastmod></url>`).join("\n")}
+</urlset>
+`);
+writeFileSync(join(dist, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${site}sitemap.xml\n`);
 
 console.log("Built site in dist/");
