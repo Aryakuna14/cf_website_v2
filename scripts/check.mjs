@@ -201,6 +201,7 @@ if (existsSync(storiesFile)) {
       const where = `stories.json, story ${i + 1}`;
       for (const k of ["name", "role", "quote"]) if (typeof s?.[k] !== "string" || !s[k].trim()) errors.push(`${where}: "${k}" is missing.`);
       if (typeof s?.quote === "string" && s.quote.length > 900) errors.push(`${where}: the quote is ${s.quote.length} characters. Keep it under 900.`);
+      if (s?.years !== undefined && !/^\d{4}\s*[–-]\s*\d{4}$/.test(s.years)) errors.push(`${where}: "years" must look like "2025–2027".`);
       if (s?.rating !== undefined && !(Number.isInteger(s.rating) && s.rating >= 1 && s.rating <= 5)) errors.push(`${where}: "rating" must be a whole number from 1 to 5, or left out.`);
       if (s?.photo !== undefined && (!/^images\/[a-z0-9/_-]+\.(webp|jpg|jpeg|png)$/.test(s.photo) || !existsSync(join(root, s.photo)))) {
         errors.push(`${where}: "photo" must be a file in images/ with a lowercase name, e.g. images/stories/first-name.webp.`);
