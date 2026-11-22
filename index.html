@@ -6,7 +6,7 @@
      styles, images, fonts or frames; the page sends no data anywhere (there is no form).
      Keep it identical to the policy in _headers and vercel.json (`npm run check` compares them).
      frame-ancestors (clickjacking) only works as a real header, so it lives in _headers / vercel.json. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'; frame-src 'none'; manifest-src 'self'; require-trusted-types-for 'script'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'; frame-src 'none'; manifest-src 'self'; require-trusted-types-for 'script'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>U&amp;I for Every Child | Donate or volunteer at Maho, Bengaluru</title>

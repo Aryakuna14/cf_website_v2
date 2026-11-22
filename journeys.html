@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <!-- Same security policy as index.html (npm run check compares them). -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'; frame-src 'none'; manifest-src 'self'; require-trusted-types-for 'script'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'; frame-src 'none'; manifest-src 'self'; require-trusted-types-for 'script'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- While journeys.json has placeholder journeys, this becomes <meta name="robots" content="noindex"> -->
 <!-- journeys:robots -->
 <title>Student Journeys | U&amp;I x Maho</title>
-<meta name="description" content="How kids at Maho grow, told by the volunteers who teach them. No names, ages or photos, to protect their privacy.">
+<meta name="description" content="How kids at Maho grow, told by the volunteers who teach them. No names, ages or faces, to protect their privacy.">
 <link rel="canonical" href="%SITE_URL%journeys.html">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -86,9 +86,29 @@
       <div class="text-center">
         <p class="eyebrow text-ink">Student Journeys</p>
         <h1 id="journeys-title" class="display impact-title mt-3">How they grow</h1>
-        <p class="lede mt-5 mx-auto">Stories of the kids at Maho, told by the volunteers who teach them. To protect them, we never share a child's name, age or photo.</p>
+        <p class="lede mt-5 mx-auto">Stories of the kids at Maho, told by the volunteers who teach them. To protect them, we never share a child's name, age or face.</p>
       </div>
       <!-- journeys:list -->
+    </div>
+  </section>
+
+  <!-- In his own words (ink): one of the kids at Maho on video, after the volunteers' stories. Only with the shelter's
+       OK, with his face blurred all the way through, and only if nothing in it (spoken or seen) gives his name, age,
+       class or where he lives. The video loads only when someone presses play (preload="metadata"). -->
+  <section class="band bg-ink text-white" aria-labelledby="voice-title">
+    <div class="wrap text-center">
+      <p class="eyebrow text-sun">In his own words</p>
+      <h2 id="voice-title" class="mt-5">
+        <span class="hand hand-lg block text-white">You've heard from the volunteers.</span>
+        <span class="hand hand-xl block text-sun mt-3">Now hear it from him.</span>
+      </h2>
+      <p class="lede mt-6 mx-auto text-white">Every story above was told by a volunteer. This one comes straight from one of the kids at Maho, in his own voice. Press play, with your sound on.</p>
+      <div class="mt-12 mx-auto w-full max-w-[22rem]">
+        <video class="block w-full h-auto rounded-[0.9rem] bg-black offset-card" controls playsinline preload="metadata" width="1080" height="1920" poster="images/maho-voice-poster.webp" aria-label="Video: one of the kids at Maho, in his own words">
+          <source src="videos/maho-voice.mp4" type="video/mp4">
+          <p>Your browser can't play this video.</p>
+        </video>
+      </div>
     </div>
   </section>
 
