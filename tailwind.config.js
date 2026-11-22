@@ -7,20 +7,20 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
-      colors: {
-        bg: "#f6f3ec",        // soft warm off-white: page, menu bar, "Home /" strip and cards (pure white glared next to the bright colours)
+      colors: { // U&I colours at 92% brightness (same shades, toned down; any darker and black headlines on crimson get hard to read). Page off-white at 97%.
+        bg: "#efece5",        // soft warm off-white: page, menu bar, "Home /" strip and cards (pure white glared next to the bright colours)
         surface: "#ebebeb",   // light grey for alternating sections
-        line: "#e6e0d5",      // borders (warm, to sit on the off-white)
+        line: "#dfd9cf",      // borders (warm, to sit on the off-white)
         ink: "#201e1e",       // main text (near-black)
         blue: "#0937fd",      // U&I blue: keyboard focus outlines only (visible on yellow, teal and white)
-        pink: "#e843a1",      // U&I pink (uandi.my.canva.site/fellowship-2025): accent text, numbers, boxes
-        orange: "#ff914d",    // U&I orange (same fellowship page): section background, ink text on top
-        red: "#cb0100",       // U&I red: logo, small labels, chips (white text on top)
-        crimson: "#e5024a",   // U&I volunteer-page crimson (uandi.org.in/volunteer): home hero, Donate sections.
-                              // On it: white text (4.7:1), black only at 24px+ (4.4:1), sun-yellow only at 24px+ (3.9:1)
-        sun: "#f9ed32",       // U&I volunteer-page yellow: big headline words and pill buttons on crimson (black text on top)
-        yellow: "#ffda1b",    // U&I yellow: main buttons (ink text on top)
-        teal: "#0cc0df",      // U&I teal (uandi.org.in/volunteer): section background, ink text on top
+        pink: "#d53e94",      // U&I pink (uandi.my.canva.site/fellowship-2025): accent text, numbers, boxes
+        orange: "#eb8547",    // U&I orange (same fellowship page): section background, ink text on top
+        red: "#bb0100",       // U&I red: logo, small labels, chips (white text on top)
+        crimson: "#d30244",   // U&I volunteer-page crimson (uandi.org.in/volunteer): home hero, Donate sections.
+                              // On it: white text (5.4:1), black only at 24px+ (3.05:1), sun-yellow only at 24px+ (3.7:1)
+        sun: "#e5da2e",       // U&I volunteer-page yellow: big headline words and pill buttons on crimson (black text on top)
+        yellow: "#ebc919",    // U&I yellow: main buttons (ink text on top)
+        teal: "#0bb1cd",      // U&I teal (uandi.org.in/volunteer): section background, ink text on top
       },
       fontFamily: {
         sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
