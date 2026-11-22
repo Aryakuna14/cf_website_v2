@@ -58,7 +58,7 @@ Anonymous stories of how a kid at Maho has grown, told by their volunteer teache
 Open the site's `poster.html` (linked as "Printable poster" in the footer). Press **Ctrl+P** (Cmd+P on Mac), choose **A4**, margins **None**, and tick **Background graphics**. It prints on one page. The QR code points to `siteUrl` from `site.config.json` and is made fresh on every build.
 
 ## Link previews (WhatsApp, Instagram, LinkedIn)
-When the link is shared, apps show `images/og-image.jpg` (1200×630) with the title and description from the `og:` tags in `index.html`. If you replace the image, keep every face covered and keep it under 300 KB. WhatsApp caches previews, so changes can take a day to show.
+When the link is shared, apps show `images/share-2026-11.jpg` (1200×630, in the site's crimson look) with the title and description from the `og:` tags in each page. If you replace the image, give the new one a NEW file name (for example `share-2027-01.jpg`) and update the `og:image` and `twitter:image` tags on every page: WhatsApp and other apps remember a preview by the image's address, so a new name makes them fetch the new picture. Keep every kid's face covered and keep it under 300 KB.
 
 **Moving to Vercel or a custom domain:** change `siteUrl` in `site.config.json` to the new address (starting `https://` and ending in `/`). Previews, the canonical link and the poster's QR code all follow it. Reprint any posters you have already put up.
 
