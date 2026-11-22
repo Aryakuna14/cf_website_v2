@@ -95,12 +95,23 @@ export const INTERESTS = {
   art: ["Colours", '<path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-.9 2-2s-1-1.6-1-2.6.9-1.4 2-1.4h2a4 4 0 0 0 4-4c0-4.4-4-8-9-8z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="14.5" cy="7" r="1"/>'],
   reading: ["Reading", '<path d="M3 5c3-1 6-1 9 1 3-2 6-2 9-1v14c-3-1-6-1-9 1-3-2-6-2-9-1z"/><path d="M12 6v14"/>'],
 };
+// Doodles for kids whose interests we don't know: learning things, never a made-up hobby
+const DOODLES = {
+  star: '<path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6l-5.4 2.9 1.2-6-4.5-4.2 6.1-.7z"/>',
+  pencil: '<path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/>',
+  book: INTERESTS.reading[1],
+};
 const KID_COLOURS = [["fill-yellow", "fill-crimson"], ["fill-teal", "fill-yellow"], ["fill-pink", "fill-teal"]]; // [circle, shirt]
+const ICON_COLOURS = ["text-crimson", "text-teal", "text-pink", "text-ink"];
+// Where the icons sit around the kid, poster-style (up to six)
+const SLOTS = ["top-1 left-1 -rotate-12", "top-1 right-1 rotate-12", "bottom-1 left-1 rotate-6", "bottom-1 right-1 -rotate-6",
+  "top-1/2 -translate-y-1/2 left-0", "top-1/2 -translate-y-1/2 right-0"];
 
+// The drawn kid: same for every journey (never a real child), holding a book
 function kid(i) {
   const [circle, shirt] = KID_COLOURS[i % KID_COLOURS.length];
   const skin = "#8d5a3b", hair = "#231a16";
-  return `<svg viewBox="0 0 120 120" class="w-20 h-20 sm:w-24 sm:h-24 shrink-0" aria-hidden="true">
+  return `<svg viewBox="0 0 120 120" class="relative w-36 h-36 sm:w-40 sm:h-40" aria-hidden="true">
             <defs><clipPath id="kid-${i}"><circle cx="60" cy="60" r="60"/></clipPath></defs>
             <g clip-path="url(#kid-${i})">
               <circle cx="60" cy="60" r="60" class="${circle}"/>
@@ -111,15 +122,29 @@ function kid(i) {
               <path d="M36 54C33 36 45 26 60 26S87 36 84 52C79 44 72 40 65 40C58 45 47 46 40 45C38 47 37 50 36 54Z" fill="${hair}"/>
               <circle cx="51" cy="57" r="2.6" class="fill-ink"/><circle cx="69" cy="57" r="2.6" class="fill-ink"/>
               <path d="M51 66c5 6 13 6 18 0" fill="none" class="stroke-ink" stroke-width="3" stroke-linecap="round"/>
+              <path d="M40 100c7-3 14-3 20 1 6-4 13-4 20-1v19c-7-3-14-3-20 1-6-4-13-4-20-1z" class="fill-bg stroke-ink" stroke-width="2.5" stroke-linejoin="round"/>
+              <path d="M60 101v19" class="stroke-ink" stroke-width="2.5"/>
+              <circle cx="40" cy="108" r="5" fill="${skin}"/><circle cx="80" cy="108" r="5" fill="${skin}"/>
             </g>
           </svg>`;
 }
 
+// The kid in the middle with icons scattered around: their interests if the volunteer told us, otherwise doodles
+function poster(j, i) {
+  const known = (Array.isArray(j.interests) ? j.interests : []).filter((k) => INTERESTS[k]).slice(0, SLOTS.length);
+  const icons = known.length ? known.map((k) => INTERESTS[k][1]) : [DOODLES.star, DOODLES.book, DOODLES.pencil, DOODLES.star];
+  const around = icons.map((svg, n) => `<svg viewBox="0 0 24 24" class="absolute ${SLOTS[n]} w-10 h-10 sm:w-12 sm:h-12 ${ICON_COLOURS[(n + i) % ICON_COLOURS.length]}" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${svg}</svg>`).join("\n            ");
+  return `<div class="relative mx-auto max-w-xs sm:max-w-sm h-44 sm:h-52 flex items-center justify-center">
+            ${around}
+            ${kid(i)}
+          </div>`;
+}
+
+const listWords = (words) => (words.length < 2 ? words.join("") : `${words.slice(0, -1).join(", ")} and ${words[words.length - 1]}`);
 function loves(interests) {
   const known = (Array.isArray(interests) ? interests : []).filter((k) => INTERESTS[k]);
   if (!known.length) return "";
-  const items = known.map((k) => `<li class="inline-flex items-center gap-1.5 rounded-full bg-ink/5 px-3 py-1 text-sm font-semibold"><svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${INTERESTS[k][1]}</svg>${INTERESTS[k][0]}</li>`).join("");
-  return `<p class="eyebrow mt-5">Loves</p><ul class="mt-2 flex flex-wrap gap-2">${items}</ul>`;
+  return `<p class="mt-2 text-sm font-semibold text-ink/75">Loves ${listWords(known.map((k) => INTERESTS[k][0].toLowerCase()))}</p>`;
 }
 
 const storyOf = (j) => j.story || [j.before, j.after].filter(Boolean).join(" ");
@@ -130,14 +155,13 @@ function journey(j, i) {
   const highlight = j.highlight || firstSentence(story);
   const by = j.teacher ? `Volunteer: ${esc(j.teacher)}` : "Shared by their volunteer teacher";
   return `<details class="journey-tile offset-card bg-bg mr-4">
-        <summary class="block cursor-pointer p-7 sm:p-8">
-          <div class="flex items-center gap-5">
-            ${kid(i)}
-            <div>${j.placeholder ? BADGE : ""}<p class="eyebrow">A student at Maho</p>
-              <h2 class="heading text-[clamp(1.35rem,2.2vw,1.75rem)] mt-2">${esc(j.title)}</h2></div>
-          </div>
+        <summary class="block cursor-pointer p-7 sm:p-8 text-center">
+          ${poster(j, i)}
+          <div class="mt-5">${j.placeholder ? BADGE : ""}</div>
+          <p class="eyebrow">A student at Maho</p>
+          <h2 class="heading text-[clamp(1.4rem,2.3vw,1.85rem)] mt-2">${esc(j.title)}</h2>
           ${loves(j.interests)}
-          <p class="tile-teaser mt-5 text-lg font-semibold leading-relaxed">“${esc(highlight)}”</p>
+          <p class="tile-teaser mt-5 text-lg font-semibold leading-relaxed max-w-md mx-auto">“${esc(highlight)}”</p>
           <span class="btn btn-sm btn-dark mt-6"><span class="tile-closed">Read the story</span><span class="tile-open">Close the story</span></span>
         </summary>
         <div class="px-7 sm:px-8 pb-8 text-center">
