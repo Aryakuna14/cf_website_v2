@@ -34,7 +34,7 @@ if (css.status !== 0) {
 
 // 3. Copy the static files. Only what is listed here is published.
 const copyIfExists = [
-  "js", "images", "fonts", ".well-known",
+  "js", "images", "videos", "fonts", ".well-known",
   "robots.txt", "sitemap.xml", "CNAME", "_headers", "favicon.ico", "favicon.png", "favicon.svg", "apple-touch-icon.png",
 ];
 for (const name of copyIfExists) {

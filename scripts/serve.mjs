@@ -14,7 +14,7 @@ export function serve(folder = ".", port = 8000, basePath = "/") {
   const types = {
     ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8",
     ".json": "application/json", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
-    ".webp": "image/webp", ".ico": "image/x-icon", ".woff2": "font/woff2", ".txt": "text/plain; charset=utf-8", ".xml": "application/xml",
+    ".webp": "image/webp", ".mp4": "video/mp4", ".ico": "image/x-icon", ".woff2": "font/woff2", ".txt": "text/plain; charset=utf-8", ".xml": "application/xml",
   };
   // Tooling folders and config files are never served. Hidden files (.env, .git...) are blocked below.
   const blocked = ["node_modules", "scripts", "src", "package.json", "package-lock.json", "tailwind.config.js", "vercel.json", "site.config.json", "stories.json", "journeys.json"];
