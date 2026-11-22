@@ -110,11 +110,41 @@
   .journey-tile .tile-open { display: none; }
   .journey-tile[open] .tile-open { display: inline; }
   .journey-tile[open] .tile-closed, .journey-tile[open] .tile-teaser { display: none; }
-  /* The story pop-up: dims the page behind it */
+  /* The story pop-up: dims the page behind it, and fits on one screen without scrolling. Text sizes follow the
+     screen's height (vh) so the longest story still fits on a short phone. overflow-y is only a safety net. */
   .journey-dialog::backdrop { background: rgb(32 30 30 / 0.65); }
   .journey-dialog[open] { overflow-y: auto; }
-  .journey-dialog .tile-story > div { margin-top: 1.5rem; }
   .journey-dialog button:focus-visible { outline: 3px solid theme("colors.blue"); outline-offset: 3px; }
+  .journey-dialog .tile-head > div:first-child { margin-top: 0; }
+  .journey-dialog .tile-head > div:first-child:empty { display: none; }
+  .journey-dialog .tile-head h2 { font-size: clamp(1.15rem, 2.6vh, 1.6rem); margin-top: 0.25rem; }
+  .journey-dialog .tile-story { padding: 0; }
+  .journey-dialog .tile-story > div { margin-top: 0.9rem; padding-top: 0.9rem; }
+  .journey-dialog .tile-story p:first-child { font-size: clamp(0.875rem, 1.95vh, 1.05rem); line-height: 1.55; }
+  .journey-dialog .tile-story p:last-child { margin-top: 0.75rem; }
+  /* Phones: a small kid next to the title (the icons are already on the tile), the story underneath */
+  @media (max-width: 767px) {
+    .journey-dialog [data-dialog-body] { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 0.9rem; align-items: center; text-align: left; }
+    .journey-dialog .tile-poster > div { height: auto; max-width: none; margin: 0; }
+    .journey-dialog .tile-poster svg.absolute { display: none; }
+    .journey-dialog .tile-poster svg:not(.absolute) { width: 4rem; height: 4rem; }
+    .journey-dialog .tile-story { grid-column: 1 / -1; text-align: center; }
+    .journey-dialog > div { padding-top: 1rem; }               /* the X sits beside the title instead of above it */
+    .journey-dialog .tile-head { padding-right: 2.75rem; }
+    .journey-dialog .tile-head h2 ~ p { display: none; }        /* the "Loves ..." line is already on the tile */
+    .journey-dialog .tile-story > div { margin-top: 0.7rem; padding-top: 0.7rem; }
+    .journey-dialog .tile-story p:first-child { font-size: clamp(0.8rem, 1.75vh, 0.95rem); line-height: 1.45; }
+  }
+  /* Computers and tablets: poster on the left, story on the right */
+  @media (min-width: 768px) {
+    .journey-dialog [data-dialog-body] { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 2rem; align-items: center; }
+    .journey-dialog .tile-poster { grid-column: 1; grid-row: 1; }
+    .journey-dialog .tile-head { grid-column: 1; grid-row: 2; align-self: start; }
+    .journey-dialog .tile-story { grid-column: 2; grid-row: 1 / span 2; }
+    .journey-dialog .tile-story > div { border-top: 0; margin-top: 0; padding-top: 0; border-left: 2px solid theme("colors.ink"); padding-left: 2rem; }
+    .journey-dialog .tile-poster > div { height: 10rem; }
+    .journey-dialog .tile-poster svg:not(.absolute) { width: 8rem; height: 8rem; }
+  }
   /* Full-width photo slideshow at the top of the home page (format from uandiadheera.vercel.app): edge to edge,
      square corners, moves by itself (js/carousel.js). Swiping is the browser's own scrolling with snap points,
      so it works on every phone even if the script fails to load. Crop per photo with object-[x_y] classes. */
