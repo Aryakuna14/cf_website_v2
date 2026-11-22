@@ -226,11 +226,24 @@ if (existsSync(journeysFile)) {
     if (!Array.isArray(list)) throw new Error('"journeys" must be a list in square brackets [ ... ]');
     list.forEach((j, i) => {
       const where = `journeys.json, journey ${i + 1}`;
-      for (const k of ["title", "before", "after"]) if (typeof j?.[k] !== "string" || !j[k].trim()) errors.push(`${where}: "${k}" is missing.`);
+      if (typeof j?.title !== "string" || !j.title.trim()) errors.push(`${where}: "title" is missing.`);
       if (typeof j?.title === "string" && j.title.length > 80) errors.push(`${where}: the title is ${j.title.length} characters. Keep it under 80.`);
+      // The story is either one "story", or "before" + "after"
+      const hasStory = typeof j?.story === "string" && j.story.trim();
+      if (!hasStory) for (const k of ["before", "after"]) if (typeof j?.[k] !== "string" || !j[k].trim()) errors.push(`${where}: needs a "story" (or "before" and "after").`);
+      if (hasStory && j.story.length > 900) errors.push(`${where}: the story is ${j.story.length} characters. Keep it under 900.`);
       for (const k of ["before", "after"]) if (typeof j?.[k] === "string" && j[k].length > 500) errors.push(`${where}: "${k}" is ${j[k].length} characters. Keep it under 500.`);
+      // The highlight on the closed tile must be the volunteer's own words, copied from the story
+      const fullStory = (hasStory ? j.story : [j?.before, j?.after].filter(Boolean).join(" ")).replace(/\s+/g, " ");
+      if (j?.highlight !== undefined && (typeof j.highlight !== "string" || !fullStory.includes(j.highlight.replace(/\s+/g, " ").trim()))) {
+        errors.push(`${where}: "highlight" must be one sentence copied word for word from the story.`);
+      }
+      const knownInterests = ["running", "football", "cricket", "badminton", "art", "reading"]; // icons in scripts/render.mjs
+      if (j?.interests !== undefined && (!Array.isArray(j.interests) || j.interests.some((k) => !knownInterests.includes(k)))) {
+        errors.push(`${where}: "interests" can only use: ${knownInterests.join(", ")}.`);
+      }
       for (const k of ["photo", "image", "picture", "name", "age"]) if (j?.[k] !== undefined) errors.push(`${where}: remove "${k}". This page never shows a child's photo, name or age.`);
-      for (const k of ["title", "before", "after"]) if (typeof j?.[k] === "string" && AGE_OR_CLASS.test(j[k])) errors.push(`${where}: "${k}" mentions an age or a class/grade ("${j[k].match(AGE_OR_CLASS)[0]}"). Remove it: it could identify the child.`);
+      for (const k of ["title", "before", "after", "story", "highlight"]) if (typeof j?.[k] === "string" && AGE_OR_CLASS.test(j[k])) errors.push(`${where}: "${k}" mentions an age or a class/grade ("${j[k].match(AGE_OR_CLASS)[0]}"). Remove it: it could identify the child.`);
       if (j?.placeholder) placeholderJourneys++;
       else if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(j?.shelterConsent || "")) {
         errors.push(`${where}: a real journey needs "shelterConsent": the month the shelter agreed in writing, like "2026-11".`);
