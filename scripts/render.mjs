@@ -22,8 +22,12 @@ export function qrSvg(url) {
   return QRCode.toString(url, { type: "svg", errorCorrectionLevel: "M", margin: 2, color: { dark: "#201e1e", light: "#ffffff" } });
 }
 
-// U&I's own donation page: the only place payments happen
-export const DONATE_URL = "https://uandi.org.in/donatenow";
+// THE ONLY PLACE PAYMENTS GO: the Maho team's UPI account (U&I agreed; the team passes every rupee on to U&I Trust).
+// TEMPORARY, until the team sets up a permanent way to take donations (see README).
+// Copied exactly from the account's own Google Pay QR code. The donate QR image (images/qr-donate.svg) and the
+// "Pay with a UPI app" button both use it. npm run check fails if the site links to any other payment page or account,
+// or if the button doesn't match this. Change it only here, and only on the team's say-so.
+export const DONATE_URL = "upi://pay?pa=kilingerahna@okaxis&pn=Ahna%20kilinger&aid=uGICAgMDuwM3pcw";
 
 // QR code images the build makes (they're not in the repo): file path -> the address it opens
 export function qrImages(cfg) {
