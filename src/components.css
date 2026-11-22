@@ -124,7 +124,7 @@
 
 
   /* Soft panel */
-  .panel { background: #fff; border-radius: 1rem; padding: 1.75rem; }
+  .panel { background: theme("colors.bg"); border-radius: 1rem; padding: 1.75rem; }
   @media (min-width: 640px) { .panel { padding: 2.25rem; } }
 
   /* Form fields */
