@@ -12,3 +12,16 @@ css/styles.css
 .DS_Store
 Thumbs.db
 *.log
+
+# Original photos and videos, before faces and signs are blurred. They show kids' faces and can carry the
+# location they were taken, so they must never be uploaded (the repo is public). Keep originals in these
+# folders or loose in the top folder; only the blurred, resized copies in images/ and videos/ go online.
+/first page (home) slide show/
+/image_change/
+/new_changes/
+/originals/
+/IMG_*
+*.heic
+*.HEIC
+*.mov
+*.MOV
