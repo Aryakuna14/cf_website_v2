@@ -10,6 +10,8 @@ export function loadConfig(root) {
   const cfg = JSON.parse(readFileSync(join(root, "site.config.json"), "utf8"));
   const storiesFile = join(root, "stories.json");
   cfg.stories = existsSync(storiesFile) ? JSON.parse(readFileSync(storiesFile, "utf8")).stories || [] : [];
+  // Each photo's own width and height, so it shows in its own shape (never cropped)
+  for (const s of cfg.stories) if (s && PHOTO.test(s.photo || "")) s._size = imageSize(join(root, s.photo));
   const journeysFile = join(root, "journeys.json");
   cfg.journeys = existsSync(journeysFile) ? JSON.parse(readFileSync(journeysFile, "utf8")).journeys || [] : [];
   return cfg;
@@ -42,10 +44,35 @@ function stars(rating) {
   return `<p class="text-ink text-xl tracking-widest mt-3" role="img" aria-label="Rated ${n} out of 5">${"★".repeat(n)}${"☆".repeat(5 - n)}</p>`;
 }
 
-// Portrait (3:4), the shape of a normal phone photo, so volunteers' photos need no cropping
+// Width and height of a webp, png or jpeg file, read from its header. Falls back to portrait 3:4.
+function imageSize(file) {
+  try {
+    const b = readFileSync(file);
+    if (b.toString("ascii", 0, 4) === "RIFF" && b.toString("ascii", 8, 12) === "WEBP") {
+      const kind = b.toString("ascii", 12, 16);
+      if (kind === "VP8X") return [1 + b.readUIntLE(24, 3), 1 + b.readUIntLE(27, 3)];
+      if (kind === "VP8 ") return [b.readUInt16LE(26) & 0x3fff, b.readUInt16LE(28) & 0x3fff];
+      if (kind === "VP8L") { const v = b.readUInt32LE(21); return [1 + (v & 0x3fff), 1 + ((v >>> 14) & 0x3fff)]; }
+    }
+    if (b.readUInt32BE(0) === 0x89504e47) return [b.readUInt32BE(16), b.readUInt32BE(20)]; // png
+    if (b[0] === 0xff && b[1] === 0xd8) { // jpeg: the size is in the frame header
+      for (let i = 2; i + 9 < b.length;) {
+        if (b[i] !== 0xff) { i++; continue; }
+        const m = b[i + 1];
+        if (m >= 0xc0 && m <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(m)) return [b.readUInt16BE(i + 7), b.readUInt16BE(i + 5)];
+        i += 2 + b.readUInt16BE(i + 2);
+      }
+    }
+  } catch { /* unreadable: fall back below */ }
+  return [900, 1200];
+}
+
+// Portrait (3:4), the shape of a normal phone photo, looks best. A photo of another shape (for example when the
+// original is a close-up) shows whole, in its own shape, rather than being cropped tighter.
 function photo(s) {
   if (PHOTO.test(s.photo || "")) {
-    return `<div class="photo"><img src="${esc(s.photo)}" width="900" height="1200" loading="lazy" alt="${esc(s.name)}, a volunteer at Maho" class="block w-full h-auto aspect-[3/4] object-cover"></div>`;
+    const [w, h] = s._size || [900, 1200];
+    return `<div class="photo"><img src="${esc(s.photo)}" width="${w}" height="${h}" loading="lazy" alt="${esc(s.name)}, a volunteer at Maho" class="block w-full h-auto object-cover"></div>`;
   }
   return `<div class="aspect-[3/4] rounded-[0.9rem] border-2 border-dashed border-ink/60 grid place-items-center text-ink font-bold text-lg">Photo coming soon</div>`;
 }
