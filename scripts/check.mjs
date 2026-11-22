@@ -4,6 +4,10 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { DONATE_URL } from "./render.mjs";
+
+// Donation pages and payment services the site must never link to: every payment goes to the Maho team's UPI only
+const PAYMENT_SITES = /uandi\.org\.in\/donate|razorpay|instamojo|paypal\.|ko-fi\.com|buymeacoffee|paytm\.me|p\.paytm|phon\.pe|gpay\.app|pay\.google|milaap|ketto|givedo|donorbox|gofundme/i;
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
@@ -83,6 +87,15 @@ try {
 function checkUrl(file, url, { loads }) {
   const where = `${rel(file)}: "${url}"`;
   const u = url.trim();
+  // Payments go to one place only: the UPI link in scripts/render.mjs (DONATE_URL)
+  if (/^upi:/i.test(u)) {
+    if (u.replace(/&amp;/g, "&") !== DONATE_URL) errors.push(`${where} is a UPI payment link that isn't the Maho team's. Every payment must go to DONATE_URL in scripts/render.mjs.`);
+    return;
+  }
+  if (PAYMENT_SITES.test(u)) {
+    errors.push(`${where} links to another payment page. Every payment must go to the Maho team's UPI (DONATE_URL in scripts/render.mjs), nowhere else.`);
+    return;
+  }
   if (!u || u.startsWith("#") || /^(mailto|tel|data|blob|javascript):/i.test(u)) {
     if (/^javascript:/i.test(u)) errors.push(`${where} uses a javascript: link. Use a normal link or a button with code in js/.`);
     return;
