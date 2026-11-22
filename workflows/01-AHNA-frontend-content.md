@@ -25,7 +25,7 @@ Do not edit: `<head>` security tags, `js/` payment/form code, `.github/`, legal 
 
 ### PR 3: `ahna/media`
 - [ ] Final hero photo (`images/hero.jpg`): one image, faces covered or cropped, consent confirmed.
-- [ ] Final logo, `favicon.png`, and a 1200x630 `og-image.jpg`.
+- [ ] Final logo, `favicon.png`, and a 1200x630 share image (`images/share-*.jpg`).
 - [ ] Convert photos to WebP, under 200 KB each; keep a `.jpg` fallback if needed.
 - [ ] Add `width` and `height` attributes on every `<img>`; `loading="lazy"` below the fold.
 - [ ] Write real alt text describing the scene, never naming a child.
