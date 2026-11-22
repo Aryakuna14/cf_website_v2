@@ -153,6 +153,7 @@ const firstSentence = (text) => (String(text).match(/^.*?[.!?](\s|$)/) || [text]
 function journey(j, i) {
   const story = storyOf(j);
   const highlight = j.highlight || firstSentence(story);
+  const lead = /^[a-z]/.test(highlight) ? "…" : ""; // the highlight starts mid-sentence
   const by = j.teacher ? `Volunteer: ${esc(j.teacher)}` : "Shared by their volunteer teacher";
   // js/journeys.js copies .tile-poster, .tile-head and .tile-story into a pop-up; without the script the tile
   // simply opens in place.
@@ -165,7 +166,7 @@ function journey(j, i) {
             <h2 class="heading text-[clamp(1.4rem,2.3vw,1.85rem)] mt-2">${esc(j.title)}</h2>
             ${loves(j.interests)}
           </div>
-          <p class="tile-teaser mt-5 text-lg font-semibold leading-relaxed max-w-md mx-auto">“${esc(highlight)}”</p>
+          <p class="tile-teaser mt-5 text-lg font-semibold leading-relaxed max-w-md mx-auto">“${lead}${esc(highlight)}”</p>
           <span class="btn btn-sm btn-dark mt-6"><span class="tile-closed">Read the story</span><span class="tile-open">Close the story</span></span>
         </summary>
         <div class="tile-story px-7 sm:px-8 pb-8 text-center">
