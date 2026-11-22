@@ -8,9 +8,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        bg: "#fcfcfc",        // U&I off-white page background (not pure white)
+        bg: "#f6f3ec",        // soft warm off-white: page, menu bar, "Home /" strip and cards (pure white glared next to the bright colours)
         surface: "#ebebeb",   // light grey for alternating sections
-        line: "#e8e8e8",      // borders
+        line: "#e6e0d5",      // borders (warm, to sit on the off-white)
         ink: "#201e1e",       // main text (near-black)
         blue: "#0937fd",      // U&I blue: keyboard focus outlines only (visible on yellow, teal and white)
         pink: "#e843a1",      // U&I pink (uandi.my.canva.site/fellowship-2025): accent text, numbers, boxes
