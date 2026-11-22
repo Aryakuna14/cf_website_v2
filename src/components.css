@@ -115,6 +115,10 @@
   .journey-tile .tile-open { display: none; }
   .journey-tile[open] .tile-open { display: inline; }
   .journey-tile[open] .tile-closed, .journey-tile[open] .tile-teaser { display: none; }
+  /* Two tiles per row: an odd last tile sits in the middle instead of on the left */
+  @media (min-width: 768px) {
+    .journey-tile:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 2.25rem); }
+  }
   /* The story pop-up: dims the page behind it, and fits on one screen without scrolling. Text sizes follow the
      screen's height (vh) so the longest story still fits on a short phone. overflow-y is only a safety net. */
   .journey-dialog::backdrop { background: rgb(32 30 30 / 0.65); }
