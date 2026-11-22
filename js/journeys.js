@@ -30,8 +30,13 @@ if (dialog && typeof dialog.showModal === "function") {
     });
   });
 
-  dialog.querySelectorAll("[data-close]").forEach((button) => button.addEventListener("click", () => dialog.close()));
+  // Let the page scroll again straight away on every way of closing. The browser's own "close" event can arrive
+  // late, so it is only the backup.
+  const unlock = () => document.documentElement.classList.remove("overflow-hidden");
+  const closeDialog = () => { unlock(); dialog.close(); };
+  dialog.querySelectorAll("[data-close]").forEach((button) => button.addEventListener("click", closeDialog));
   // A click on the dimmed area outside the card closes it
-  dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
-  dialog.addEventListener("close", () => document.documentElement.classList.remove("overflow-hidden"));
+  dialog.addEventListener("click", (event) => { if (event.target === dialog) closeDialog(); });
+  dialog.addEventListener("cancel", unlock); // Esc
+  dialog.addEventListener("close", unlock);  // backup
 }
