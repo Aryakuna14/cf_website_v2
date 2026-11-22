@@ -38,5 +38,6 @@ if (dialog && typeof dialog.showModal === "function") {
   // A click on the dimmed area outside the card closes it
   dialog.addEventListener("click", (event) => { if (event.target === dialog) closeDialog(); });
   dialog.addEventListener("cancel", unlock); // Esc
-  dialog.addEventListener("close", unlock);  // backup
+  // Backup. A late "close" can arrive after the next story has already opened, so only unlock if it is really shut.
+  dialog.addEventListener("close", () => { if (!dialog.open) unlock(); });
 }

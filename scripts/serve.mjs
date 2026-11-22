@@ -61,6 +61,8 @@ export function serve(folder = ".", port = 8000, basePath = "/") {
       return;
     }
 
+    // Short links like /fundraiser open fundraiser.html, as on the live sites (vercel.json rewrites, GitHub Pages)
+    if (!extname(file) && !existsSync(file) && existsSync(`${file}.html`)) file = `${file}.html`;
     try { if (statSync(file).isDirectory()) file = join(file, "index.html"); statSync(file); }
     catch { res.writeHead(404, { "Content-Type": "text/plain" }).end("Not found"); return; }
 
