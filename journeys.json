@@ -1,35 +1,56 @@
 {
-  "_help": "Student journeys for journeys.html: anonymous stories of how a kid at Maho has grown, told by their volunteer teacher. Edit on GitHub (pencil icon), then commit: the site republishes itself. One journey = one { } block, separated by commas. NEVER a child's name or nickname, age, class or grade, photo, or anything else that could identify them (Juvenile Justice Act, Section 74): write 'a student', 'he' or 'she'. Every real journey needs the shelter's written OK for that story: put the month you got it in \"shelterConsent\" (like \"2026-11\"). \"teacher\" is optional: the volunteer who tells the story, only if they agree to be named. There are no photos on this page, on purpose. While any journey has \"placeholder\": true, the page stays out of search results: replace the placeholder blocks as real journeys come in.",
-
+  "_help": "Student journeys for journeys.html: anonymous stories of how a kid at Maho has grown, told by their volunteer teacher. Edit on GitHub (pencil icon), then commit: the site republishes itself. One journey = one { } block, separated by commas. NEVER a child's name or nickname, age, class or grade, photo, or anything else that could identify them (Juvenile Justice Act, Section 74): write 'a student', 'he' or 'she'. Every real journey needs the shelter's written OK for that story: put the month you got it in \"shelterConsent\" (like \"2026-11\"). \"teacher\" is optional: the volunteer who tells the story, only if they agree to be named. There are no photos on this page, on purpose: every journey shows the same drawn illustration. \"highlight\" is one sentence copied word for word from the story, shown on the closed tile. \"interests\" (optional) shows small icons; use only what the volunteer told us: running, football, cricket, badminton, art, reading. Write the story either as one \"story\" or as \"before\" and \"after\". While any journey has \"placeholder\": true, the page stays out of search results: replace the placeholder blocks as real journeys come in.",
+  
   "_example": {
     "title": "From quiet to confident",
-    "before": "What they were like when they started: shy, unsure, stuck on something. 20 to 60 words.",
-    "after": "How they have grown since: what changed, what they can do now. 20 to 60 words.",
+    "story": "The volunteer's words, 60 to 150 words, with the child's name taken out.",
+    "highlight": "One sentence copied word for word from the story.",
+    "interests": [
+      "football",
+      "reading"
+    ],
     "teacher": "Trisha Paul",
     "shelterConsent": "2026-11"
   },
-
+  
   "journeys": [
     {
       "title": "Finding his focus",
       "before": "After my first class with him, I thought it would take a long time to get him to sit through an entire class as he was full of energy and loved moving around and playing with others.",
       "after": "However, as the classes progressed, I noticed a significant change in him. We established a set of classroom rules, which he genuinely respected and followed. There were a few instances when he doubted his ability to speak English but I guess a few words of encouragement from me and others at the NGO made a difference. He has made some really good progress and I am sure he will do wonders in whatever he decides to pursue!",
       "teacher": "Riyanshi",
-      "shelterConsent": "2026-11"
+      "shelterConsent": "2026-11",
+      "highlight": "He has made some really good progress and I am sure he will do wonders in whatever he decides to pursue!"
     },
     {
       "title": "From quiet to confident",
       "before": "When I first met him, he was a very quiet kid who wasn't really interested in learning or interacting, and I used to be the only one talking, which made it quite difficult to teach him.",
       "after": "But eventually, I started learning about his interests and using them to teach, which helped him enjoy the subject and open up to me even more. Since then he has started coming up to me on his own to talk and even volunteering to answer in class. His journey from coming out of his shell to becoming a confident child is truly inspiring and has made him a much better learner.",
       "teacher": "Spruha",
-      "shelterConsent": "2026-11"
+      "shelterConsent": "2026-11",
+      "highlight": "His journey from coming out of his shell to becoming a confident child is truly inspiring and has made him a much better learner."
     },
     {
       "title": "Growing in confidence",
       "before": "Initially he was not confident about English. He struggled to put words together, and he'd look up for confirmation to see if what he read was right.",
       "after": "But he is the best kid I could ask for! He is ready in our spot before any kid in our centre is eager to learn. He is now more confident and tries his best. The bond we have had made learning an easy activity. I've seen his potential and dreams, and our learning will help him get closer to it!",
       "teacher": "Jeslin",
-      "shelterConsent": "2026-11"
+      "shelterConsent": "2026-11",
+      "highlight": "He is now more confident and tries his best."
+    },
+    {
+      "placeholder": true,
+      "title": "Curious, brave and always running",
+      "story": "When I first met him, I remember how excited he was to learn what happens when different colours are mixed together. Initially, he was a little reserved and hesitant to speak or ask questions, but with time, I've seen him become much more open, expressive and confident. It has been wonderful watching him grow. I also love that we share a common love for running; it's always nice to bond over something we both enjoy. In many ways, he reminds me of Spider-Man: curious, brave, energetic and always ready to take on new challenges. I hope he continues to believe in himself, push his limits, stay curious and never stop exploring. It's been a pleasure watching him grow, and I'm excited to see all that he achieves ahead!",
+      "highlight": "In many ways, he reminds me of Spider-Man: curious, brave, energetic and always ready to take on new challenges.",
+      "interests": [
+        "running",
+        "football",
+        "badminton",
+        "cricket",
+        "art"
+      ],
+      "teacher": "Lishna"
     }
   ]
 }

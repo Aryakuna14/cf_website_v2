@@ -83,21 +83,70 @@ export function renderStories(html, stories) {
 }
 
 // ---- Student journeys (journeys.html, from journeys.json) ----
-// Anonymous: a short title, what the kid was like when they started, how they've grown, and (optionally) the
-// volunteer teacher who tells it. No photos, names, ages or classes, ever: npm run check refuses them.
+// Anonymous, never a photo: every journey shows the same drawn kid (in rotating site colours), a title, the kid's
+// interests as small icons, and one sentence from the volunteer's story. "Read the story" opens the tile in place
+// (a <details> element: no script needed, works with a keyboard and screen readers) to show the whole story,
+// poster-style. No names, ages or classes, ever: npm run check refuses what it can spot.
+export const INTERESTS = {
+  running: ["Running", '<circle cx="15" cy="4.5" r="2"/><path d="M7.5 21l3-5 3 2.5V22M10.5 16l1.5-6 4 2.5 3.5-.5M12 10l-3.5 1-2 3.5"/>'],
+  football: ["Football", '<circle cx="12" cy="12" r="9"/><path d="M12 7.8l3.6 2.6-1.4 4.2H9.8l-1.4-4.2z"/><path d="M12 7.8V3M15.6 10.4l4.6-1.5M14.2 14.6l2.8 3.9M9.8 14.6 7 18.5M8.4 10.4 3.8 8.9"/>'],
+  cricket: ["Cricket", '<path d="M13 5l6 6-9.5 9.5-6-6z"/><path d="M16 8l4.5-4.5"/><circle cx="5.5" cy="5.5" r="2"/>'],
+  badminton: ["Badminton", '<circle cx="12" cy="18.5" r="2.5"/><path d="M9.6 17.3 6 4h12l-3.6 13.3M9 4l1.6 12.5M15 4l-1.6 12.5M12 4v12.5"/>'],
+  art: ["Colours", '<path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-.9 2-2s-1-1.6-1-2.6.9-1.4 2-1.4h2a4 4 0 0 0 4-4c0-4.4-4-8-9-8z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="14.5" cy="7" r="1"/>'],
+  reading: ["Reading", '<path d="M3 5c3-1 6-1 9 1 3-2 6-2 9-1v14c-3-1-6-1-9 1-3-2-6-2-9-1z"/><path d="M12 6v14"/>'],
+};
+const KID_COLOURS = [["fill-yellow", "fill-crimson"], ["fill-teal", "fill-yellow"], ["fill-pink", "fill-teal"]]; // [circle, shirt]
+
+function kid(i) {
+  const [circle, shirt] = KID_COLOURS[i % KID_COLOURS.length];
+  const skin = "#8d5a3b", hair = "#231a16";
+  return `<svg viewBox="0 0 120 120" class="w-20 h-20 sm:w-24 sm:h-24 shrink-0" aria-hidden="true">
+            <defs><clipPath id="kid-${i}"><circle cx="60" cy="60" r="60"/></clipPath></defs>
+            <g clip-path="url(#kid-${i})">
+              <circle cx="60" cy="60" r="60" class="${circle}"/>
+              <path d="M16 124c2-24 20-38 44-38s42 14 44 38z" class="${shirt}"/>
+              <path d="M51 74h18v14c0 4-4 7-9 7s-9-3-9-7z" fill="${skin}"/>
+              <circle cx="37" cy="56" r="6" fill="${skin}"/><circle cx="83" cy="56" r="6" fill="${skin}"/>
+              <circle cx="60" cy="54" r="24" fill="${skin}"/>
+              <path d="M36 54C33 36 45 26 60 26S87 36 84 52C79 44 72 40 65 40C58 45 47 46 40 45C38 47 37 50 36 54Z" fill="${hair}"/>
+              <circle cx="51" cy="57" r="2.6" class="fill-ink"/><circle cx="69" cy="57" r="2.6" class="fill-ink"/>
+              <path d="M51 66c5 6 13 6 18 0" fill="none" class="stroke-ink" stroke-width="3" stroke-linecap="round"/>
+            </g>
+          </svg>`;
+}
+
+function loves(interests) {
+  const known = (Array.isArray(interests) ? interests : []).filter((k) => INTERESTS[k]);
+  if (!known.length) return "";
+  const items = known.map((k) => `<li class="inline-flex items-center gap-1.5 rounded-full bg-ink/5 px-3 py-1 text-sm font-semibold"><svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${INTERESTS[k][1]}</svg>${INTERESTS[k][0]}</li>`).join("");
+  return `<p class="eyebrow mt-5">Loves</p><ul class="mt-2 flex flex-wrap gap-2">${items}</ul>`;
+}
+
+const storyOf = (j) => j.story || [j.before, j.after].filter(Boolean).join(" ");
+const firstSentence = (text) => (String(text).match(/^.*?[.!?](\s|$)/) || [text])[0].trim();
+
 function journey(j, i) {
-  const by = j.teacher ? `Shared by ${esc(j.teacher)}, their volunteer teacher` : "Shared by their volunteer teacher";
-  return `<div class="max-w-4xl mx-auto pr-4 ${i === 0 ? "mt-12 lg:mt-16" : "mt-14 lg:mt-16"}">
-        <article class="offset-card bg-bg p-8 sm:p-10" aria-label="Journey ${i + 1}">
-          ${j.placeholder ? BADGE : ""}<p class="eyebrow">A student at Maho</p>
-          <h2 class="heading heading-lg mt-3">${esc(j.title)}</h2>
-          <div class="mt-8 grid md:grid-cols-2 gap-8">
-            <div class="border-t-2 border-ink pt-4"><h3 class="impact-label fact-label">When they started</h3><p class="mt-3 text-lg leading-relaxed">${esc(j.before)}</p></div>
-            <div class="border-t-2 border-ink pt-4"><h3 class="impact-label fact-label">Now</h3><p class="mt-3 text-lg leading-relaxed">${esc(j.after)}</p></div>
+  const story = storyOf(j);
+  const highlight = j.highlight || firstSentence(story);
+  const by = j.teacher ? `Volunteer: ${esc(j.teacher)}` : "Shared by their volunteer teacher";
+  return `<details class="journey-tile offset-card bg-bg mr-4">
+        <summary class="block cursor-pointer p-7 sm:p-8">
+          <div class="flex items-center gap-5">
+            ${kid(i)}
+            <div>${j.placeholder ? BADGE : ""}<p class="eyebrow">A student at Maho</p>
+              <h2 class="heading text-[clamp(1.35rem,2.2vw,1.75rem)] mt-2">${esc(j.title)}</h2></div>
           </div>
-          <p class="mt-8 font-bold">${by}</p>
-        </article>
-      </div>`;
+          ${loves(j.interests)}
+          <p class="tile-teaser mt-5 text-lg font-semibold leading-relaxed">“${esc(highlight)}”</p>
+          <span class="btn btn-sm btn-dark mt-6"><span class="tile-closed">Read the story</span><span class="tile-open">Close the story</span></span>
+        </summary>
+        <div class="px-7 sm:px-8 pb-8 text-center">
+          <div class="border-t-2 border-ink pt-6">
+            <p class="text-lg leading-relaxed max-w-prose mx-auto">${esc(story)}</p>
+            <p class="mt-6 font-bold">${by}</p>
+          </div>
+        </div>
+      </details>`;
 }
 
 export function renderJourneys(html, journeys) {
@@ -105,7 +154,7 @@ export function renderJourneys(html, journeys) {
   const list = (Array.isArray(journeys) ? journeys : []).filter((j) => j && typeof j === "object");
   const hidden = list.length === 0 || list.some((j) => j.placeholder); // keep out of search until real journeys
   const body = list.length
-    ? list.map(journey).join("\n      ")
+    ? `<div class="mt-12 lg:mt-16 grid md:grid-cols-2 gap-x-10 gap-y-12 items-start max-w-5xl mx-auto">\n      ${list.map(journey).join("\n      ")}\n      </div>`
     : '<p class="lede mt-10 mx-auto text-center">Stories of how the kids at Maho grow are coming soon.</p>';
   return html
     .replace("<!-- journeys:robots -->", hidden ? '<meta name="robots" content="noindex">' : "")

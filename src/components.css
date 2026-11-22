@@ -103,6 +103,13 @@
   .offset-card { box-shadow: 0.9rem 0.9rem 0 theme("colors.pink"); }
   /* Donate QR code on crimson: a white card, so phones can read it (QR codes need a light background) */
   .qr-card { display: inline-block; background: #fff; border-radius: 0.9rem; padding: 0.6rem; }
+  /* Student journey tiles (journeys.html): closed shows the teaser; "Read the story" opens the tile in place */
+  .journey-tile > summary { list-style: none; }
+  .journey-tile > summary::-webkit-details-marker { display: none; }
+  .journey-tile > summary:focus-visible { outline: 3px solid theme("colors.blue"); outline-offset: 4px; }
+  .journey-tile .tile-open { display: none; }
+  .journey-tile[open] .tile-open { display: inline; }
+  .journey-tile[open] .tile-closed, .journey-tile[open] .tile-teaser { display: none; }
   /* Full-width photo slideshow at the top of the home page (format from uandiadheera.vercel.app): edge to edge,
      square corners, moves by itself (js/carousel.js). Swiping is the browser's own scrolling with snap points,
      so it works on every phone even if the script fails to load. Crop per photo with object-[x_y] classes. */
