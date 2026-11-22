@@ -63,7 +63,7 @@ function story(s, i) {
   return `<article class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center ${i === 0 ? "mt-12 lg:mt-16" : "mt-16 lg:mt-24"}" aria-label="Story ${i + 1}">
         <div class="lg:col-span-5">${photo(s)}</div>
         <figure class="offset-card bg-yellow p-8 sm:p-10 lg:col-span-6 lg:col-start-7 mr-4 lg:mr-4">
-          ${s.placeholder ? BADGE : ""}<p class="eyebrow">${esc(s.role)}</p>${stars(s.rating)}
+          ${s.placeholder ? BADGE : ""}<p class="eyebrow">${esc(s.role)}${s.years ? ` · ${esc(s.years)}` : ""}</p>${stars(s.rating)}
           <blockquote>${quote(s.quote)}</blockquote>
           <figcaption class="mt-5 text-lg font-bold">${esc(s.name)}</figcaption>
         </figure>
