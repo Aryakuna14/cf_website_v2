@@ -134,6 +134,8 @@ for (const file of files) {
       for (const m of attrs.matchAll(/([\w:-]+)\s*=\s*("([^"]*)"|'([^']*)')/g)) attr[m[1].toLowerCase()] = m[3] ?? m[4];
       const t = tag.toLowerCase();
       if (attr.src) checkUrl(file, attr.src, { loads: true });
+      // Every size in a srcset ("photo-800.webp 800w, photo-1600.webp 1600w") must exist too
+      if (attr.srcset) for (const part of attr.srcset.split(",")) checkUrl(file, part.trim().split(/\s+/)[0], { loads: true });
       if (attr.href) {
         const relAttr = (attr.rel || "").toLowerCase();
         const loads = t === "link" && relAttr !== "canonical" && relAttr !== "alternate";
