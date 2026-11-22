@@ -4,6 +4,15 @@
   "installCommand": "npm ci",
   "buildCommand": "npm run build && npm run check",
   "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/fundraiser", "destination": "/fundraiser.html" },
+    { "source": "/journeys", "destination": "/journeys.html" },
+    { "source": "/stories", "destination": "/stories.html" },
+    { "source": "/volunteer", "destination": "/volunteer.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/poster", "destination": "/poster.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -16,6 +25,18 @@
         { "key": "Permissions-Policy", "value": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), browsing-topics=()" },
         { "key": "Cross-Origin-Opener-Policy", "value": "same-origin" },
         { "key": "Cross-Origin-Resource-Policy", "value": "same-origin" }
+      ]
+    },
+    {
+      "source": "/(css|js)/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=2592000" }
       ]
     }
   ]
