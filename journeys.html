@@ -111,6 +111,16 @@
 
 </main>
 
+<!-- Pop-up for a journey's full story (js/journeys.js fills it from the tile that was clicked). Closes with the
+     close buttons, Esc, or a click outside the card. Without the script, tiles open in place instead. -->
+<dialog id="journey-dialog" class="journey-dialog w-[min(40rem,calc(100vw-2rem))] max-h-[92vh] p-0 border-0 bg-transparent text-ink" aria-labelledby="journey-dialog-title">
+  <div class="relative offset-card bg-bg mr-4 mb-4 p-7 sm:p-10 text-center">
+    <button type="button" class="absolute top-3 right-3 grid place-items-center w-10 h-10 rounded-full bg-ink text-white text-2xl leading-none" data-close aria-label="Close the story">&times;</button>
+    <div data-dialog-body></div>
+    <button type="button" class="btn btn-sm btn-dark mt-8" data-close>Close</button>
+  </div>
+</dialog>
+
 <footer class="bg-ink text-white pt-14 pb-8">
   <div class="wrap grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
     <div>
@@ -158,5 +168,6 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/journeys.js"></script>
 </body>
 </html>

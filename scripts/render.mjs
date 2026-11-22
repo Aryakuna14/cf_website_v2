@@ -154,18 +154,22 @@ function journey(j, i) {
   const story = storyOf(j);
   const highlight = j.highlight || firstSentence(story);
   const by = j.teacher ? `Volunteer: ${esc(j.teacher)}` : "Shared by their volunteer teacher";
+  // js/journeys.js copies .tile-poster, .tile-head and .tile-story into a pop-up; without the script the tile
+  // simply opens in place.
   return `<details class="journey-tile offset-card bg-bg mr-4">
         <summary class="block cursor-pointer p-7 sm:p-8 text-center">
-          ${poster(j, i)}
-          <div class="mt-5">${j.placeholder ? BADGE : ""}</div>
-          <p class="eyebrow">A student at Maho</p>
-          <h2 class="heading text-[clamp(1.4rem,2.3vw,1.85rem)] mt-2">${esc(j.title)}</h2>
-          ${loves(j.interests)}
+          <div class="tile-poster">${poster(j, i)}</div>
+          <div class="tile-head">
+            <div class="mt-5">${j.placeholder ? BADGE : ""}</div>
+            <p class="eyebrow">A student at Maho</p>
+            <h2 class="heading text-[clamp(1.4rem,2.3vw,1.85rem)] mt-2">${esc(j.title)}</h2>
+            ${loves(j.interests)}
+          </div>
           <p class="tile-teaser mt-5 text-lg font-semibold leading-relaxed max-w-md mx-auto">“${esc(highlight)}”</p>
           <span class="btn btn-sm btn-dark mt-6"><span class="tile-closed">Read the story</span><span class="tile-open">Close the story</span></span>
         </summary>
-        <div class="px-7 sm:px-8 pb-8 text-center">
-          <div class="border-t-2 border-ink pt-6">
+        <div class="tile-story px-7 sm:px-8 pb-8 text-center">
+          <div class="border-t-2 border-ink pt-6 mt-6">
             <p class="text-lg leading-relaxed max-w-prose mx-auto">${esc(story)}</p>
             <p class="mt-6 font-bold">${by}</p>
           </div>

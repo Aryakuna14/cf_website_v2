@@ -110,6 +110,11 @@
   .journey-tile .tile-open { display: none; }
   .journey-tile[open] .tile-open { display: inline; }
   .journey-tile[open] .tile-closed, .journey-tile[open] .tile-teaser { display: none; }
+  /* The story pop-up: dims the page behind it */
+  .journey-dialog::backdrop { background: rgb(32 30 30 / 0.65); }
+  .journey-dialog[open] { overflow-y: auto; }
+  .journey-dialog .tile-story > div { margin-top: 1.5rem; }
+  .journey-dialog button:focus-visible { outline: 3px solid theme("colors.blue"); outline-offset: 3px; }
   /* Full-width photo slideshow at the top of the home page (format from uandiadheera.vercel.app): edge to edge,
      square corners, moves by itself (js/carousel.js). Swiping is the browser's own scrolling with snap points,
      so it works on every phone even if the script fails to load. Crop per photo with object-[x_y] classes. */
