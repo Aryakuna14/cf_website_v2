@@ -29,7 +29,7 @@
   @media (min-width: 1024px) { .band { padding-block: 6.5rem; } }
 
   /* The one loud moment: U&I-style wide capitals for the hero headline only */
-  .display { font-family: theme("fontFamily.display"); font-weight: 900; font-stretch: 125%; text-transform: uppercase; line-height: 0.95; letter-spacing: -0.01em; }
+  .display { font-family: theme("fontFamily.display"); font-weight: 900; font-stretch: 125%; text-transform: uppercase; line-height: 0.95; letter-spacing: -0.01em; overflow-wrap: break-word; }
   .display-xl { font-size: clamp(2.1rem, 5.6vw, 4.75rem); }
   .display-lg { font-size: clamp(1.9rem, 4.2vw, 3.6rem); } /* longer hero lines (fundraiser.html) */
 
@@ -103,6 +103,11 @@
   .offset-card { box-shadow: 0.9rem 0.9rem 0 theme("colors.pink"); }
   /* Donate QR code on crimson: a white card, so phones can read it (QR codes need a light background) */
   .qr-card { display: inline-block; background: #fff; border-radius: 0.9rem; padding: 0.6rem; }
+  /* Footer links: on phones each link gets padding so it's about 40px tall, easy to tap with a thumb */
+  @media (max-width: 767px) {
+    footer.bg-ink a { display: inline-block; padding-top: 0.6rem; padding-bottom: 0.6rem; }
+    footer.bg-ink .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0; }
+  }
   /* Student journey tiles (journeys.html): closed shows the teaser; "Read the story" opens the tile in place */
   .journey-tile > summary { list-style: none; }
   .journey-tile > summary::-webkit-details-marker { display: none; }

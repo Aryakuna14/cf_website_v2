@@ -191,5 +191,7 @@ export function renderJourneys(html, journeys) {
 
 export function renderHtml(html, cfg) {
   const site = cfg.siteUrl.endsWith("/") ? cfg.siteUrl : `${cfg.siteUrl}/`;
-  return renderJourneys(renderStories(html, cfg.stories), cfg.journeys).replaceAll("%SITE_URL%", site);
+  return renderJourneys(renderStories(html, cfg.stories), cfg.journeys)
+    .replaceAll("%SITE_URL%", site)
+    .replaceAll("%YEAR%", String(new Date().getFullYear())); // footer "© year": updates itself on every publish
 }

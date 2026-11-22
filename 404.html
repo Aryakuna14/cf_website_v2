@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Same security policy as index.html (npm run check compares them). -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'; frame-src 'none'; manifest-src 'self'; require-trusted-types-for 'script'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Page not found | U&amp;I x Maho</title>
+<meta name="description" content="This page doesn't exist. Go to the U&amp;I x Maho home page, donate, or read the student journeys.">
+<!-- "Page not found": Vercel (and GitHub Pages) show this for any address that doesn't exist, even deep ones like
+     /a/b. So every file here is linked from the site root ("/css/...", "/index.html"), the only page allowed to do
+     that (npm run check). On the GitHub Pages copy, which lives in a sub-folder, this page may show unstyled. -->
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/londrina-solid-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="bg-bg text-ink font-sans antialiased">
+
+<header class="bg-bg border-b border-line">
+  <div class="wrap h-[4.5rem] flex items-center justify-between gap-4">
+    <a href="/index.html" class="flex items-center gap-3">
+      <img src="/images/logo.png" alt="U&amp;I x Maho home" width="44" height="44" class="h-11 w-11 rounded-full bg-red p-1 object-contain">
+      <span class="font-extrabold text-lg whitespace-nowrap">U&amp;I x Maho</span>
+    </a>
+    <a href="/fundraiser.html#give" class="btn btn-primary btn-sm">Donate</a>
+  </div>
+</header>
+
+<main>
+  <section class="band bg-yellow relative overflow-hidden min-h-[calc(100vh-9rem)] flex items-center" aria-labelledby="nf-title">
+    <svg class="absolute right-[6%] top-10 w-10 h-10 lg:w-16 lg:h-16 text-black" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.6 7.2 16.8 11.4 24 12C16.8 12.6 12.6 16.8 12 24C11.4 16.8 7.2 12.6 0 12C7.2 11.4 11.4 7.2 12 0Z"/></svg>
+    <div class="wrap relative text-center w-full">
+      <p class="eyebrow">Page not found</p>
+      <h1 id="nf-title" class="mt-5">
+        <span class="hand hand-lg block text-black">Oops!</span>
+        <span class="hand hand-xl block text-crimson mt-2">This page isn't here.</span>
+      </h1>
+      <p class="lede mt-6 mx-auto">It may have moved, or the link has a small typo. These will take you somewhere useful:</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="/index.html" class="btn btn-dark">Go to the home page</a>
+        <a href="/fundraiser.html#give" class="btn btn-outline">Donate</a>
+        <a href="/journeys.html" class="btn btn-outline">Read the student journeys</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-ink text-white py-8">
+  <div class="wrap flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
+    <p>© %YEAR% U&amp;I x Maho</p>
+    <a href="/privacy.html" class="underline hover:text-white">Privacy policy</a>
+    <a href="/terms.html" class="underline hover:text-white">Terms of use</a>
+    <a href="mailto:uandimaho@gmail.com" class="underline hover:text-white">uandimaho@gmail.com</a>
+  </div>
+</footer>
+
+</body>
+</html>

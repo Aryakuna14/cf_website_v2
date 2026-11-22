@@ -95,6 +95,12 @@ function checkUrl(file, url, { loads }) {
     }
     return;
   }
+  if (u.startsWith("/") && rel(file) === "404.html") {
+    // The "page not found" page is shown for any missing address, even deep ones, so it links from the site root
+    const target = join(dist, decodeURIComponent(u.split(/[?#]/)[0]));
+    if (!existsSync(target)) errors.push(`${where} points to a file that doesn't exist.`);
+    return;
+  }
   if (u.startsWith("/")) {
     errors.push(`${where} starts with "/". It will break on GitHub Pages, which serves the site from a sub-folder (/cf_website_v2/). Use a relative path like "${u.replace(/^\/+/, "")}".`);
     return;
