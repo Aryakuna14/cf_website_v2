@@ -11,16 +11,18 @@
 
   "journeys": [
     {
-      "placeholder": true,
-      "title": "Placeholder: a short title for the first journey",
-      "before": "Placeholder: what this student was like when they started at Maho.",
-      "after": "Placeholder: how they have grown since."
+      "title": "Finding his focus",
+      "before": "After my first class with him, I thought it would take a long time to get him to sit through an entire class as he was full of energy and loved moving around and playing with others.",
+      "after": "However, as the classes progressed, I noticed a significant change in him. We established a set of classroom rules, which he genuinely respected and followed. There were a few instances when he doubted his ability to speak English but I guess a few words of encouragement from me and others at the NGO made a difference. He has made some really good progress and I am sure he will do wonders in whatever he decides to pursue!",
+      "teacher": "Riyanshi",
+      "shelterConsent": "2026-11"
     },
     {
-      "placeholder": true,
-      "title": "Placeholder: a short title for the second journey",
-      "before": "Placeholder: what this student was like when they started at Maho.",
-      "after": "Placeholder: how they have grown since."
+      "title": "From quiet to confident",
+      "before": "When I first met him, he was a very quiet kid who wasn't really interested in learning or interacting, and I used to be the only one talking, which made it quite difficult to teach him.",
+      "after": "But eventually, I started learning about his interests and using them to teach, which helped him enjoy the subject and open up to me even more. Since then he has started coming up to me on his own to talk and even volunteering to answer in class. His journey from coming out of his shell to becoming a confident child is truly inspiring and has made him a much better learner.",
+      "teacher": "Spruha",
+      "shelterConsent": "2026-11"
     },
     {
       "placeholder": true,
