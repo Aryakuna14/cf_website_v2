@@ -41,8 +41,3 @@ if (dialog && typeof dialog.showModal === "function") {
   // Backup. A late "close" can arrive after the next story has already opened, so only unlock if it is really shut.
   dialog.addEventListener("close", () => { if (!dialog.open) unlock(); });
 }
-
-// The kid's video ("In his own words"): no right-click "Save video as". Together with controlslist="nodownload" (which
-// hides the player's own Download button) this stops casual saving. It can't stop a determined person, so the video
-// itself must never show a face or anything else that identifies him.
-document.querySelectorAll("video").forEach((video) => video.addEventListener("contextmenu", (event) => event.preventDefault()));

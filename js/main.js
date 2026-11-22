@@ -15,6 +15,11 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && !mobileNav.classList.contains('hidden')) { closeMenu(); btn.focus(); }
 });
 
+// Videos of the kids (home page, Student Journeys): no right-click "Save video as". Together with
+// controlslist="nodownload" (which hides the player's own Download button) this stops casual saving. It can't stop a
+// determined person, so every video must have every kid's face blurred all the way through.
+document.querySelectorAll('video').forEach((video) => video.addEventListener('contextmenu', (event) => event.preventDefault()));
+
 // Arriving at a section (e.g. the menu's Donate button opens fundraiser.html#give): once everything has loaded, jump
 // straight to it, then switch on smooth scrolling for links within the page.
 window.addEventListener('load', () => {
