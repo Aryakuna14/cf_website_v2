@@ -23,7 +23,9 @@ document.querySelectorAll('video').forEach((video) => video.addEventListener('co
 // Arriving at a section (e.g. the menu's Donate button opens fundraiser.html#give): once everything has loaded, jump
 // straight to it, then switch on smooth scrolling for links within the page.
 window.addEventListener('load', () => {
-  const target = location.hash.length > 1 ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+  let id = location.hash.slice(1);
+  try { id = decodeURIComponent(id); } catch { /* a garbled #… in a shared link: use it as it is */ }
+  const target = id ? document.getElementById(id) : null;
   if (target) target.scrollIntoView();
   document.documentElement.classList.add('smooth-scroll');
 });
